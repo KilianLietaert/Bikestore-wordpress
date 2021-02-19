@@ -1,0 +1,16 @@
+
+# BEGIN WordPress
+# De richtlijnen (regels) tussen "BEGIN WordPress" en `END WordPress` worden
+# dynamisch gegenereerd en zouden alleen aangepast mogen worden via WordPress filters.
+# Elke wijziging aan deze richtlijnen tussen deze markeringen worden overschreven.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /bikestore-wordpress/wordpress/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /bikestore-wordpress/wordpress/index.php [L]
+</IfModule>
+
+# END WordPress
