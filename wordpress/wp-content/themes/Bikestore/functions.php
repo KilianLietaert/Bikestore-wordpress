@@ -1,26 +1,34 @@
 <?php
 
-    function bs_add_theme_scripts() {
-            wp_enqueue_style( 'screen', get_template_directory_uri() . '/css/screen.css');
-    }
-        add_action( 'wp_enqueue_scripts', 'bs_add_theme_scripts' );
-
-        add_theme_support( 'post-thumbnails' );
 
 
-    function bs_laadEigenCSS(){
-      $pathVanTheme = get_template_directory_uri();
-      wp_enqueue_style( "bikestore",$pathVanTheme. '/css/screen.css' );
-    }
+function bs_laadCSSenScript()
+{
+  $pathTheme = get_template_directory_uri();
+  wp_enqueue_style("bootstrap", $pathTheme . '/css/bootstrap.min.css');
+  wp_enqueue_style('Bikestore', $pathTheme . '/css/screen.css', ['bootstrap']);
 
-    function register_my_menus() {
-      register_nav_menus(
-          array(
-              'hoofd-menu' => __( 'Hoofd Menu' ),
-              'footer-menu' => __( 'Footer Menu' )
-          )
-      );
+  wp_enqueue_script('bootstrapjs', $pathTheme . '/script/bootstrap.min.js');
+  //wp_enqueue_script('menujs', $pathTheme . '/script/.js');
 }
+
+
+function bs_register_my_menus()
+{
+  register_nav_menus(
+    array(
+      'top-menu' => __('topnav Menu'),
+      'main-menu' => __('Hoofd Menu'),
+      'footer-menu' => __('Voet Menu')
+    )
+  );
+}
+
+add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
+add_action('init', 'bs_register_my_menus');
+add_theme_support('post-thumbnails');
+
+?>
 
 //custom post type 1: Contact-------------------------------------------------------------------
 function bs_register_contact() {
@@ -212,3 +220,4 @@ function bs_register_contact() {
             add_action('add_meta_boxes', 'bs_add_custom_box');
             add_action( 'init', 'bs_register_contact');
 ?>
+

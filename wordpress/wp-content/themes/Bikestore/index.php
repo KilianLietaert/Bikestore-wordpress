@@ -1,6 +1,5 @@
-<?php get_header(  ) ?>
 
+<?php get_header(); ?>
+fallback pagina
+<?php get_footer(); ?>
 
-
-
-<?php get_footer() ?>
