@@ -11,22 +11,13 @@ function bs_laadCSSenScript()
   //wp_enqueue_script('menujs', $pathTheme . '/script/.js');
 }
 
-function wpb_custom_new_menu()
-{
-  register_nav_menus(
-    array(
-      'my-custom-menu' => __('My Custom Menu'),
-      'extra-menu' => __('Extra Menu')
-    )
-  );
-}
-
 function bs_register_my_menus()
 {
   register_nav_menus(
     array(
+      'top-menu' => __('topnav Menu'),
       'main-menu' => __('Hoofd Menu'),
-      'footer-menu' => __('voet Menu')
+      'footer-menu' => __('Voet Menu')
     )
   );
 }
@@ -35,8 +26,5 @@ function bs_register_my_menus()
 add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 add_action('init', 'bs_register_my_menus');
 add_theme_support('post-thumbnails');
-
-
-add_action('init', 'wpb_custom_new_menu');
 
 ?>
