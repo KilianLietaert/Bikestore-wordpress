@@ -114,9 +114,9 @@ function bs_register_contact() {
   echo "<br/>";
   echo "Land: ";
   echo "<select name='land_bikestore' id='land_bikestore'>";
-  echo "<option value='1' " . ($value_periode == 1 ? "selected":"") . ">België</option>";
-  echo "<option value='2' " . ($value_periode == 2 ? "selected":"") . ">Nederland</option>";
-  echo "<option value='3' " . ($value_periode == 3 ? "selected":"") . ">Duitsland</option>";
+  echo "<option value='1' " . ($value_land == 1 ? "selected":"") . ">België</option>";
+  echo "<option value='2' " . ($value_land == 2 ? "selected":"") . ">Nederland</option>";
+  echo "<option value='3' " . ($value_land == 3 ? "selected":"") . ">Duitsland</option>";
   echo "</select>"; 
   echo "<br/>";
   echo "Telefoonnummer: ";

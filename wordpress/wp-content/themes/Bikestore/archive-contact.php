@@ -1,7 +1,7 @@
 <?php get_header(  ) ?>
 
 <section class="container-fluid">
-        <div class="c-contactform">
+        <!-- <div class="c-contactform">
             <div class="c-formcontact">
                 <h1 class="c-form__h1--contactpagina">Contacteer ons</h1>
                 <p class="c-contactform__text">We helpen je graag met al je wensen en vragen. Vul hieronder je bericht in en je krijgt antwoord binnen de 24 uur.</p>
@@ -54,7 +54,7 @@
                   </div>
                 </form>
               </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="c-googlemap col-xl-7 col-lg-7 col-md-12">
                 <img class="c-googlemap__map" src="./img/googlmap.png" alt="google map">
