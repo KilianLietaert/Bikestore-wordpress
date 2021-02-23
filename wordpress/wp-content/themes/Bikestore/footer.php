@@ -1,7 +1,12 @@
 <footer class="c-footer">
     <div class="c-footer__row1 row justify-content-center">
         <div class="c-footer__menu col-2 col-xl-2 col-lg-5 col-md-5 col-sm-10">
-            <h1 class="c-footer__title">Menu</h1>
+            <h1 class="c-footer__title">
+
+
+                <?php echo $value_titel1 = get_post_meta($post->ID, '_footer_titel1', true); ?> </h1>
+
+
             <ul class="c-footer__menu-list">
 
                 <?php
@@ -25,22 +30,37 @@
         </div>
 
         <div class="c-footer__informatie col-2 col-xl-2 col-lg-5 col-md-5 col-sm-10 ">
-            <h1 class="c-footer__title">Informatie</h1>
+            <h1 class="c-footer__title"> <?php echo $value_titel2 = get_post_meta($post->ID, '_footer_titel2', true); ?> </h1>
             <div class="c-footer__informatie-links">
-                <a class="c-footer__informatie-link" href=""> Brochure aanvragen</a>
-                <a class="c-footer__informatie-link" href=""> Proefrit aanvragen</a>
+                <?php
+                $locations = get_nav_menu_locations();
+                if (array_key_exists('extra-menu', $locations)) {
+                    $idVanNavigatie = $locations['extra-menu'];
+                    $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+
+                    foreach ($menu_items as $item) {
+                        if (home_url($wp->request) . '/' == $item->url) {
+                            echo '<a class="c-footer__informatie-link active" href="' . $item->url . '">' . $item->title . '</a>';
+                        } else {
+                            echo '<a class="c-footer__informatie-link" href="' . $item->url . '">' . $item->title . '</a>';
+                        }
+                    }
+                } else {
+                    echo 'Top navigatie niet ingesteld';
+                }
+                ?>
             </div>
         </div>
         <div class="c-footer__contact col-2 col-xl-2 col-lg-5 col-md-5 col-sm-10 ">
-            <h1 class="c-footer__title">Contactgegevens</h1>
+            <h1 class="c-footer__title"><?php echo $value_titel3 = get_post_meta($post->ID, '_footer_titel3', true); ?></h1>
             <div class="c-footer__contact-adres">
-                <p><?php $value_adres = get_post_meta($post->ID, '_adres_bikestore', true);
+                <p><?php echo $value_adres = get_post_meta($post->ID, '_adres_bikestore', true);
                     $value_huisnr = get_post_meta($post->ID, '_huisnr_bikestore', true); ?></p>
-                <p><?php $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true);
+                <p><?php echo $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true);
                     $value_stad = get_post_meta($post->ID, '_stad_bikestore', true); ?> </p>
                 <?php
 
-                $value_land = get_post_meta($post->ID, '_land_bikestore', true);
+                echo $value_land = get_post_meta($post->ID, '_land_bikestore', true);
 
                 if ($value_land == 1) {
                     echo "<li>België</li> ";
@@ -53,20 +73,15 @@
                 ?>
             </div>
             <div class="c-footer__contact-gegevens">
-                <p><?php $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></p>
-                <p><?php $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></p>
+                <p><?php echo $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></p>
+                <p><?php echo $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></p>
             </div>
         </div>
 
         <div class="c-footer__overons col-3 col-xl-3 col-lg-5 col-md-5 col-sm-10">
-            <h1 class="c-footer__title">Over ons</h1>
+            <h1 class="c-footer__title"><?php echo $value_titel4 = get_post_meta($post->ID, '_footer_titel4', true); ?></h1>
             <p>
-                Bikestore wil het comfort van de e-bike dichter bij de gebruiker
-                brengen. Een team van professionals staat daarom voor je klaar. Ze
-                komen vrijblijvend langs voor een gratis proefrit aan huis of op
-                locatie naar keuze en begeleiden je zo om de fiets te kiezen die
-                perfect bij jou past. Na ons bezoek is je e-bike jouw nieuwe
-                vriend.
+                <?php echo $value_text = get_post_meta($post->ID, '_footer_text', true); ?>
             </p>
         </div>
     </div>
