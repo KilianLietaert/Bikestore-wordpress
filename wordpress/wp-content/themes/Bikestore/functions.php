@@ -28,7 +28,7 @@ add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 add_action('init', 'bs_register_my_menus');
 add_theme_support('post-thumbnails');
 
-?>
+
 
 //custom post type 1: Contact-------------------------------------------------------------------
 function bs_register_contact() {
