@@ -1,12 +1,9 @@
 <?php
 
-
-
 function mytheme_add_woocommerce_support()
 {
   add_theme_support('woocommerce');
 }
-
 
 function bs_laadCSSenScript()
 {
@@ -33,10 +30,6 @@ function bs_register_my_menus()
 
 
 //custom post type 1: Contact-------------------------------------------------------------------
-
-
-//custom post type 1: Contact-------------------------------------------------------------------
- 
 
 function bs_register_contact()
 {
@@ -225,7 +218,7 @@ function bs_save_postdata($post_id)
 function bs_register_footer()
 {
 
-  $test1 = array(
+  $footerar = array(
     'name'                  => 'Footer',
     'singular_name'         => 'Footer',
     'menu_name'             => 'Footer',
@@ -254,10 +247,10 @@ function bs_register_footer()
     'items_list_navigation' => 'Footer lijst navigation',
     'filter_items_list'     => 'Filter footer lijst',
   );
-  $test = array(
+  $footer = array(
     'label'                 => 'Footer',
     'description'           => 'Footer (overzicht footer)',
-    'labels'                => $test1,
+    'labels'                => $footerar,
     'supports'              => array('title', 'editor', 'thumbnail', 'revisions', 'custom-fields'),
     'hierarchical'          => false,
     'public'                => true,
@@ -274,7 +267,7 @@ function bs_register_footer()
     'capability_type'       => 'page',
     'show_in_rest'          => true,
   );
-  register_post_type('footer', $test);
+  register_post_type('footer', $footer);
 }
 
 
@@ -370,137 +363,6 @@ function bs_footer_save_postdata($post_id)
 }
 
 // eind footer
-
-// inladen css / bootstrap css en js
-add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
-
-// suport post-thumbnail
-add_theme_support('post-thumbnails');
-
-// inladen menu's
-add_action('init', 'bs_register_my_menus');
-
-
- //custum post type : HomePagina
- function bs_register_home() {
- 
-  $labels_home = array(
-  'name' => 'Home',
-  'singular_name' => 'Home',
-  'menu_name' => 'Home',
-  'name_admin_bar' => 'Home',
-  'archives' => 'Home archief',
-  'attributes' => 'Home Attributes',
-  'parent_item_colon' => 'Parent Item:',
-  'all_items' => 'All Items',
-  'add_new_item' => 'Voeg nieuw Home toe',
-  'add_new' => 'Nieuw home',
-  'new_item' => 'Nieuw home',
-  'edit_item' => 'Wijzig home',
-  'update_item' => 'Update home',
-  'view_item' => 'Toon home',
-  'view_items' => 'Toon home',
-  'search_items' => 'Doorzoek home',
-  'not_found' => 'Not found',
-  'not_found_in_trash' => 'Not found in Trash',
-  'featured_image' => 'Featured Image',
-  'set_featured_image' => 'Set featured image',
-  'remove_featured_image' => 'Remove featured image',
-  'use_featured_image' => 'Use as featured image',
-  'insert_into_item' => 'Insert into item',
-  'uploaded_to_this_item' => 'Uploaded to this item',
-  'items_list' => 'Home lijst',
-  'items_list_navigation' => 'Home lijst navigation',
-  'filter_items_list' => 'Filter home lijst',
-  );
-
-  $args_home = array(
-  'label' => 'Home',
-  'description' => 'Home  (adres, nummer, email)',
-  'labels' => $labels_home,
-  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
-  'hierarchical' => false,
-  'public' => true,
-  'show_ui' => true,
-  'show_in_menu' => true,
-  'menu_position' => 5,
-  'menu_icon' => 'dashicons-admin-home',
-  'show_in_admin_bar' => true,
-  'show_in_nav_menus' => true,
-  'can_export' => true,
-  'has_archive' => true,
-  'exclude_from_search' => false,
-  'publicly_queryable' => true,
-  'capability_type' => 'page',
-  'show_in_rest' => true,
-  );
-  register_post_type( 'home', $args_home );
-  
-}
-
-function bs_add_custom_box_home(){ 
-  add_meta_box(
-  'bs_home_box_id', // Unique ID
-  'Info home', // Box title
-  'bs_custom_box_home_html', // Content callback, must be of type callable
-  'home' // Post type
-  ); 
-}
-
-function bs_custom_box_home_html($post){
-  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
-  
-  //als extra paramter kan je het $post object gebruiken
-  $value_title_banner = get_post_meta($post->ID, '_title_banner', true);
-  $value_subtitle_banner = get_post_meta($post->ID, '_subtitle_banner', true);
-  $value_knop_banner = get_post_meta($post->ID, '_knop_banner', true);
-  $value_title_blok1 = get_post_meta($post->ID, '_title_home_blok1', true);
-  $value_text_blok1 = get_post_meta($post->ID, '_text_blok1', true);
-  $value_img_blok1 = get_post_meta($post->ID, '_img_blok1', true);
-  
-  echo "<h1>Homepagina</h1>";
-  echo "<h3>Blok 1</h3>";
-  echo "Title banner:";
-  echo "<br/>";
-  echo "<input type='text' id='title_banner' name='title_banner' value='". $value_title_banner ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Subtitle banner:";
-  echo "<br/>";
-  echo "<input type='text' id='subtitle_banner' name='subtitle_banner' value='". $value_subtitle_banner ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Text knop banner:";
-  echo "<br/>";
-  echo "<input type='text' id='knop_banner' name='knop_banner' value='". $value_knop_banner ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Titel blok 1: ";
-  echo "<br/>";
-  echo "<input type='text' id='title_home_blok1' name='title_home_blok1' value='". $value_title_blok1 ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Tekst blok 1: ";
-  echo "<br/>";
-  echo "<textarea id='text_blok1' name='text_blok1' rows='4' cols='50' maxlength='400'>" . $value_text_blok1 . "</textarea>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Foto blok 1: ";
-  echo "<br/>";
-  echo "<input type='image' id='img_blok1' name='img_blok1' value='". $value_img_blok1 ."'>";
-  
-}
-
-//custom post contact
-add_action('save_post', 'bs_save_postdata');
-add_action('add_meta_boxes', 'bs_add_custom_box');
-add_action('init', 'bs_register_contact');
-
-
-//custom post footer
-add_action('init', 'bs_register_footer');
-add_action('add_meta_boxes', 'bs_footer_add_custom_box');
-add_action('save_post', 'bs_footer_save_postdata');
 
 
  //custom post type 2 brochure--------------------------------------------------------------------------
@@ -678,11 +540,19 @@ add_action('save_post', 'bs_footer_save_postdata');
 
 
 
+// inladen css / bootstrap css en js
+add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
-  //algemeen
-            add_action('wp_enqueue_scripts', 'bs_add_theme_scripts');
-            add_theme_support('post-thumbnails');
+// suport post-thumbnail
+add_theme_support('post-thumbnails');
 
+// inladen menu's
+add_action('init', 'bs_register_my_menus');
+
+//custom post footer
+add_action('init', 'bs_register_footer');
+add_action('add_meta_boxes', 'bs_footer_add_custom_box');
+add_action('save_post', 'bs_footer_save_postdata');
 
   //custum post home
             add_action('add_meta_boxes', 'bs_add_custom_box_home');
@@ -705,8 +575,6 @@ add_action('save_post', 'bs_footer_save_postdata');
 
 
 
+
 // woocommerce
 add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
-
-
-?>

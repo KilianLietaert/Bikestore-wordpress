@@ -1,10 +1,31 @@
+<?php
+$arg = array(
+    'post_type' => array('footer'),
+    'nopaging' => false,
+    'posts_per_page' => '1',
+    'order' => 'ASC',
+    'orderby' => 'date'
+);
+
+$query = new WP_Query($arg);
+?>
+
 <footer class="c-footer">
     <div class="c-footer__row1 row justify-content-center">
         <div class="c-footer__menu col-2 col-xl-2 col-lg-5 col-md-5 col-sm-10">
             <h1 class="c-footer__title">
 
+                <?php
 
-                <?php echo $value_titel1 = get_post_meta($post->ID, '_footer_titel1', true); ?> </h1>
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        echo $value_titel1 = get_post_meta($post->ID, '_footer_titel1', true);
+                    endwhile;
+                endif;
+                wp_reset_query();
+
+                ?>
+            </h1>
 
 
             <ul class="c-footer__menu-list">
@@ -17,9 +38,9 @@
 
                     foreach ($menu_items as $item) {
                         if (home_url($wp->request) . '/' == $item->url) {
-                            echo '<li class="c-footer__menu-item active"><a href="' . $item->url . '">' . $item->title . '</a></li>';
+                            echo '<li class="c-footer__menu-item active"><a class="c-footer__informatie-link active" href="' . $item->url . '">' . $item->title . '</a></li>';
                         } else {
-                            echo '<li class="c-footer__menu-item"><a href="' . $item->url . '">' . $item->title . '</a></li>';
+                            echo '<li class="c-footer__menu-item"><a class="c-footer__informatie-link" href="' . $item->url . '">' . $item->title . '</a></li>';
                         }
                     }
                 } else {
@@ -30,7 +51,21 @@
         </div>
 
         <div class="c-footer__informatie col-2 col-xl-2 col-lg-5 col-md-5 col-sm-10 ">
-            <h1 class="c-footer__title"> <?php echo $value_titel2 = get_post_meta($post->ID, '_footer_titel2', true); ?> </h1>
+            <h1 class="c-footer__title">
+
+                <?php
+
+
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        echo $value_titel2 = get_post_meta($post->ID, '_footer_titel2', true);
+                    endwhile;
+                endif;
+                wp_reset_query();
+
+                ?>
+
+            </h1>
             <div class="c-footer__informatie-links">
                 <?php
                 $locations = get_nav_menu_locations();
@@ -52,43 +87,117 @@
             </div>
         </div>
         <div class="c-footer__contact col-2 col-xl-2 col-lg-5 col-md-5 col-sm-10 ">
-            <h1 class="c-footer__title"><?php echo $value_titel3 = get_post_meta($post->ID, '_footer_titel3', true); ?></h1>
-            <div class="c-footer__contact-adres">
-                <p><?php echo $value_adres = get_post_meta($post->ID, '_adres_bikestore', true);
-                    $value_huisnr = get_post_meta($post->ID, '_huisnr_bikestore', true); ?></p>
-                <p><?php echo $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true);
-                    $value_stad = get_post_meta($post->ID, '_stad_bikestore', true); ?> </p>
+            <h1 class="c-footer__title">
+
                 <?php
 
-                echo $value_land = get_post_meta($post->ID, '_land_bikestore', true);
-
-                if ($value_land == 1) {
-                    echo "<li>België</li> ";
-                } elseif ($value_land == 2) {
-                    echo "<li>Nederland</li>";
-                } else {
-                    echo "<li>Duitsland</li>";
-                }
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        echo $value_titel3 = get_post_meta($post->ID, '_footer_titel3', true);
+                    endwhile;
+                endif;
+                wp_reset_query();
 
                 ?>
+
+            </h1>
+            <div class="c-footer__contact-adres">
+
+                <?php
+
+                $contact = array(
+                    'post_type' => array('contact'),
+                    'nopaging' => false,
+                    'posts_per_page' => '4',
+                    'order' => 'ASC',
+                    'orderby' => 'date'
+                );
+
+                $querycontact = new WP_Query($contact);
+
+                if ($querycontact->have_posts()) :
+                    while ($querycontact->have_posts()) : $querycontact->the_post();
+                ?>
+
+                        <p><?php echo $value_adres = get_post_meta($post->ID, '_adres_bikestore', true); ?>
+                            <?php echo $value_huisnr = get_post_meta($post->ID, '_huisnr_bikestore', true); ?></p>
+                        <p><?php echo $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true); ?>
+                            <?php echo $value_stad = get_post_meta($post->ID, '_stad_bikestore', true); ?></p>
+                        <?php
+
+                        $value_land = get_post_meta($post->ID, '_land_bikestore', true);
+
+                        if ($value_land == 1) {
+                            echo "<p>België</p> ";
+                        } elseif ($value_land == 2) {
+                            echo "<p>Nederland</p>";
+                        } else {
+                            echo "<p>Duitsland</p>";
+                        }
+
+                        ?>
+                <?php
+                    endwhile;
+                endif;
+                wp_reset_query();
+
+                ?>
+
             </div>
             <div class="c-footer__contact-gegevens">
-                <p><?php echo $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></p>
-                <p><?php echo $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></p>
+                <?php
+
+                if ($querycontact->have_posts()) :
+                    while ($querycontact->have_posts()) : $querycontact->the_post();
+                ?>
+                        <p>tel: <?php echo $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></p>
+
+                        <p><?php echo $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></p>
+                <?php
+                    endwhile;
+                endif;
+                wp_reset_query();
+
+                ?>
+
             </div>
         </div>
 
         <div class="c-footer__overons col-3 col-xl-3 col-lg-5 col-md-5 col-sm-10">
-            <h1 class="c-footer__title"><?php echo $value_titel4 = get_post_meta($post->ID, '_footer_titel4', true); ?></h1>
+            <h1 class="c-footer__title">
+
+                <?php
+
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        echo $value_titel4 = get_post_meta($post->ID, '_footer_titel4', true);
+                    endwhile;
+                endif;
+                wp_reset_query();
+
+                ?>
+
+            </h1>
             <p>
-                <?php echo $value_text = get_post_meta($post->ID, '_footer_text', true); ?>
+
+                <?php
+
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        echo $value_text = get_post_meta($post->ID, '_footer_text', true);
+                    endwhile;
+                endif;
+                wp_reset_query();
+
+                ?>
+
             </p>
         </div>
     </div>
     <div class="c-footer__row2 row">
         <div class="c-footer__icon col-xl-3 col-lg-4 col-md-4 col-sm-10 ">
-            <img class="c-footer__icon-facebook" src="icons/facebook_design.svg" alt="Facebook" />
-            <img class="c-footer__icon-instagram" src="icons/instagram_design.svg" alt="Instagram" />
+            <a href="https://www.facebook.com/howestbe"> <img class="c-footer__icon-facebook" src="<?php echo get_stylesheet_directory_uri() . '/img/facebook_design.svg'; ?>" alt="Facebook" /></a>
+            <a href="https://www.instagram.com/howestbe/"> <img class="c-footer__icon-instagram" src="<?php echo get_stylesheet_directory_uri() . '/img/instagram_design.svg'; ?>" alt="Instagram" /></a>
         </div>
         <div class="c-footer__copyright col-lg-6 col-md-6 col-sm-10">
             <p class="c-footer__copyright-text">
