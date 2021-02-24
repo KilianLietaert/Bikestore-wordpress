@@ -3,22 +3,17 @@
 <body>
   <!-- banner met tekst en button -->
   <section>
-    <div class="c-bannerhome">
+  <div class="c-bannerhome"> 
       <div class="container ">
         <div class="row justify-content-center">
-          <div class="c-bannerhome__content ">
+          <div class="c-bannerhome__content">
             <div class="c-bannerhome__deel1">
               <h1 class="c-bannerhome__hoofd--h1">
-                Bikestore - dé e-bike specialist van België
-              </h1>
-              <h1 class="c-bannerhome__h1">100% service ook in 2021</h1>
+              <h1 class="c-bannerhome__h1"> <?php echo $value_titel4 = get_post_meta($post->ID, '_footer_titel4', true); ?> </h1>
             </div>
             <div class="c-bannerhome__deel2">
               <h1 class="c-bannerhome__h1 c-bannerhome__h1--onder">
-                Diverse modellen uit stock leverbaar!
-              </h1>
               <a href="#"><button class="o-button c-bannerhome__button">
-                  Ontdek ze hier
                 </button></a>
             </div>
           </div>
