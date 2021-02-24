@@ -3,17 +3,20 @@
 <body>
   <!-- banner met tekst en button -->
   <section>
-  <div class="c-bannerhome"> 
+    <div class="c-bannerhome">
       <div class="container ">
         <div class="row justify-content-center">
-          <div class="c-bannerhome__content">
+          <div class="c-bannerhome__content ">
             <div class="c-bannerhome__deel1">
-              <h1 class="c-bannerhome__hoofd--h1">
-              <h1 class="c-bannerhome__h1"> <?php echo $value_titel4 = get_post_meta($post->ID, '_footer_titel4', true); ?> </h1>
+              <h1 class="c-bannerhome__hoofd--h1"><?php echo $value_home_title_banner = get_post_meta($post->ID, '_home_title_banner', true); ?></h1>
+              <h1 class="c-bannerhome__h1"><?php echo $value_home_subtitle_banner = get_post_meta($post->ID, '_home_subtitle_banner', true); ?></h1>
             </div>
             <div class="c-bannerhome__deel2">
               <h1 class="c-bannerhome__h1 c-bannerhome__h1--onder">
+              <?php echo $value_home_subtitle2_banner = get_post_meta($post->ID, '_home_subtitle2_banner', true); ?>
+              </h1>
               <a href="#"><button class="o-button c-bannerhome__button">
+              <?php echo $value_home_knop_banner = get_post_meta($post->ID, '_home_knop_banner', true); ?>
                 </button></a>
             </div>
           </div>
@@ -26,19 +29,19 @@
       <div class="nb-usp-content">
         <ul class="nb-usp-content-row row">
           <li class="c-usp__tekst col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <img class="c-usp__vink" src="img/check.svg" alt="" />Garantie tot 5
+            <img class="c-usp__vink" src="<?php echo get_stylesheet_directory_uri() . '/img/check.svg'; ?>" alt="" />Garantie tot 5
             jaar
           </li>
           <li class="c-usp__tekst col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <img class="c-usp__vink" src="img/check.svg" alt="" />Service op
+            <img class="c-usp__vink" src="<?php echo get_stylesheet_directory_uri() . '/img/check.svg'; ?>" alt="" />Service op
             locatie
           </li>
           <li class="c-usp__tekst col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <img class="c-usp__vink" src="img/check.svg" alt="" />Proefrit aan
+            <img class="c-usp__vink" src="<?php echo get_stylesheet_directory_uri() . '/img/check.svg'; ?>" alt="" />Proefrit aan
             huis
           </li>
           <li class="c-usp__tekst col-xl-3 col-lg-6 col-md-6 col-sm-12">
-            <img class="c-usp__vink" src="img/check.svg" alt="" />Levertijd 5
+            <img class="c-usp__vink" src="<?php echo get_stylesheet_directory_uri() . '/img/check.svg'; ?>" alt="" />Levertijd 5
             dagen
           </li>
         </ul>
@@ -71,7 +74,8 @@
           </button></a>
       </div>
       <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-        <img class="c-uitleg__img" src="img/family-background-evening-sport-bike.jpg" alt="" />
+        <img class="c-uitleg__img" src="<?php echo get_stylesheet_directory_uri() . '/img/family-background-evening-sport-bike.jpg'; ?>" alt="family-background-evening-sport-bike" />
+        
       </div>
   </section>
     </div>
@@ -105,7 +109,7 @@
   <section class="c-repair">
     <div class="c-repair__inhoud row justify-content-center">
       <div class="c-repair__1 col-xl-6 col-lg-12 col-md-12 col-sm-12">
-        <img class="c-repair__img" src="/img/mechanic-repairing-bicycle.jpg" alt="" />
+        <img class="c-repair__img" src="<?php echo get_stylesheet_directory_uri() . '/img/mechanic-repairing-bicycle.jpg'; ?>" alt="" />
       </div>
       <div class="c-repair__2 col-xl-5 col-lg-12 col-md-12 col-sm-12">
         <h1 class="c-repair__h1">

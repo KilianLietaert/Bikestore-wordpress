@@ -451,14 +451,15 @@ function bs_custom_box_home_html($post){
   //als extra paramter kan je het $post object gebruiken
   //banner
   $value_home_title_banner = get_post_meta($post->ID, '_home_title_banner', true);
-  $value_home_ubtitle_banner = get_post_meta($post->ID, '_home_subtitle_banner', true);
+  $value_home_subtitle_banner = get_post_meta($post->ID, '_home_subtitle_banner', true);
+  $value_home_subtitle2_banner = get_post_meta($post->ID, '_home_subtitle2_banner', true);
   $value_home_knop_banner = get_post_meta($post->ID, '_home_knop_banner', true);
 
   //Balk services
   $value_home_service1 = get_post_meta($post->ID, '_home_service1', true);
   $value_home_service2 = get_post_meta($post->ID, '_home_service2', true);
   $value_home_service3 = get_post_meta($post->ID, '_home_service3', true);
-  $value_home_service4 = get_post_meta($post->ID, '_Home_service4', true);
+  $value_home_service4 = get_post_meta($post->ID, '_home_service4', true);
 
   //blok 1
   $value_home_title_blok1 = get_post_meta($post->ID, '_home_title_blok1', true);
@@ -497,6 +498,11 @@ function bs_custom_box_home_html($post){
   echo "<input type='text' id='home_subtitle_banner' name='home_subtitle_banner' value='". $value_home_subtitle_banner ."'>";
   echo "<br/>";
   echo "<br/>";
+  echo "Subtitel 2 banner:";
+  echo "<br/>";
+  echo "<input type='text' id='home_subtitle2_banner' name='home_subtitle2_banner' value='". $value_home_subtitle2_banner ."'>";
+  echo "<br/>";
+  echo "<br/>";
   echo "Tekst knop banner:";
   echo "<br/>";
   echo "<input type='text' id='home_knop_banner' name='home_knop_banner' value='". $value_home_knop_banner ."'>";
@@ -512,17 +518,17 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Service 2:";
   echo "<br/>";
-  echo "<input type='text' id='home_service2' name='home_service2' value='". $value_home_service1 ."'>";
+  echo "<input type='text' id='home_service2' name='home_service2' value='". $value_home_service2 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Service 3:";
   echo "<br/>";
-  echo "<input type='text' id='home_service3' name='home_service3' value='". $value_home_service1 ."'>";
+  echo "<input type='text' id='home_service3' name='home_service3' value='". $value_home_service3 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Service 4:";
   echo "<br/>";
-  echo "<input type='text' id='home_service4' name='home_service4' value='". $value_home_service1 ."'>";
+  echo "<input type='text' id='home_service4' name='home_service4' value='". $value_home_service4 ."'>";
   echo "<br/>";
   echo "<br/>";
 
@@ -572,17 +578,12 @@ function bs_custom_box_home_html($post){
   echo "<h3>Blok 3</h3>";
   echo "Titel blok 3: ";
   echo "<br/>";
-  echo "<input type='text' id='home_title_home_blok3' name='home_title_home_blok3' value='". $value_home_title_blok3 ."'>";
+  echo "<input type='text' id='home_title_blok3' name='home_title_blok3' value='". $value_home_title_blok3 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst blok 3: ";
   echo "<br/>";
   echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='4' cols='50' maxlength='400'>" . $value_home_text_blok3 . "</textarea>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Tekst knop blok 3:";
-  echo "<br/>";
-  echo "<input type='text' id='home_text_knop_blok3' name='home_text_knop_blok3' value='". $value_home_text_knop_blok3 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Foto blok 3: ";
@@ -606,53 +607,200 @@ function bs_custom_box_home_html($post){
   echo "<input type='text' id='home_text_knop_blok4' name='home_text_knop_blok4' value='". $value_home_text_knop_blok4 ."'>";
 }
 
-function bs_footer_save_postdata($post_id){
+function bs_home_save_postdata($post_id){
   //bepaal het (custom) type van de post
-  //is het een post,page,vastgoed,foto,... die je bewaart?
   $naam_post_type = get_post_type($post_id);
   if ($naam_post_type) {
     //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
-    if ($naam_post_type == "footer") {
-      //het custom post type is van het type vastgoed
+    if ($naam_post_type == "home") {
+      //het custom post type is van het type home
 
-      //opslaan van een INPUT:titel1
-      if (array_key_exists('footer_titel1', $_POST)) {
+      // opslaan data banner
+      //opslaan van een INPUT: title home
+      if (array_key_exists('home_title_banner', $_POST)) {
         update_post_meta(
           $post_id,
-          '_footer_titel1',
-          $_POST['footer_titel1']
+          '_home_title_banner',
+          $_POST['home_title_banner']
         );
       }
-      //opslaan van een INPUT:titel2
-      if (array_key_exists('footer_titel2', $_POST)) {
+      //opslaan van een INPUT:subtitle 1
+      if (array_key_exists('home_subtitle_banner', $_POST)) {
         update_post_meta(
           $post_id,
-          '_footer_titel2',
-          $_POST['footer_titel2']
+          '_home_subtitle_banner',
+          $_POST['home_subtitle_banner']
         );
       }
-      //opslaan van een INPUT:titel3
-      if (array_key_exists('footer_titel3', $_POST)) {
+      //opslaan van een INPUT:subtitle 2
+      if (array_key_exists('home_subtitle2_banner', $_POST)) {
         update_post_meta(
           $post_id,
-          '_footer_titel3',
-          $_POST['footer_titel3']
+          '_home_subtitle2_banner',
+          $_POST['home_subtitle2_banner']
         );
       }
-      //opslaan van een INPUT:titel4
-      if (array_key_exists('footer_titel4', $_POST)) {
+      //opslaan van een INPUT: text button
+      if (array_key_exists('home_knop_banner', $_POST)) {
         update_post_meta(
           $post_id,
-          '_footer_titel4',
-          $_POST['footer_titel4']
+          '_home_knop_banner',
+          $_POST['home_knop_banner']
         );
       }
-      //opslaan van een text
-      if (array_key_exists('footer_text', $_POST)) {
+
+      // opslaan data balk onder banner
+      //opslaan van een INPUT: service 1
+      if (array_key_exists('home_service1', $_POST)) {
         update_post_meta(
           $post_id,
-          '_footer_text',
-          $_POST['footer_text']
+          '_home_service1',
+          $_POST['home_service1']
+        );
+      }
+      //opslaan van een INPUT:service 2
+      if (array_key_exists('home_service2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service2',
+          $_POST['home_service2']
+        );
+      }
+      //opslaan van een INPUT:service 3
+      if (array_key_exists('home_service3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service3',
+          $_POST['home_service3']
+        );
+      }
+      //opslaan van een INPUT: service 4
+      if (array_key_exists('home_service4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service4',
+          $_POST['home_service4']
+        );
+      }
+      
+      // opslaan data blok 1 
+      //opslaan van een INPUT: title blok 1
+      if (array_key_exists('home_title_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok1',
+          $_POST['home_title_blok1']
+        );
+      }
+      //opslaan van een INPUT: text blok 1
+      if (array_key_exists('home_text_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok1',
+          $_POST['home_text_blok1']
+        );
+      }
+      //opslaan van een INPUT: text knop blok1
+      if (array_key_exists('home_text_knop_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok1',
+          $_POST['home_text_knop_blok1']
+        );
+      }
+      //opslaan van een INPUT: image blok 1
+      /*if (array_key_exists('home_img_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_img_blok1',
+          $_POST['home_img_blok1']
+        );
+      }*/
+
+      // opslaan data blok 2 
+      //opslaan van een INPUT: title blok 1
+      if (array_key_exists('home_title_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok2',
+          $_POST['home_title_blok2']
+        );
+      }
+      //opslaan van een INPUT: text blok 1
+      if (array_key_exists('home_text_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok2',
+          $_POST['home_text_blok2']
+        );
+      }
+      //opslaan van een INPUT: text knop blok1
+      if (array_key_exists('home_text_knop_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok2',
+          $_POST['home_text_knop_blok2']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 2
+      /*if (array_key_exists('home_img_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_img_blok2',
+          $_POST['home_img_blok2']
+        );
+      }*/
+
+
+      // opslaan data blok 3
+      //opslaan van een INPUT: title blok 3
+      if (array_key_exists('home_title_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok3',
+          $_POST['home_title_blok3']
+        );
+      }
+      //opslaan van een INPUT: text blok 3
+      if (array_key_exists('home_text_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok3',
+          $_POST['home_text_blok3']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 3
+      /*if (array_key_exists('home_img_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_img_blok3',
+          $_POST['home_img_blok3']
+        );
+      }*/
+
+      // opslaan data blok 4
+      //opslaan van een INPUT: title blok 4
+      if (array_key_exists('home_title_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok4',
+          $_POST['home_title_blok4']
+        );
+      }
+      //opslaan van een INPUT: text blok 4
+      if (array_key_exists('home_text_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok4',
+          $_POST['home_text_blok4']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 4
+      if (array_key_exists('home_text_knop_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok4',
+          $_POST['home_text_knop_blok4']
         );
       }
     }
@@ -672,8 +820,10 @@ add_action('save_post', 'bs_footer_save_postdata');
 
 
   //custum post home
-            add_action('add_meta_boxes', 'bs_add_custom_box_home');
-            add_action( 'init', 'bs_register_home');
+  add_action( 'init', 'bs_register_home');
+  add_action('add_meta_boxes', 'bs_add_custom_box_home');
+  add_action('save_post', 'bs_home_save_postdata');
+
 
   //custom post contact
             add_action('save_post', 'bs_save_postdata');
