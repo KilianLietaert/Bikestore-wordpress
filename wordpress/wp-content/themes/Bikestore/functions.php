@@ -36,7 +36,6 @@ function bs_register_my_menus()
 
 
 //custom post type 1: Contact-------------------------------------------------------------------
-function bs_register_contact() {
  
 
 function bs_register_contact()
@@ -458,24 +457,36 @@ function bs_custom_box_home_html($post){
   $value_img_blok1 = get_post_meta($post->ID, '_img_blok1', true);
   
   echo "<h1>Homepagina</h1>";
-  echo "<br/>";
+  echo "<h3>Blok 1</h3>";
   echo "Title banner:";
+  echo "<br/>";
   echo "<input type='text' id='title_banner' name='title_banner' value='". $value_title_banner ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Subtitle banner:";
+  echo "<br/>";
   echo "<input type='text' id='subtitle_banner' name='subtitle_banner' value='". $value_subtitle_banner ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Text knop banner:";
+  echo "<br/>";
   echo "<input type='text' id='knop_banner' name='knop_banner' value='". $value_knop_banner ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Titel blok 1: ";
+  echo "<br/>";
   echo "<input type='text' id='title_home_blok1' name='title_home_blok1' value='". $value_title_blok1 ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Tekst blok 1: ";
-  echo "<input type='text' id='text_blok1' name='text_blok1' value='". $value_text_blok1 ."'>";
+  echo "<br/>";
+  echo "<textarea id='text_blok1' name='text_blok1' rows='4' cols='50' maxlength='400'>" . $value_text_blok1 . "</textarea>";
+  echo "<br/>";
   echo "<br/>";
   echo "Foto blok 1: ";
-  echo "<input type='text' id='img_blok1' name='img_blok1' value='". $value_img_blok1 ."'>";
+  echo "<br/>";
+  echo "<input type='image' id='img_blok1' name='img_blok1' value='". $value_img_blok1 ."'>";
+  
 }
 
 //custom post contact
@@ -500,7 +511,6 @@ add_action('save_post', 'bs_footer_save_postdata');
             add_action( 'init', 'bs_register_contact');
 
 
-?>
 
 // woocommerce
 add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
