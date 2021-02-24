@@ -32,7 +32,7 @@ function bs_register_my_menus()
 }
 
 
-//custom post type 1: Contact-------------------------------------------------------------------
+
 
 
 //custom post type 1: Contact-------------------------------------------------------------------
@@ -371,14 +371,7 @@ function bs_footer_save_postdata($post_id)
 
 // eind footer
 
-// inladen css / bootstrap css en js
-add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
-// suport post-thumbnail
-add_theme_support('post-thumbnails');
-
-// inladen menu's
-add_action('init', 'bs_register_my_menus');
 
 
  //custum post type : HomePagina
@@ -491,16 +484,6 @@ function bs_custom_box_home_html($post){
   
 }
 
-//custom post contact
-add_action('save_post', 'bs_save_postdata');
-add_action('add_meta_boxes', 'bs_add_custom_box');
-add_action('init', 'bs_register_contact');
-
-
-//custom post footer
-add_action('init', 'bs_register_footer');
-add_action('add_meta_boxes', 'bs_footer_add_custom_box');
-add_action('save_post', 'bs_footer_save_postdata');
 
 
  //custom post type 2 brochure--------------------------------------------------------------------------
@@ -677,11 +660,132 @@ add_action('save_post', 'bs_footer_save_postdata');
  }
 
 
+//custom post type 2 blog--------------------------------------------------------------------------
+function bs_register_blog() {
+ 
+  $labels = array(
+  'name' => 'Blog',
+  'singular_name' => 'Blog',
+  'menu_name' => 'Blog',
+  'name_admin_bar' => 'Blog',
+  'archives' => 'Blog archief',
+  'attributes' => 'Blog Attributes',
+  'parent_item_colon' => 'Parent Item:',
+  'all_items' => 'All Items',
+  'add_new_item' => 'Voeg nieuw blog toe',
+  'add_new' => 'Nieuw blog',
+  'new_item' => 'Nieuw blog',
+  'edit_item' => 'Wijzig blog',
+  'update_item' => 'Update blog',
+  'view_item' => 'Toon blog',
+  'view_items' => 'Toon blog',
+  'search_items' => 'Doorzoek blog',
+  'not_found' => 'Not found',
+  'not_found_in_trash' => 'Not found in Trash',
+  'featured_image' => 'Featured Image',
+  'set_featured_image' => 'Set featured image',
+  'remove_featured_image' => 'Remove featured image',
+  'use_featured_image' => 'Use as featured image',
+  'insert_into_item' => 'Insert into item',
+  'uploaded_to_this_item' => 'Uploaded to this item',
+  'items_list' => 'Blog lijst',
+  'items_list_navigation' => 'Blog lijst navigation',
+  'filter_items_list' => 'Filter blog lijst',
+  );
+  $args = array(
+  'label' => 'Blog',
+  'description' => 'Blog (titel, paragraaf)',
+  'labels' => $labels,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-format-status',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+  );
+  register_post_type( 'blog', $args );
+  
+ }
+  
+ function bs_add_custom_box3(){ 
+  add_meta_box(
+  'bs_blog_box_id', // Unique ID
+  'Info blog', // Box title
+  'bs_custom_box_blog_html', // Content callback, must be of type callable
+  'blog' // Post type
+  ); 
+ }
+ function bs_custom_box_blog_html($post){
+  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
+  
+  //als extra paramter kan je het $post object gebruiken
+  $value_auteur = get_post_meta($post->ID, '_auteur_blog', true);
+  $value_datum = get_post_meta($post->ID, '_datum_blog', true);
+  
+  echo "<h1>Extra info over blog</h1>";
+  echo "Auteur blog: ";
+  echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
+  echo "<br/>";
+  echo "Datum van aanmaak: ";
+  echo "<input type='text' id='datum_blog' name='datum_blog' value='". $value_datum ."'>";
+ 
+ }
+ function bs_save_postdata3($post_id){
+  //bepaal het (custom) type van de post
+  
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type){
+  //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+  if ($naam_post_type == "blog"){
+  
+  
+  //opslaan van een INPUT:textbox auteur
+  if (array_key_exists('auteur_blog', $_POST)) {
+  update_post_meta(
+  $post_id,
+  '_auteur_blog',
+  $_POST['auteur_blog']
+  );
+  }
+
+  if (array_key_exists('datum_blog', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_datum_blog',
+    $_POST['datum_blog']
+    );
+    }
+ 
+
+  }
+  } 
+ }
+
+
+
+
 
 
   //algemeen
             add_action('wp_enqueue_scripts', 'bs_add_theme_scripts');
             add_theme_support('post-thumbnails');
+
+  // inladen css / bootstrap css en js
+            add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
+
+
+
+  // inladen menu's
+            add_action('init', 'bs_register_my_menus');
 
 
   //custum post home
@@ -703,10 +807,21 @@ add_action('save_post', 'bs_footer_save_postdata');
 
 
 
+  //custom post footer
+            add_action('init', 'bs_register_footer');
+            add_action('add_meta_boxes', 'bs_footer_add_custom_box');
+            add_action('save_post', 'bs_footer_save_postdata');
 
 
-// woocommerce
-add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+  //custom post blog
+
+            add_action('save_post', 'bs_save_postdata3');
+            add_action('add_meta_boxes', 'bs_add_custom_box3');
+            add_action( 'init', 'bs_register_blog'); 
+
+
+  // woocommerce
+            add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
 
 
 ?>
