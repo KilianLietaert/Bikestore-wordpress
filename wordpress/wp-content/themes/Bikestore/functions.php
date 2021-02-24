@@ -432,7 +432,19 @@ add_action('init', 'bs_register_my_menus');
   'capability_type' => 'page',
   'show_in_rest' => true,
   );
-  register_post_type( 'home', $args_home );
+
+  $args_1 = array(
+    'id' => 'featured-image-2',
+    'desc' => 'Your description here.',
+    'label_name' => 'Featured Image 2',
+    'label_set' => 'Set featured image 2',
+    'label_remove' => 'Remove featured image 2',
+    'label_use' => 'Set featured image 2',
+    'post_type' => array( 'page', 'post' ),
+  );
+
+  register_post_type( 'home', $args_home, $args_1 );
+
   
 }
 
@@ -541,7 +553,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 1: ";
   echo "<br/>";
-  echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='4' cols='50' maxlength='400'>" . $value_home_text_blok1 . "</textarea>";
+  echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok1 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst knop blok 1:";
@@ -551,7 +563,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Foto blok 1: ";
   echo "<br/>";
-  echo "<input type='image' id='home_img_blok1' name='home_img_blok1' value='". $value_home_img_blok1 ."'>";
+  echo "<input type='file' id='home_img_blok1' name='home_img_blok1' value='". $value_home_img_blok1 ."'>";
 
   //Blok 2
   echo "<h3>Blok 2</h3>";
@@ -562,7 +574,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 2:";
   echo "<br/>";
-  echo "<textarea id='home_text_blok2' name='home_text_blok2' rows='4' cols='50' maxlength='400'>" . $value_home_text_blok2 . "</textarea>";
+  echo "<textarea id='home_text_blok2' name='home_text_blok2' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok2 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst knop blok 2:";
@@ -583,7 +595,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 3: ";
   echo "<br/>";
-  echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='4' cols='50' maxlength='400'>" . $value_home_text_blok3 . "</textarea>";
+  echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok3 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Foto blok 3: ";
@@ -599,7 +611,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 4:";
   echo "<br/>";
-  echo "<textarea id='home_text_blok4' name='home_text_blok4' rows='4' cols='50' maxlength='400'>" . $value_home_text_blok4 . "</textarea>";
+  echo "<textarea id='home_text_blok4' name='home_text_blok4' rows='4' cols='50' maxlength='200'>" . $value_home_text_blok4 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst knop blok 4:";
@@ -709,13 +721,13 @@ function bs_home_save_postdata($post_id){
         );
       }
       //opslaan van een INPUT: image blok 1
-      /*if (array_key_exists('home_img_blok1', $_POST)) {
+      if (array_key_exists('home_img_blok1', $_POST)) {
         update_post_meta(
           $post_id,
           '_home_img_blok1',
           $_POST['home_img_blok1']
         );
-      }*/
+      }
 
       // opslaan data blok 2 
       //opslaan van een INPUT: title blok 1
@@ -823,6 +835,7 @@ add_action('save_post', 'bs_footer_save_postdata');
   add_action( 'init', 'bs_register_home');
   add_action('add_meta_boxes', 'bs_add_custom_box_home');
   add_action('save_post', 'bs_home_save_postdata');
+  
 
 
   //custom post contact
