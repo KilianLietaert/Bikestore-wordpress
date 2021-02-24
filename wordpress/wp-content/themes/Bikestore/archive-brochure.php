@@ -9,16 +9,17 @@
                 </h1>
 
                 <p class="c-folder__info-text col-lg-8 col-md-8 col-sm-8 offset-1">
-                    Wilt u meer weten over onze elektrische fietsen? Bent u benieuwd wat Bikestore u allemaal te bieden
+                <?php the_content( ) ?>
+                    <!-- Wilt u meer weten over onze elektrische fietsen? Bent u benieuwd wat Bikestore u allemaal te bieden
                     heeft? Vraag een gratis brochure aan. U ontvangt
                     <strong class="c-folder__info-text-strong">direct onze digitale brochure.</strong>
                     </br>
-                    De brochure staat boordevol informatie over onze elektrische fietsen.
+                    De brochure staat boordevol informatie over onze elektrische fietsen. -->
                 </p>
             </div>
             <div class="c-folder__aanvraag row justify-content-center">
                 <div class="c-folder__aanvraag-foto col-xl-3 col-lg-10 col-md-10 col-sm-10">
-                    <img class="c-folder__aanvraag-foto-brochure" src="img/image-brochure.jpg" alt="foto brochure">
+                    <img class="c-folder__aanvraag-foto-brochure" src="<?php echo get_the_post_thumbnail_url()?>" alt="foto brochure">
                 </div>
                 <div class="c-folder__aanvraag-formulier col-xl-6 col-lg-10 col-md-10 col-sm-10">
                     <h2 class="c-folder__aanvraag-formulier-title">
@@ -53,7 +54,7 @@
                         </button>
                     </a> -->
 
-                    
+
                     <ul class="c-folder__aanvraag-info">
                         <li class="c-folder__aanvraag-info-item"><?php $value_extrainfo1 = get_post_meta($post->ID, '_extrainfo1_brochure', true); ?> </li>
                         <li class="c-folder__aanvraag-info-item"><?php $value_extrainfo2 = get_post_meta($post->ID, '_extrainfo2_brochure', true); ?> 
