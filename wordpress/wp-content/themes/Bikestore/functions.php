@@ -1,12 +1,9 @@
 <?php
 
-
-
 function mytheme_add_woocommerce_support()
 {
   add_theme_support('woocommerce');
 }
-
 
 function bs_laadCSSenScript()
 {
@@ -33,10 +30,6 @@ function bs_register_my_menus()
 
 
 
-
-
-//custom post type 1: Contact-------------------------------------------------------------------
- 
 
 function bs_register_contact()
 {
@@ -225,7 +218,7 @@ function bs_save_postdata($post_id)
 function bs_register_footer()
 {
 
-  $test1 = array(
+  $footerar = array(
     'name'                  => 'Footer',
     'singular_name'         => 'Footer',
     'menu_name'             => 'Footer',
@@ -254,10 +247,10 @@ function bs_register_footer()
     'items_list_navigation' => 'Footer lijst navigation',
     'filter_items_list'     => 'Filter footer lijst',
   );
-  $test = array(
+  $footer = array(
     'label'                 => 'Footer',
     'description'           => 'Footer (overzicht footer)',
-    'labels'                => $test1,
+    'labels'                => $footerar,
     'supports'              => array('title', 'editor', 'thumbnail', 'revisions', 'custom-fields'),
     'hierarchical'          => false,
     'public'                => true,
@@ -274,7 +267,7 @@ function bs_register_footer()
     'capability_type'       => 'page',
     'show_in_rest'          => true,
   );
-  register_post_type('footer', $test);
+  register_post_type('footer', $footer);
 }
 
 
@@ -374,8 +367,7 @@ function bs_footer_save_postdata($post_id)
 
 
 
- //custum post type : HomePagina
- function bs_register_home() {
+function bs_register_home() {
  
   $labels_home = array(
   'name' => 'Home',
@@ -386,7 +378,7 @@ function bs_footer_save_postdata($post_id)
   'attributes' => 'Home Attributes',
   'parent_item_colon' => 'Parent Item:',
   'all_items' => 'All Items',
-  'add_new_item' => 'Voeg nieuw Home toe',
+  'add_new_item' => 'Voeg nieuw home toe',
   'add_new' => 'Nieuw home',
   'new_item' => 'Nieuw home',
   'edit_item' => 'Wijzig home',
@@ -396,7 +388,7 @@ function bs_footer_save_postdata($post_id)
   'search_items' => 'Doorzoek home',
   'not_found' => 'Not found',
   'not_found_in_trash' => 'Not found in Trash',
-  'featured_image' => 'Featured Image',
+  'featured_image' => 'Foto blok 1',
   'set_featured_image' => 'Set featured image',
   'remove_featured_image' => 'Remove featured image',
   'use_featured_image' => 'Use as featured image',
@@ -406,10 +398,9 @@ function bs_footer_save_postdata($post_id)
   'items_list_navigation' => 'Home lijst navigation',
   'filter_items_list' => 'Filter home lijst',
   );
-
   $args_home = array(
   'label' => 'Home',
-  'description' => 'Home  (adres, nummer, email)',
+  'description' => 'Home (titel, paragraaf)',
   'labels' => $labels_home,
   'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
   'hierarchical' => false,
@@ -417,7 +408,7 @@ function bs_footer_save_postdata($post_id)
   'show_ui' => true,
   'show_in_menu' => true,
   'menu_position' => 5,
-  'menu_icon' => 'dashicons-admin-home',
+  'menu_icon' => 'dashicons-analytics',
   'show_in_admin_bar' => true,
   'show_in_nav_menus' => true,
   'can_export' => true,
@@ -427,9 +418,29 @@ function bs_footer_save_postdata($post_id)
   'capability_type' => 'page',
   'show_in_rest' => true,
   );
+
   register_post_type( 'home', $args_home );
-  
+
 }
+
+add_filter( 'kdmfi_featured_images', function( $featured_images ) {
+  // Add featured-image-2 to pages and posts
+  $args_1 = array(
+    'id' => 'featured-image-2',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 2',
+    'label_set' => 'Set featured image 2',
+    'label_remove' => 'Remove featured image 2',
+    'label_use' => 'Set featured image 2',
+    'post_type' => array( 'home', 'post' ),
+  );
+
+  // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
+  $featured_images[] = $args_1;
+
+  // Important! Return all featured images
+  return $featured_images;
+});
 
 function bs_add_custom_box_home(){ 
   add_meta_box(
@@ -441,54 +452,370 @@ function bs_add_custom_box_home(){
 }
 
 function bs_custom_box_home_html($post){
-  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
+
+  //banner
+  $value_home_title_banner = get_post_meta($post->ID, '_home_title_banner', true);
+  $value_home_subtitle_banner = get_post_meta($post->ID, '_home_subtitle_banner', true);
+  $value_home_subtitle2_banner = get_post_meta($post->ID, '_home_subtitle2_banner', true);
+  $value_home_knop_banner = get_post_meta($post->ID, '_home_knop_banner', true);
+
+  //Balk services
+  $value_home_service1 = get_post_meta($post->ID, '_home_service1', true);
+  $value_home_service2 = get_post_meta($post->ID, '_home_service2', true);
+  $value_home_service3 = get_post_meta($post->ID, '_home_service3', true);
+  $value_home_service4 = get_post_meta($post->ID, '_home_service4', true);
+
+  //blok 1
+  $value_home_title_blok1 = get_post_meta($post->ID, '_home_title_blok1', true);
+  $value_home_text_blok1 = get_post_meta($post->ID, '_home_text_blok1', true);
+  $value_home_text_knop_blok1 = get_post_meta($post->ID, '_home_text_knop_blok1', true);
+  $value_home_img_blok1 = get_post_meta($post->ID, '_home_img_blok1', true);
+
+  //blok 2
+  $value_home_title_blok2 = get_post_meta($post->ID, '_home_title_blok2', true);
+  $value_home_text_blok2 = get_post_meta($post->ID, '_home_text_blok2', true);
+  $value_home_text_knop_blok2 = get_post_meta($post->ID, '_home_text_knop_blok2', true);
+  $value_home_img_blok2 = get_post_meta($post->ID, '_home_img_blok2', true);
+
+  //blok 3
+  $value_home_title_blok3 = get_post_meta($post->ID, '_home_title_blok3', true);
+  $value_home_text_blok3 = get_post_meta($post->ID, '_home_text_blok3', true);
+  $value_home_img_blok3 = get_post_meta($post->ID, '_home_img_blok3', true);
+
+   //blok 4
+   $value_home_title_blok4 = get_post_meta($post->ID, '_home_title_blok4', true);
+   $value_home_text_blok4 = get_post_meta($post->ID, '_home_text_blok4', true);
+   $value_home_text_knop_blok4= get_post_meta($post->ID, '_home_text_knop_blok4', true);
   
-  //als extra paramter kan je het $post object gebruiken
-  $value_title_banner = get_post_meta($post->ID, '_title_banner', true);
-  $value_subtitle_banner = get_post_meta($post->ID, '_subtitle_banner', true);
-  $value_knop_banner = get_post_meta($post->ID, '_knop_banner', true);
-  $value_title_blok1 = get_post_meta($post->ID, '_title_home_blok1', true);
-  $value_text_blok1 = get_post_meta($post->ID, '_text_blok1', true);
-  $value_img_blok1 = get_post_meta($post->ID, '_img_blok1', true);
   
   echo "<h1>Homepagina</h1>";
+
+  //Banner
+  echo "<h3>Banner</h3>";
+  echo "Titel banner:";
+  echo "<br/>";
+  echo "<input type='text' id='home_title_banner' name='home_title_banner' value='". $value_home_title_banner ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Subtitel banner:";
+  echo "<br/>";
+  echo "<input type='text' id='home_subtitle_banner' name='home_subtitle_banner' value='". $value_home_subtitle_banner ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Subtitel 2 banner:";
+  echo "<br/>";
+  echo "<input type='text' id='home_subtitle2_banner' name='home_subtitle2_banner' value='". $value_home_subtitle2_banner ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst knop banner:";
+  echo "<br/>";
+  echo "<input type='text' id='home_knop_banner' name='home_knop_banner' value='". $value_home_knop_banner ."'>";
+  echo "<br/>";
+  echo "<br/>";
+
+  //Balk onder banner
+  echo "<h3>Balk services</h3>";
+  echo "Service 1:";
+  echo "<br/>";
+  echo "<input type='text' id='home_service1' name='home_service1' value='". $value_home_service1 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Service 2:";
+  echo "<br/>";
+  echo "<input type='text' id='home_service2' name='home_service2' value='". $value_home_service2 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Service 3:";
+  echo "<br/>";
+  echo "<input type='text' id='home_service3' name='home_service3' value='". $value_home_service3 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Service 4:";
+  echo "<br/>";
+  echo "<input type='text' id='home_service4' name='home_service4' value='". $value_home_service4 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+
+  //Blok 1
   echo "<h3>Blok 1</h3>";
-  echo "Title banner:";
-  echo "<br/>";
-  echo "<input type='text' id='title_banner' name='title_banner' value='". $value_title_banner ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Subtitle banner:";
-  echo "<br/>";
-  echo "<input type='text' id='subtitle_banner' name='subtitle_banner' value='". $value_subtitle_banner ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Text knop banner:";
-  echo "<br/>";
-  echo "<input type='text' id='knop_banner' name='knop_banner' value='". $value_knop_banner ."'>";
-  echo "<br/>";
-  echo "<br/>";
   echo "Titel blok 1: ";
   echo "<br/>";
-  echo "<input type='text' id='title_home_blok1' name='title_home_blok1' value='". $value_title_blok1 ."'>";
-  echo "<br/>";
-  echo "<br/>";
+  echo "<input type='text' id='home_title_blok1' name='home_title_blok1' value='". $value_home_title_blok1 ."'>";
   echo "Tekst blok 1: ";
   echo "<br/>";
-  echo "<textarea id='text_blok1' name='text_blok1' rows='4' cols='50' maxlength='400'>" . $value_text_blok1 . "</textarea>";
+  echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok1 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst knop blok 1:";
+  echo "<br/>";
+  echo "<input type='text' id='home_text_knop_blok1' name='home_text_knop_blok1' value='". $value_home_text_knop_blok1 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Foto blok 1: ";
   echo "<br/>";
-  echo "<input type='image' id='img_blok1' name='img_blok1' value='". $value_img_blok1 ."'>";
+  echo "<input type='file' id='home_img_blok1' name='home_img_blok1' value='". $value_home_img_blok1 ."'>";
+
+  //Blok 2
+  echo "<h3>Blok 2</h3>";
+  echo "Titel blok 2:";
+  echo "<br/>";
+  echo "<input type='text' id='home_title_blok2' name='home_title_blok2' value='". $value_home_title_blok2 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst blok 2:";
+  echo "<br/>";
+  echo "<textarea id='home_text_blok2' name='home_text_blok2' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok2 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst knop blok 2:";
+  echo "<br/>";
+  echo "<input type='text' id='home_text_knop_blok2' name='home_text_knop_blok2' value='". $value_home_text_knop_blok2 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Foto achtergrond blok 2: ";
+  echo "<br/>";
+  echo "<input type='image' id='home_img_blok2' name='home_img_blok2' value='". $value_home_img_blok2 ."'>";
   
+  //Blok 3
+  echo "<h3>Blok 3</h3>";
+  echo "Titel blok 3: ";
+  echo "<br/>";
+  echo "<input type='text' id='home_title_blok3' name='home_title_blok3' value='". $value_home_title_blok3 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst blok 3: ";
+  echo "<br/>";
+  echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok3 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Foto blok 3: ";
+  echo "<br/>";
+  echo "<input type='image' id='home_img_blok3' name='home_img_blok3' value='". $value_home_img_blok3 ."'>";
+
+  //Blok 4
+  echo "<h3>Blok 4</h3>";
+  echo "Titel blok 4:";
+  echo "<br/>";
+  echo "<input type='text' id='home_title_blok4' name='home_title_blok4' value='". $value_home_title_blok4 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst blok 4:";
+  echo "<br/>";
+  echo "<textarea id='home_text_blok4' name='home_text_blok4' rows='4' cols='50' maxlength='200'>" . $value_home_text_blok4 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst knop blok 4:";
+  echo "<br/>";
+  echo "<input type='text' id='home_text_knop_blok4' name='home_text_knop_blok4' value='". $value_home_text_knop_blok4 ."'>";
 }
 
 
+function bs_home_save_postdata($post_id){
+  //bepaal het (custom) type van de post
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type) {
+    //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+    if ($naam_post_type == "home") {
+      //het custom post type is van het type home
 
- //custom post type 2 brochure--------------------------------------------------------------------------
- function bs_register_brochure() {
+      // opslaan data banner
+      //opslaan van een INPUT: title home
+      if (array_key_exists('home_title_banner', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_banner',
+          $_POST['home_title_banner']
+        );
+      }
+      //opslaan van een INPUT:subtitle 1
+      if (array_key_exists('home_subtitle_banner', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_subtitle_banner',
+          $_POST['home_subtitle_banner']
+        );
+      }
+      //opslaan van een INPUT:subtitle 2
+      if (array_key_exists('home_subtitle2_banner', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_subtitle2_banner',
+          $_POST['home_subtitle2_banner']
+        );
+      }
+      //opslaan van een INPUT: text button
+      if (array_key_exists('home_knop_banner', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_knop_banner',
+          $_POST['home_knop_banner']
+        );
+      }
+
+      // opslaan data balk onder banner
+      //opslaan van een INPUT: service 1
+      if (array_key_exists('home_service1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service1',
+          $_POST['home_service1']
+        );
+      }
+      //opslaan van een INPUT:service 2
+      if (array_key_exists('home_service2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service2',
+          $_POST['home_service2']
+        );
+      }
+      //opslaan van een INPUT:service 3
+      if (array_key_exists('home_service3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service3',
+          $_POST['home_service3']
+        );
+      }
+      //opslaan van een INPUT: service 4
+      if (array_key_exists('home_service4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_service4',
+          $_POST['home_service4']
+        );
+      }
+      
+      // opslaan data blok 1 
+      //opslaan van een INPUT: title blok 1
+      if (array_key_exists('home_title_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok1',
+          $_POST['home_title_blok1']
+        );
+      }
+      //opslaan van een INPUT: text blok 1
+      if (array_key_exists('home_text_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok1',
+          $_POST['home_text_blok1']
+        );
+      }
+      //opslaan van een INPUT: text knop blok1
+      if (array_key_exists('home_text_knop_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok1',
+          $_POST['home_text_knop_blok1']
+        );
+      }
+      //opslaan van een INPUT: image blok 1
+      if (array_key_exists('home_img_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_img_blok1',
+          $_POST['home_img_blok1']
+        );
+      }
+
+      // opslaan data blok 2 
+      //opslaan van een INPUT: title blok 2
+      if (array_key_exists('home_title_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok2',
+          $_POST['home_title_blok2']
+        );
+      }
+      //opslaan van een INPUT: text blok 2
+      if (array_key_exists('home_text_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok2',
+          $_POST['home_text_blok2']
+        );
+      }
+      //opslaan van een INPUT: text knop blok 2
+      if (array_key_exists('home_text_knop_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok2',
+          $_POST['home_text_knop_blok2']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 2
+      /*if (array_key_exists('home_img_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_img_blok2',
+          $_POST['home_img_blok2']
+        );
+      }*/
+
+
+      // opslaan data blok 3
+      //opslaan van een INPUT: title blok 3
+      if (array_key_exists('home_title_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok3',
+          $_POST['home_title_blok3']
+        );
+      }
+      //opslaan van een INPUT: text blok 3
+      if (array_key_exists('home_text_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok3',
+          $_POST['home_text_blok3']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 3
+      /*if (array_key_exists('home_img_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_img_blok3',
+          $_POST['home_img_blok3']
+        );
+      }*/
+
+      // opslaan data blok 4
+      //opslaan van een INPUT: title blok 4
+      if (array_key_exists('home_title_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_title_blok4',
+          $_POST['home_title_blok4']
+        );
+      }
+      //opslaan van een INPUT: text blok 4
+      if (array_key_exists('home_text_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_blok4',
+          $_POST['home_text_blok4']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 4
+      if (array_key_exists('home_text_knop_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok4',
+          $_POST['home_text_knop_blok4']
+        );
+      }
+    }
+  }
+}
+
+
+//custom post type 2 brochure--------------------------------------------------------------------------
+
+function bs_register_brochure(){ 
  
+
   $labels_brochure = array(
   'name' => 'Brochure',
   'singular_name' => 'Brochure',
@@ -541,19 +868,22 @@ function bs_custom_box_home_html($post){
   register_post_type( 'brochure', $args_brochure );
   
  }
+
+
   
- function bs_add_custom_box2(){ 
+}
+
+function bs_add_custom_box_brochure(){ 
   add_meta_box(
   'bs_brochure_box_id', // Unique ID
   'Info brochure', // Box title
   'bs_custom_box_brochure_html', // Content callback, must be of type callable
   'brochure' // Post type
   ); 
- }
- function bs_custom_box_brochure_html($post){
-  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
-  
-  //als extra paramter kan je het $post object gebruiken
+}
+
+function bs_custom_box_brochure_html($post){
+
   $value_titel = get_post_meta($post->ID, '_titel_brochure', true);
   $value_uitleg = get_post_meta($post->ID, '_uitleg_brochure', true);
   $value_titelform1 = get_post_meta($post->ID, '_titelform1_brochure', true);
@@ -574,6 +904,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Titel 2 bovenaan formulier: ";
   echo "<input type='text' id='titelform2_brochure' name='titelform2_brochure' value='". $value_titelform2 ."'>";
+
   echo "<br/>";
   echo "Extra info overder formulier 1: ";
   echo "<input type='text' id='extrainfo1_brochure' name='extrainfo1_brochure' value='". $value_extrainfo1 ."'>";
@@ -583,8 +914,9 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Extra info overder formulier 3: ";
   echo "<input type='text' id='extrainfo3_brochure' name='extrainfo3_brochure' value='". $value_extrainfo3 ."'>";
- }
- function bs_save_postdata2($post_id){
+}
+
+function bs_save_postdata_brochure($post_id){
   //bepaal het (custom) type van de post
   
   $naam_post_type = get_post_type($post_id);
@@ -603,13 +935,13 @@ function bs_custom_box_home_html($post){
   }
 
  
- if (array_key_exists('uitleg_brochure', $_POST)) {
-  update_post_meta(
-  $post_id,
-  '_uitleg_brochure',
-  $_POST['uitleg_brochure']
-  );
-  }
+  if (array_key_exists('uitleg_brochure', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_uitleg_brochure',
+    $_POST['uitleg_brochure']
+    );
+    }
 
   //opslaan van een INPUT:textbox
   if (array_key_exists('titelform1_brochure', $_POST)) {
@@ -628,7 +960,6 @@ function bs_custom_box_home_html($post){
     $_POST['titelform2_brochure']
     );
     }
-
 
      //opslaan van een INPUT:textbox
   if (array_key_exists('extrainfo1_brochure', $_POST)) {
@@ -658,6 +989,8 @@ function bs_custom_box_home_html($post){
   }
   } 
  }
+
+
 
 
 //custom post type  blog--------------------------------------------------------------------------
@@ -950,26 +1283,29 @@ function bs_register_blog() {
   } 
  }
 
+// inladen css / bootstrap css en js
+add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
 
 
+// suport post-thumbnail
+add_theme_support('post-thumbnails');
 
 
-  //algemeen
-            add_theme_support('post-thumbnails');
-
-  // inladen css / bootstrap css en js
-            add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
+// inladen menu's
+add_action('init', 'bs_register_my_menus');
 
 
-
-  // inladen menu's
-            add_action('init', 'bs_register_my_menus');
+//custom post footer
+add_action('init', 'bs_register_footer');
+add_action('add_meta_boxes', 'bs_footer_add_custom_box');
+add_action('save_post', 'bs_footer_save_postdata');
 
 
   //custum post home
-            add_action('add_meta_boxes', 'bs_add_custom_box_home');
-            add_action( 'init', 'bs_register_home');
+  add_action( 'init', 'bs_register_home');
+  add_action('add_meta_boxes', 'bs_add_custom_box_home');
+  add_action('save_post', 'bs_home_save_postdata');
 
 
   //custom post contact
@@ -980,8 +1316,8 @@ function bs_register_blog() {
 
   //custom post brochure
 
-            add_action('save_post', 'bs_save_postdata2');
-            add_action('add_meta_boxes', 'bs_add_custom_box2');
+            add_action('save_post', 'bs_save_postdata_brochure');
+            add_action('add_meta_boxes', 'bs_add_custom_box_brochure');
             add_action( 'init', 'bs_register_brochure'); 
 
 
@@ -997,6 +1333,7 @@ function bs_register_blog() {
             add_action('save_post', 'bs_save_postdata3');
             add_action('add_meta_boxes', 'bs_add_custom_box3');
             add_action( 'init', 'bs_register_blog'); 
+
 
 
   // woocommerce

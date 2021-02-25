@@ -1,7 +1,7 @@
-<?php get_header(  ) ?>
+<?php get_header() ?>
 
 <section class="container-fluid">
-        <!-- <div class="c-contactform">
+  <!-- <div class="c-contactform">
             <div class="c-formcontact">
                 <h1 class="c-form__h1--contactpagina">Contacteer ons</h1>
                 <p class="c-contactform__text">We helpen je graag met al je wensen en vragen. Vul hieronder je bericht in en je krijgt antwoord binnen de 24 uur.</p>
@@ -55,45 +55,77 @@
                 </form>
               </div>
         </div> -->
-        <div class="row">
-            <div class="c-googlemap col-xl-7 col-lg-7 col-md-12">
-                <img class="c-googlemap__map" src="./img/googlmap.png" alt="google map">
-            </div>
-            <div class="c-contactinfo col-xl-5 col-lg-5 col-md-12">
-                <h2 class="c-titel__2">Bikestore</h2>
-                <ul class="c-listcontact">
-                    <li><?php $value_adres = get_post_meta($post->ID, '_adres_bikestore', true);  $value_huisnr = get_post_meta($post->ID, '_huisnr_bikestore', true); ?></li>
-                    <li><?php $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true); $value_stad = get_post_meta($post->ID, '_stad_bikestore', true); ?> </li>
-                   
-                    <?php
+  <div class="row">
+    <div class="c-googlemap col-xl-7 col-lg-7 col-md-12">
+      <img class="c-googlemap__map" src="./img/googlmap.png" alt="google map">
+    </div>
+    <div class="c-contactinfo col-xl-5 col-lg-5 col-md-12">
+      <h2 class="c-titel__2">Bikestore</h2>
+      <ul class="c-listcontact">
 
-                        $value_land = get_post_meta($post->ID, '_land_bikestore', true);
+        <?php
 
-                        if ($value_land == 1) {
-                        echo "<li>België</li> ";
-                        } elseif ($value_land == 2) {
-                        echo "<li>Nederland</li>";
-                        }  
-                        else {
-                        echo "<li>Duitsland</li>";
-                        }
+        $contact = array(
+          'post_type' => array('contact'),
+          'nopaging' => false,
+          'posts_per_page' => '4',
+          'order' => 'ASC',
+          'orderby' => 'date'
+        );
 
-                        ?>
-                </ul>
-                <ul class="c-listcontact">
-                    <li><?php $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></li>
-                    <li><?php $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></li>
-                </ul>
+        $querycontact = new WP_Query($contact);
 
-                <div class="c-contactinfo__plaats">
-                    <p class="c-listcontact__text">Wil je graag meer weten over onze elektrische fietsen? </p>
-                        <button class="btn btn-primary o-button" type="submit">
-                          Proefrit aanvragen
-                        </button>
-                </div>
-            </div>
-        </div>
-      </section>
+        if ($querycontact->have_posts()) :
+          while ($querycontact->have_posts()) : $querycontact->the_post();
+        ?>
+            <li><?php echo $value_adres = get_post_meta($post->ID, '_adres_bikestore', true); ?>
+              <?php echo $value_huisnr = get_post_meta($post->ID, '_huisnr_bikestore', true); ?></li>
+            <li><?php echo $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true); ?>
+              <?php echo $value_stad = get_post_meta($post->ID, '_stad_bikestore', true); ?> </li>
+
+            <?php
+
+            $value_land = get_post_meta($post->ID, '_land_bikestore', true);
+
+            if ($value_land == 1) {
+              echo "<li>België</li> ";
+            } elseif ($value_land == 2) {
+              echo "<li>Nederland</li>";
+            } else {
+              echo "<li>Duitsland</li>";
+            }
+
+            ?>
+        <?php
+          endwhile;
+        endif;
+        wp_reset_query();
+
+        ?>
+      </ul>
+      <ul class="c-listcontact">
+        <?php
+        if ($querycontact->have_posts()) :
+          while ($querycontact->have_posts()) : $querycontact->the_post();
+        ?>
+            <li><?php echo $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></li>
+            <li><?php echo $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></li>
+        <?php
+          endwhile;
+        endif;
+        wp_reset_query();
+
+        ?>
+      </ul>
+      <div class="c-contactinfo__plaats">
+        <p class="c-listcontact__text">Wil je graag meer weten over onze elektrische fietsen? </p>
+        <button class="btn btn-primary o-button" type="submit">
+          Proefrit aanvragen
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
