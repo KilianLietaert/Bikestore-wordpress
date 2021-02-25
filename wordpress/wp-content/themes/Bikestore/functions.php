@@ -408,7 +408,7 @@ function bs_register_home() {
   'show_ui' => true,
   'show_in_menu' => true,
   'menu_position' => 5,
-  'menu_icon' => 'dashicons-analytics',
+  'menu_icon' => 'dashicons-admin-home',
   'show_in_admin_bar' => true,
   'show_in_nav_menus' => true,
   'can_export' => true,
@@ -425,7 +425,7 @@ function bs_register_home() {
 
 add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   // Add featured-image-2 to pages and posts
-  $args_1 = array(
+  $args_home_1 = array(
     'id' => 'featured-image-2',
     'desc' => 'Your description here.',
     'label_name' => 'Foto blok 2',
@@ -436,7 +436,7 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   );
 
   // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
-  $featured_images[] = $args_1;
+  $featured_images[] = $args_home_1;
 
   // Important! Return all featured images
   return $featured_images;
@@ -541,6 +541,8 @@ function bs_custom_box_home_html($post){
   echo "Titel blok 1: ";
   echo "<br/>";
   echo "<input type='text' id='home_title_blok1' name='home_title_blok1' value='". $value_home_title_blok1 ."'>";
+  echo "<br/>";
+  echo "<br/>";
   echo "Tekst blok 1: ";
   echo "<br/>";
   echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok1 . "</textarea>";
@@ -549,11 +551,6 @@ function bs_custom_box_home_html($post){
   echo "Tekst knop blok 1:";
   echo "<br/>";
   echo "<input type='text' id='home_text_knop_blok1' name='home_text_knop_blok1' value='". $value_home_text_knop_blok1 ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Foto blok 1: ";
-  echo "<br/>";
-  echo "<input type='file' id='home_img_blok1' name='home_img_blok1' value='". $value_home_img_blok1 ."'>";
 
   //Blok 2
   echo "<h3>Blok 2</h3>";
@@ -570,11 +567,6 @@ function bs_custom_box_home_html($post){
   echo "Tekst knop blok 2:";
   echo "<br/>";
   echo "<input type='text' id='home_text_knop_blok2' name='home_text_knop_blok2' value='". $value_home_text_knop_blok2 ."'>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Foto achtergrond blok 2: ";
-  echo "<br/>";
-  echo "<input type='image' id='home_img_blok2' name='home_img_blok2' value='". $value_home_img_blok2 ."'>";
   
   //Blok 3
   echo "<h3>Blok 3</h3>";
@@ -586,11 +578,6 @@ function bs_custom_box_home_html($post){
   echo "Tekst blok 3: ";
   echo "<br/>";
   echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok3 . "</textarea>";
-  echo "<br/>";
-  echo "<br/>";
-  echo "Foto blok 3: ";
-  echo "<br/>";
-  echo "<input type='image' id='home_img_blok3' name='home_img_blok3' value='". $value_home_img_blok3 ."'>";
 
   //Blok 4
   echo "<h3>Blok 4</h3>";
@@ -745,15 +732,6 @@ function bs_home_save_postdata($post_id){
           $_POST['home_text_knop_blok2']
         );
       }
-      //opslaan van een INPUT: backgroudn image blok 2
-      /*if (array_key_exists('home_img_blok2', $_POST)) {
-        update_post_meta(
-          $post_id,
-          '_home_img_blok2',
-          $_POST['home_img_blok2']
-        );
-      }*/
-
 
       // opslaan data blok 3
       //opslaan van een INPUT: title blok 3
@@ -772,14 +750,6 @@ function bs_home_save_postdata($post_id){
           $_POST['home_text_blok3']
         );
       }
-      //opslaan van een INPUT: backgroudn image blok 3
-      /*if (array_key_exists('home_img_blok3', $_POST)) {
-        update_post_meta(
-          $post_id,
-          '_home_img_blok3',
-          $_POST['home_img_blok3']
-        );
-      }*/
 
       // opslaan data blok 4
       //opslaan van een INPUT: title blok 4
@@ -988,7 +958,417 @@ function bs_save_postdata_brochure($post_id){
 
   }
   } 
- }
+}
+
+//custum post type over bikestore
+
+function bs_register_overbikestore() {
+ 
+  $labels_overbikestore = array(
+  'name' => 'Over bikestore',
+  'singular_name' => 'Over bikestore',
+  'menu_name' => 'Over bikestore',
+  'name_admin_bar' => 'Over bikestore',
+  'archives' => 'Over bikestore archief',
+  'attributes' => 'Over bikestore Attributes',
+  'parent_item_colon' => 'Parent Item:',
+  'all_items' => 'All Items',
+  'add_new_item' => 'Voeg nieuw over bikestore toe',
+  'add_new' => 'Nieuw over bikestore',
+  'new_item' => 'Nieuw over bikestore',
+  'edit_item' => 'Wijzig over bikestore',
+  'update_item' => 'Update over bikestore',
+  'view_item' => 'Toon over bikestore',
+  'view_items' => 'Toon over bikestore',
+  'search_items' => 'Doorzoek over bikestore',
+  'not_found' => 'Not found',
+  'not_found_in_trash' => 'Not found in Trash',
+  'featured_image' => 'Foto blok 1',
+  'set_featured_image' => 'Set featured image',
+  'remove_featured_image' => 'Remove featured image',
+  'use_featured_image' => 'Use as featured image',
+  'insert_into_item' => 'Insert into item',
+  'uploaded_to_this_item' => 'Uploaded to this item',
+  'items_list' => 'Over bikestore lijst',
+  'items_list_navigation' => 'Over bikestore lijst navigation',
+  'filter_items_list' => 'Filter over bikestore  lijst',
+  );
+  $args_overbikestore = array(
+  'label' => 'Over bikestore ',
+  'description' => 'Over bikestore (titel, paragraaf)',
+  'labels' => $labels_overbikestore,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-info-outline',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+  );
+
+  register_post_type( 'overbikestore', $args_overbikestore );
+
+}
+
+add_filter( 'kdmfi_featured_images', function( $featured_images ) {
+  // Add featured-image-2 to pages and posts
+  $args_overbikestore_1 = array(
+    'id' => 'featured-image-2',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 2',
+    'label_set' => 'Set featured image 2',
+    'label_remove' => 'Remove featured image 2',
+    'label_use' => 'Set featured image 2',
+    'post_type' => array( 'overbikestore', 'post' ),
+  );
+
+  $args_overbikestore_2 = array(
+    'id' => 'featured-image-3',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 3',
+    'label_set' => 'Set featured image 3',
+    'label_remove' => 'Remove featured image 3',
+    'label_use' => 'Set featured image 3',
+    'post_type' => array( 'overbikestore', 'post' ),
+  );
+
+  $args_overbikestore_3 = array(
+    'id' => 'featured-image-4',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 4',
+    'label_set' => 'Set featured image 4',
+    'label_remove' => 'Remove featured image 4',
+    'label_use' => 'Set featured image 4',
+    'post_type' => array( 'overbikestore', 'post' ),
+  );
+
+  // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
+  $featured_images[] = $args_overbikestore_1;
+  $featured_images[] = $args_overbikestore_2;
+  $featured_images[] = $args_overbikestore_3;
+
+
+  // Important! Return all featured images
+  return $featured_images;
+});
+
+function bs_add_custom_box_overbikestore(){ 
+  add_meta_box(
+  'bs_overbikestore_box_id', // Unique ID
+  'Info over bikestore', // Box title
+  'bs_custom_box_overbikestore_html', // Content callback, must be of type callable
+  'Over bikestore' // Post type
+  ); 
+}
+
+function bs_custom_box_overbikestore_html($post){
+
+  //blok 1
+  $value_overbikestore_title_blok1 = get_post_meta($post->ID, '_overbikestore_title_blok1', true);
+  $value_overbikestore_text_blok1 = get_post_meta($post->ID, '_overbikestore_text_blok1', true);
+  $value_overbikestore_text_name_blok1 = get_post_meta($post->ID, '_overbikestore_text_name_blok1', true);
+  $value_overbikestore_img_blok1 = get_post_meta($post->ID, '_overbikestore_img_blok1', true);
+
+  //blok 2
+  $value_overbikestore_title_blok2 = get_post_meta($post->ID, '_overbikestore_title_blok2', true);
+  $value_overbikestore_img1_blok2 = get_post_meta($post->ID, '_overbikestore_img1_blok2', true);
+  $value_overbikestore_subtitle1_blok2 = get_post_meta($post->ID, '_overbikestore_subtitle1_blok2', true);
+  $value_overbikestore_text1_blok2 = get_post_meta($post->ID, '_overbikestore_text1_blok2', true);
+
+  $value_overbikestore_img2_blok2 = get_post_meta($post->ID, '_overbikestore_img2_blok2', true);
+  $value_overbikestore_subtitle2_blok2 = get_post_meta($post->ID, '_overbikestore_subtitle2_blok2', true);
+  $value_overbikestore_text2_blok2 = get_post_meta($post->ID, '_overbikestore_text2_blok2', true);
+  $value_overbikestore_onderschrift_onderaan_blok2 = get_post_meta($post->ID, '_overbikestore_onderschrift_onderaan_blok2', true);
+
+
+  //blok 3
+  $value_overbikestore_title_blok3 = get_post_meta($post->ID, '_overbikestore_title_blok3', true);
+  $value_overbikestore_text_blok3 = get_post_meta($post->ID, '_overbikestore_text_blok3', true);
+
+   //blok 4
+   $value_overbikestore_title_blok4 = get_post_meta($post->ID, '_overbikestore_title_blok4', true);
+   $value_overbikestore_text_blok4 = get_post_meta($post->ID, '_overbikestore_text_blok4', true);
+   $value_overbikestore_img_blok4= get_post_meta($post->ID, '_overbikestore_img_blok4', true);
+
+   //blok 5
+   $value_overbikestore_title_blok5 = get_post_meta($post->ID, '_overbikestore_title_blok5', true);
+   $value_overbikestore_text_knop_blok5 = get_post_meta($post->ID, '_overbikestore_text_knop_blok5', true);
+  
+  
+  echo "<h1>Over bikestore</h1>";
+
+  //Blok 1
+    echo "<h3>blok 1</h3>";
+    echo "Titel blok 1:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_title_blok1' name='overbikestore_title_blok1' value='".  $value_overbikestore_title_blok1 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst blok 1:";
+    echo "<br/>";
+    echo "<textarea id='overbikestore_text_blok1' name='overbikestore_text_blok1' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok1 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst auteur blok 1:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_text_name_blok1' name='overbikestore_text_name_blok1' value='". $value_overbikestore_text_name_blok1 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+
+  //Blok 2
+    echo "<h3>blok 2</h3>";
+    echo "Titel blok 2:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_title_blok2' name='overbikestore_title_blok2' value='".  $value_overbikestore_title_blok2 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel 1 blok 2:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_subtitle1_blok2' name='overbikestore_subtitle1_blok2' value='".  $value_overbikestore_subtitle1_blok2 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst 1 blok 2:";
+    echo "<br/>";
+    echo "<textarea id='overbikestore_text1_blok2' name='overbikestore_text1_blok2' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text1_blok2 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel 1 blok 2:";
+    echo "<br/>";
+    echo "<input type='text' id=overbikestore_subtitle2_blok2' name='overbikestore_subtitle2_blok2' value='".   $value_overbikestore_subtitle2_blok2 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst 1 blok 2:";
+    echo "<br/>";
+    echo "<textarea id='overbikestore_text2_blok2' name='overbikestore_text2_blok2' rows='6' cols='50' maxlength='600'>" . $value_overbikestore_text2_blok2 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Onderschrift blok 2:";
+    echo "<br/>";
+    echo "<textarea id='overbikestore_onderschrift_onderaan_blok2' name='overbikestore_onderschrift_onderaan_blok2' rows='4' cols='50' maxlength='200'>" . $value_overbikestore_onderschrift_onderaan_blok2 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+
+  //Blok 3
+    echo "<h3>blok 3</h3>";
+    echo "Titel blok 3:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_title_blok3' name='overbikestore_title_blok3' value='".   $value_overbikestore_title_blok3 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst blok 3:";
+    echo "<br/>";
+    echo "<textarea id='ooverbikestore_text_blok3' name='overbikestore_text_blok3' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok3 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+
+  //Blok 4
+    echo "<h3>blok 4</h3>";
+    echo "Titel blok 4:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_title_blok4' name='overbikestore_title_blok4' value='".  $value_overbikestore_title_blok4 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst blok 4:";
+    echo "<br/>";
+    echo "<textarea id='overbikestore_text_blok4' name='overbikestore_text_blok4' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok4 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    
+  //Blok 5
+    echo "<h3>blok 5</h3>";
+    echo "Titel blok 5:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_title_blok5' name='overbikestore_title_blok5' value='".  $value_overbikestore_title_blok5 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst knop blok 5:";
+    echo "<br/>";
+    echo "<input type='text' id='overbikestore_text_knop_blok5' name='overbikestore_text_knop_blok5' value='".  $value_overbikestore_text_knop_blok5 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+}
+
+function bs_overbikestore_save_postdata($post_id){
+  //bepaal het (custom) type van de post
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type) {
+    //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+    if ($naam_post_type == "overbikestore") {
+      //het custom post type is van het type overbikestore
+
+      // opslaan data over bikestore pagina
+      //opslaan van een INPUT: titel blok 1
+      if (array_key_exists('overbikestore_title_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok1',
+          $_POST['overbikestore_title_blok1']
+        );
+      }
+      //opslaan van een INPUT:text blok 1
+      if (array_key_exists('overbikestore_text_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text_blok1',
+          $_POST['overbikestore_text_blok1']
+        );
+      }
+      //opslaan van een INPUT: text name onder tekst blok 2
+      if (array_key_exists('overbikestore_text_name_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text_name_blok1',
+          $_POST['overbikestore_text_name_blok1']
+        );
+      }
+
+      // opslaan data blok 2
+      //opslaan van een INPUT: titel blok 2
+      if (array_key_exists('overbikestore_title_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok2',
+          $_POST['overbikestore_title_blok2']
+        );
+      }
+      //opslaan van een INPUT:subtitle 1 blok 2
+      if (array_key_exists('overbikestore_subtitle1_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_subtitle1_blok2',
+          $_POST['overbikestore_subtitle1_blok2']
+        );
+      }
+      //opslaan van een INPUT: text 1 blok 2
+      if (array_key_exists('overbikestore_text1_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text1_blok2',
+          $_POST['overbikestore_text1_blok2']
+        );
+      }
+
+      //opslaan van een INPUT: title 2 blok 2
+      if (array_key_exists('overbikestore_subtitle2_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_subtitle2_blok2',
+          $_POST['overbikestore_subtitle2_blok2']
+        );
+      }
+      //opslaan van een INPUT: text 2 blok 2
+      if (array_key_exists('overbikestore_text2_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text2_blok2',
+          $_POST['overbikestore_text2_blok2']
+        );
+      }
+      //opslaan van een INPUT: onderschrift blok 2
+      if (array_key_exists('overbikestore_onderschrift_onderaan_blok2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_onderschrift_onderaan_blok2',
+          $_POST['overbikestore_onderschrift_onderaan_blok2']
+        );
+      }
+      
+
+      // opslaan blok 3
+      //opslaan van een INPUT: titel blok 3
+      if (array_key_exists('overbikestore_title_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok3',
+          $_POST['overbikestore_title_blok3']
+        );
+      }
+      //opslaan van een INPUT: tekst blok 3
+      if (array_key_exists('overbikestore_text_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text_blok3',
+          $_POST['overbikestore_text_blok3']
+        );
+      }
+
+      // opslaan data blok 4
+      //opslaan van een INPUT: title blok 4
+      if (array_key_exists('overbikestore_title_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok4',
+          $_POST['overbikestore_title_blok4']
+        );
+      }
+      //opslaan van een INPUT: text blok 4
+      if (array_key_exists('overbikestore_text_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text_blok4',
+          $_POST['overbikestore_text_blok4']
+        );
+      }
+
+      // opslaan data blok 5
+      //opslaan van een INPUT: title blok 3
+      if (array_key_exists('overbikestore_title_blok5', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok5',
+          $_POST['overbikestore_title_blok5']
+        );
+      }
+      //opslaan van een INPUT: text blok 3
+      if (array_key_exists('overbikestore_text_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text_blok3',
+          $_POST['overbikestore_text_blok3']
+        );
+      }
+
+
+      // opslaan data blok 4
+      //opslaan van een INPUT: title blok 4
+      if (array_key_exists('overbikestore_title_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok4',
+          $_POST['overbikestore_title_blok4']
+        );
+      }
+      //opslaan van een INPUT: text blok 4
+      if (array_key_exists('overbikestore_title_blok5', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_title_blok5',
+          $_POST['overbikestore_title_blok5']
+        );
+      }
+      //opslaan van een INPUT: backgroudn image blok 4
+      if (array_key_exists('overbikestore_text_knop_blok5', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_overbikestore_text_knop_blok5',
+          $_POST['overbikestore_text_knop_blok5']
+        );
+      }
+    }
+  }
+}
+
+
+
+
 
 
 
@@ -1284,60 +1664,66 @@ function bs_register_blog() {
  }
 
 // inladen css / bootstrap css en js
-add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
+  add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
 
 
 // suport post-thumbnail
-add_theme_support('post-thumbnails');
+  add_theme_support('post-thumbnails');
 
 
 // inladen menu's
-add_action('init', 'bs_register_my_menus');
+  add_action('init', 'bs_register_my_menus');
 
 
 //custom post footer
-add_action('init', 'bs_register_footer');
-add_action('add_meta_boxes', 'bs_footer_add_custom_box');
-add_action('save_post', 'bs_footer_save_postdata');
+  add_action('init', 'bs_register_footer');
+  add_action('add_meta_boxes', 'bs_footer_add_custom_box');
+  add_action('save_post', 'bs_footer_save_postdata');
 
 
   //custum post home
-  add_action( 'init', 'bs_register_home');
-  add_action('add_meta_boxes', 'bs_add_custom_box_home');
-  add_action('save_post', 'bs_home_save_postdata');
+    add_action( 'init', 'bs_register_home');
+    add_action('add_meta_boxes', 'bs_add_custom_box_home');
+    add_action('save_post', 'bs_home_save_postdata');
 
+  //custum post over bikestore
+    add_action( 'init', 'bs_register_overbikestore');
+    add_action('add_meta_boxes', 'bs_add_custom_box_overbikestore');
+    add_action('save_post', 'bs_overbikestore_save_postdata');
 
   //custom post contact
-            add_action('save_post', 'bs_save_postdata');
-            add_action('add_meta_boxes', 'bs_add_custom_box');
-            add_action( 'init', 'bs_register_contact');
+    add_action('save_post', 'bs_save_postdata');
+    add_action('add_meta_boxes', 'bs_add_custom_box');
+    add_action( 'init', 'bs_register_contact');
 
 
   //custom post brochure
-
-            add_action('save_post', 'bs_save_postdata_brochure');
-            add_action('add_meta_boxes', 'bs_add_custom_box_brochure');
-            add_action( 'init', 'bs_register_brochure'); 
-
+    add_action('save_post', 'bs_save_postdata_brochure');
+    add_action('add_meta_boxes', 'bs_add_custom_box_brochure');
+    add_action( 'init', 'bs_register_brochure'); 
 
 
   //custom post footer
-            add_action('init', 'bs_register_footer');
-            add_action('add_meta_boxes', 'bs_footer_add_custom_box');
-            add_action('save_post', 'bs_footer_save_postdata');
+     add_action('init', 'bs_register_footer');
+     add_action('add_meta_boxes', 'bs_footer_add_custom_box');
+     add_action('save_post', 'bs_footer_save_postdata');
 
 
   //custom post blog
+     add_action('save_post', 'bs_save_postdata_blog');
+     add_action('add_meta_boxes', 'bs_add_custom_box_blog');
+     add_action( 'init', 'bs_register_blog'); 
 
-            add_action('save_post', 'bs_save_postdata_blog');
-            add_action('add_meta_boxes', 'bs_add_custom_box_blog');
-            add_action( 'init', 'bs_register_blog'); 
 
 
 
   // woocommerce
             add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
+
+// woocommerce
+  add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
 
 
 ?>
