@@ -1,12 +1,9 @@
 <?php
 
-
-
 function mytheme_add_woocommerce_support()
 {
   add_theme_support('woocommerce');
 }
-
 
 function bs_laadCSSenScript()
 {
@@ -33,10 +30,6 @@ function bs_register_my_menus()
 
 
 //custom post type 1: Contact-------------------------------------------------------------------
-
-
-//custom post type 1: Contact-------------------------------------------------------------------
- 
 
 function bs_register_contact()
 {
@@ -71,24 +64,26 @@ function bs_register_contact()
     'filter_items_list' => 'Filter contact lijst',
   );
   $args = array(
-    'label' => 'Contact',
-    'description' => 'Contact  (adres, nummer, email)',
-    'labels' => $labels,
-    'supports' => array('title', 'editor', 'thumbnail', 'revisions', 'custom-fields'),
-    'hierarchical' => false,
-    'public' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'menu_position' => 5,
-    'menu_icon' => 'dashicons-location',
-    'show_in_admin_bar' => true,
-    'show_in_nav_menus' => true,
-    'can_export' => true,
-    'has_archive' => true,
-    'exclude_from_search' => false,
-    'publicly_queryable' => true,
-    'capability_type' => 'page',
-    'show_in_rest' => true,
+
+  'label' => 'Contact',
+  'description' => 'Contact  (adres, nummer, email)',
+  'labels' => $labels,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-phone',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+
   );
   register_post_type('contact', $args);
 }
@@ -223,7 +218,7 @@ function bs_save_postdata($post_id)
 function bs_register_footer()
 {
 
-  $test1 = array(
+  $footerar = array(
     'name'                  => 'Footer',
     'singular_name'         => 'Footer',
     'menu_name'             => 'Footer',
@@ -252,10 +247,10 @@ function bs_register_footer()
     'items_list_navigation' => 'Footer lijst navigation',
     'filter_items_list'     => 'Filter footer lijst',
   );
-  $test = array(
+  $footer = array(
     'label'                 => 'Footer',
     'description'           => 'Footer (overzicht footer)',
-    'labels'                => $test1,
+    'labels'                => $footerar,
     'supports'              => array('title', 'editor', 'thumbnail', 'revisions', 'custom-fields'),
     'hierarchical'          => false,
     'public'                => true,
@@ -272,7 +267,7 @@ function bs_register_footer()
     'capability_type'       => 'page',
     'show_in_rest'          => true,
   );
-  register_post_type('footer', $test);
+  register_post_type('footer', $footer);
 }
 
 
@@ -369,36 +364,27 @@ function bs_footer_save_postdata($post_id)
 
 // eind footer
 
-// inladen css / bootstrap css en js
-add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
-// suport post-thumbnail
-add_theme_support('post-thumbnails');
-
-// inladen menu's
-add_action('init', 'bs_register_my_menus');
-
-
- //custum post type : HomePagina
- function bs_register_home() {
+ //custom post type 2 brochure--------------------------------------------------------------------------
+ function bs_register_brochure() {
  
-  $labels_home = array(
-  'name' => 'Home',
-  'singular_name' => 'Home',
-  'menu_name' => 'Home',
-  'name_admin_bar' => 'Home',
-  'archives' => 'Home archief',
-  'attributes' => 'Home Attributes',
+  $labels = array(
+  'name' => 'Brochure',
+  'singular_name' => 'Brochure',
+  'menu_name' => 'Brochure',
+  'name_admin_bar' => 'Brochure',
+  'archives' => 'Brochure archief',
+  'attributes' => 'Brochure Attributes',
   'parent_item_colon' => 'Parent Item:',
   'all_items' => 'All Items',
-  'add_new_item' => 'Voeg nieuw Home toe',
-  'add_new' => 'Nieuw home',
-  'new_item' => 'Nieuw home',
-  'edit_item' => 'Wijzig home',
-  'update_item' => 'Update home',
-  'view_item' => 'Toon home',
-  'view_items' => 'Toon home',
-  'search_items' => 'Doorzoek home',
+  'add_new_item' => 'Voeg nieuw brochure toe',
+  'add_new' => 'Nieuw brochure',
+  'new_item' => 'Nieuw brochure',
+  'edit_item' => 'Wijzig brochure',
+  'update_item' => 'Update brochure',
+  'view_item' => 'Toon brochure',
+  'view_items' => 'Toon brochure',
+  'search_items' => 'Doorzoek brochure',
   'not_found' => 'Not found',
   'not_found_in_trash' => 'Not found in Trash',
   'featured_image' => 'Foto blok 1',
@@ -407,22 +393,21 @@ add_action('init', 'bs_register_my_menus');
   'use_featured_image' => 'Use as featured image',
   'insert_into_item' => 'Insert into item',
   'uploaded_to_this_item' => 'Uploaded to this item',
-  'items_list' => 'Home lijst',
-  'items_list_navigation' => 'Home lijst navigation',
-  'filter_items_list' => 'Filter home lijst',
+  'items_list' => 'Brochure lijst',
+  'items_list_navigation' => 'Brochure lijst navigation',
+  'filter_items_list' => 'Filter brochure lijst',
   );
-
-  $args_home = array(
-  'label' => 'Home',
-  'description' => 'Home  (adres, nummer, email)',
-  'labels' => $labels_home,
+  $args = array(
+  'label' => 'Brochure',
+  'description' => 'Brochure (titel, paragraaf)',
+  'labels' => $labels,
   'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
   'hierarchical' => false,
   'public' => true,
   'show_ui' => true,
   'show_in_menu' => true,
   'menu_position' => 5,
-  'menu_icon' => 'dashicons-admin-home',
+  'menu_icon' => 'dashicons-analytics',
   'show_in_admin_bar' => true,
   'show_in_nav_menus' => true,
   'can_export' => true,
@@ -432,6 +417,7 @@ add_action('init', 'bs_register_my_menus');
   'capability_type' => 'page',
   'show_in_rest' => true,
   );
+
     
 
   register_post_type( 'home', $args_home );
@@ -458,18 +444,23 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
 });
 
 function bs_add_custom_box_home(){ 
+  register_post_type( 'brochure', $args );
+  
+ }
+  
+ function bs_add_custom_box2(){ 
   add_meta_box(
-  'bs_home_box_id', // Unique ID
-  'Info home', // Box title
-  'bs_custom_box_home_html', // Content callback, must be of type callable
-  'home' // Post type
+  'bs_brochure_box_id', // Unique ID
+  'Info brochure', // Box title
+  'bs_custom_box_brochure_html', // Content callback, must be of type callable
+  'brochure' // Post type
   ); 
-}
-
-function bs_custom_box_home_html($post){
+ }
+ function bs_custom_box_brochure_html($post){
   //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
   
   //als extra paramter kan je het $post object gebruiken
+
   //banner
   $value_home_title_banner = get_post_meta($post->ID, '_home_title_banner', true);
   $value_home_subtitle_banner = get_post_meta($post->ID, '_home_subtitle_banner', true);
@@ -558,9 +549,34 @@ function bs_custom_box_home_html($post){
   echo "Titel blok 1: ";
   echo "<br/>";
   echo "<input type='text' id='home_title_blok1' name='home_title_blok1' value='". $value_home_title_blok1 ."'>";
+
+  $value_titel = get_post_meta($post->ID, '_titel_brochure', true);
+  $value_uitleg = get_post_meta($post->ID, '_uitleg_brochure', true);
+  $value_titelform1 = get_post_meta($post->ID, '_titelform1_brochure', true);
+  $value_titelform2 = get_post_meta($post->ID, '_titelform2_brochure', true);
+  $value_extrainfo1 = get_post_meta($post->ID, '_extrainfo1_brochure', true);
+  $value_extrainfo2 = get_post_meta($post->ID, '_extrainfo2_brochure', true);
+  $value_extrainfo3 = get_post_meta($post->ID, '_extrainfo3_brochure', true);
+  
+  echo "<h1>Extra info over brochure</h1>";
+  echo "Grote titel op de pagina: ";
+  echo "<input type='text' id='titel_brochure' name='titel_brochure' value='". $value_titel ."'>";
   echo "<br/>";
+  // echo "Infoblok bovenaan: ";
+  // echo "<textarea rows='5' cols='30' id='uitleg_brochure' name='uitleg_brochure' value='". $value_uitleg ."'>";
+  // echo "<br/>";
+  echo "Titel 1 bovenaan formulier: ";
+  echo "<input type='text' id='titelform1_brochure' name='titelform1_brochure' value='". $value_titelform1 ."'>";
   echo "<br/>";
-  echo "Tekst blok 1: ";
+  echo "Titel 2 bovenaan formulier: ";
+  echo "<input type='text' id='titelform2_brochure' name='titelform2_brochure' value='". $value_titelform2 ."'>";
+
+  echo "<br/>";
+  echo "Extra info overder formulier 1: ";
+  echo "<input type='text' id='extrainfo1_brochure' name='extrainfo1_brochure' value='". $value_extrainfo1 ."'>";
+  echo "<br/>";
+  echo "Extra info overder formulier 2: ";
+  echo "<input type='text' id='extrainfo2_brochure' name='extrainfo2_brochure' value='". $value_extrainfo2 ."'>";
   echo "<br/>";
   echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok1 . "</textarea>";
   echo "<br/>";
@@ -828,22 +844,106 @@ function bs_home_save_postdata($post_id){
   }
 }
 
-//custom post contact
-add_action('save_post', 'bs_save_postdata');
-add_action('add_meta_boxes', 'bs_add_custom_box');
-add_action('init', 'bs_register_contact');
+  echo "Extra info overder formulier 3: ";
+  echo "<input type='text' id='extrainfo3_brochure' name='extrainfo3_brochure' value='". $value_extrainfo3 ."'>";
+ }
+ function bs_save_postdata2($post_id){
+  //bepaal het (custom) type van de post
+  
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type){
+  //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+  if ($naam_post_type == "brochure"){
+  
+  
+  //opslaan van een INPUT:textbox titel
+  if (array_key_exists('titel_brochure', $_POST)) {
+  update_post_meta(
+  $post_id,
+  '_titel_brochure',
+  $_POST['titel_brochure']
+  );
+  }
 
+ 
+ if (array_key_exists('uitleg_brochure', $_POST)) {
+  update_post_meta(
+  $post_id,
+  '_uitleg_brochure',
+  $_POST['uitleg_brochure']
+  );
+  }
+
+  //opslaan van een INPUT:textbox
+  if (array_key_exists('titelform1_brochure', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_titelform1_brochure',
+    $_POST['titelform1_brochure']
+    );
+    }
+
+    //opslaan van een INPUT:textbox
+  if (array_key_exists('titelform2_brochure', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_titelform2_brochure',
+    $_POST['titelform2_brochure']
+    );
+    }
+
+
+
+     //opslaan van een INPUT:textbox
+  if (array_key_exists('extrainfo1_brochure', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_extrainfo1_brochure',
+    $_POST['extrainfo1_brochure']
+    );
+    }
+
+    if (array_key_exists('extrainfo2_brochure', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_extrainfo2_brochure',
+      $_POST['extrainfo2_brochure']
+      );
+      }
+
+      if (array_key_exists('extrainfo3_brochure', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_extrainfo3_brochure',
+        $_POST['extrainfo3_brochure']
+        );
+        }
+
+  }
+  } 
+ }
+
+
+
+// inladen css / bootstrap css en js
+add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
+
+// suport post-thumbnail
+add_theme_support('post-thumbnails');
+
+// inladen menu's
+add_action('init', 'bs_register_my_menus');
 
 //custom post footer
 add_action('init', 'bs_register_footer');
 add_action('add_meta_boxes', 'bs_footer_add_custom_box');
 add_action('save_post', 'bs_footer_save_postdata');
 
-
   //custum post home
   add_action( 'init', 'bs_register_home');
   add_action('add_meta_boxes', 'bs_add_custom_box_home');
   add_action('save_post', 'bs_home_save_postdata');
+
 
 
 
@@ -853,9 +953,16 @@ add_action('save_post', 'bs_footer_save_postdata');
             add_action( 'init', 'bs_register_contact');
 
 
+  //custom post brochure
+
+            add_action('save_post', 'bs_save_postdata2');
+            add_action('add_meta_boxes', 'bs_add_custom_box2');
+            add_action( 'init', 'bs_register_brochure'); 
+
+
+
+
+
 
 // woocommerce
 add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
-
-
-?>
