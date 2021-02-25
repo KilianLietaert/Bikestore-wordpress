@@ -840,9 +840,6 @@ function bs_register_brochure(){
  }
 
 
-  
-}
-
 function bs_add_custom_box_brochure(){ 
   add_meta_box(
   'bs_brochure_box_id', // Unique ID
