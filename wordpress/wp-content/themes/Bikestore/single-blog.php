@@ -4,7 +4,7 @@
       <div class="container c-blog__container">
         <img
           class="c-blog__image"
-          src="img/cropped-shot-male-hand-black-glove-pressing-button-with-index-finger-control-panel-electirc-bike-biker-switching-speed-mode-before-riding-his-motor-powered-booster-bicycle-uphill.jpg"
+          src="<?php the_post_thumbnail_url(); ?>"
           alt=""
         />
       </div>
@@ -15,42 +15,69 @@
       <?php echo get_the_title(  ) ?>
       </h1>
       <p class="c-titel__blogdetail--p offset-lg-2">
-      <?php $value_auteur = get_post_meta($post->ID, '_auteur_blog', true); $value_datum = get_post_meta($post->ID, '_datum_blog', true); ?>
+      Door <?php echo $value_auteur = get_post_meta($post->ID, '_auteur_blog', true); ?> , <?php the_time('j/m/y') ?> 
       </p>
     </div>
 
     <section class="c-blogdetail">
       <div class="c-blogdetail__div1 offset-lg-2">
         <p class="c-blogdetail__div1--p">
-          <?php the_content( ) ?>
+          <?php echo $value_inleiding = get_post_meta($post->ID, '_inleiding_blog', true);  ?>
         </p>
-        <br />
-        <!-- <p class="c-blogdetail__div1--p">
-          Bij Bikestore staat veiligheid hoog in het vaandel. Eén van de meest
-          voorkomende vragen over e-bikes is hoe je de accu het beste kunt
-          gebruiken. Het antwoord: zoals elke andere accu of krachtige batterij,
-          dus met de nodige voorzichtigheid.
-        </p>
-        <br />
+      </div>
+      <div class="c-blogdetail__div1 offset-lg-2">
+        <h2 class="c-blogdetail__div2--h2">
+          <?php echo $value_tsstitel1 = get_post_meta($post->ID, '_tsstitel1_blog', true);  ?>
+        </h2>
+         <p class="c-blogdetail__div1--p">
+          <?php echo $value_para1 = get_post_meta($post->ID, '_para1_blog', true); ?>
+        </p> 
+      </div>
+      <div class="c-blogdetail__div1 offset-lg-2">
+        <h2 class="c-blogdetail__div2--h2">
+          <?php echo $value_tsstitel2 = get_post_meta($post->ID, '_tsstitel2_blog', true);  ?>
+        </h2>
         <p class="c-blogdetail__div1--p">
-          Het is goed om te weten dat de accu’s van Bikestore voldoen aan de
-          hoogste standaarden en worden getest volgens strenge Europese normen.
-          Ze hebben alle wettelijke certificaten en zijn beschermd tegen
-          overbelasting, kortsluiting, piekspanning en wisselende temperaturen.
+          <?php echo $value_para2 = get_post_meta($post->ID, '_para2_blog', true); ?>
         </p>
       </div>
       <div class="c-blogdetail__div2 offset-lg-2">
         <h2 class="c-blogdetail__div2--h2">
-          Tips bij het gebruik van e-bike accu's
+          <?php echo $value_tsstitel3 = get_post_meta($post->ID, '_tsstitel3_blog', true);  ?>
         </h2>
         <p class="c-blogdetail__div2--p">
-          Desondanks bestaat er altijd een kans dat je accu defect raakt, met in
-          het ergste geval ontbranding tot gevolg. De oorzaak van ontbranding
-          ligt meestal in verkeerd gebruik, beschadigingen of gebruik van de
-          verkeerde oplader. Met inachtneming van de onderstaande 5 tips houd je
-          de kans op ongelukken zo klein mogelijk.
-        </p> -->
+        <?php echo $value_para3 = get_post_meta($post->ID, '_para3_blog', true); ?>
+        </p> 
       </div>
+      <div class="c-blogdetail__div2 offset-lg-2">
+        <h2 class="c-blogdetail__div2--h2">
+          <?php echo $value_tsstitel4 = get_post_meta($post->ID, '_tsstitel4_blog', true);  ?>
+        </h2>
+        <p class="c-blogdetail__div2--p">
+        <?php echo $value_para4 = get_post_meta($post->ID, '_para4_blog', true); ?>
+        </p> 
+      </div>
+      <div class="c-blogdetail__div1 offset-lg-2">
+        <h2 class="c-blogdetail__div2--h2">
+          <?php echo $value_tsstitel5 = get_post_meta($post->ID, '_tsstitel5_blog', true);  ?>
+        </h2>
+        <p class="c-blogdetail__div1--p">
+          <?php echo $value_para6 = get_post_meta($post->ID, '_para6_blog', true); ?>
+        </p>
+      </div>
+      <div class="c-blogdetail__div2 offset-lg-2">
+        <h2 class="c-blogdetail__div2--h2">
+          <?php echo $value_tsstitel7 = get_post_meta($post->ID, '_tsstitel7_blog', true);  ?>
+        </h2>
+        <p class="c-blogdetail__div2--p">
+        <?php echo $value_para7 = get_post_meta($post->ID, '_para7_blog', true); ?>
+        </p> 
+      <br/>
+      <p class="c-blogdetail__div2--p">
+        <?php echo $value_slot = get_post_meta($post->ID, '_slot_blog', true); ?>
+        </p>
+      </div>
+      
 
       <!-- <div class="row c-blogdetail__div3 ">
         <div class="c-blogdetail__lijn offset-lg-1">

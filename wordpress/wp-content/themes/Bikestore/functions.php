@@ -41,7 +41,7 @@ function bs_register_my_menus()
 function bs_register_contact()
 {
 
-  $labels = array(
+  $labels_contact = array(
     'name' => 'Contact',
     'singular_name' => 'Contact',
     'menu_name' => 'Contact',
@@ -70,11 +70,11 @@ function bs_register_contact()
     'items_list_navigation' => 'Contact lijst navigation',
     'filter_items_list' => 'Filter contact lijst',
   );
-  $args = array(
+  $args_contact = array(
 
   'label' => 'Contact',
   'description' => 'Contact  (adres, nummer, email)',
-  'labels' => $labels,
+  'labels' => $labels_contact,
   'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
   'hierarchical' => false,
   'public' => true,
@@ -92,7 +92,7 @@ function bs_register_contact()
   'show_in_rest' => true,
 
   );
-  register_post_type('contact', $args);
+  register_post_type('contact', $args_contact);
 }
 
 function bs_add_custom_box()
@@ -489,7 +489,7 @@ function bs_custom_box_home_html($post){
  //custom post type 2 brochure--------------------------------------------------------------------------
  function bs_register_brochure() {
  
-  $labels = array(
+  $labels_brochure = array(
   'name' => 'Brochure',
   'singular_name' => 'Brochure',
   'menu_name' => 'Brochure',
@@ -518,10 +518,10 @@ function bs_custom_box_home_html($post){
   'items_list_navigation' => 'Brochure lijst navigation',
   'filter_items_list' => 'Filter brochure lijst',
   );
-  $args = array(
+  $args_brochure = array(
   'label' => 'Brochure',
   'description' => 'Brochure (titel, paragraaf)',
-  'labels' => $labels,
+  'labels' => $labels_brochure,
   'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
   'hierarchical' => false,
   'public' => true,
@@ -538,7 +538,7 @@ function bs_custom_box_home_html($post){
   'capability_type' => 'page',
   'show_in_rest' => true,
   );
-  register_post_type( 'brochure', $args );
+  register_post_type( 'brochure', $args_brochure );
   
  }
   
@@ -660,10 +660,10 @@ function bs_custom_box_home_html($post){
  }
 
 
-//custom post type 2 blog--------------------------------------------------------------------------
+//custom post type  blog--------------------------------------------------------------------------
 function bs_register_blog() {
  
-  $labels = array(
+  $labels_blog = array(
   'name' => 'Blog',
   'singular_name' => 'Blog',
   'menu_name' => 'Blog',
@@ -692,10 +692,10 @@ function bs_register_blog() {
   'items_list_navigation' => 'Blog lijst navigation',
   'filter_items_list' => 'Filter blog lijst',
   );
-  $args = array(
+  $args_blog = array(
   'label' => 'Blog',
   'description' => 'Blog (titel, paragraaf)',
-  'labels' => $labels,
+  'labels' => $labels_blog,
   'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
   'hierarchical' => false,
   'public' => true,
@@ -712,7 +712,7 @@ function bs_register_blog() {
   'capability_type' => 'page',
   'show_in_rest' => true,
   );
-  register_post_type( 'blog', $args );
+  register_post_type( 'blog', $args_blog );
   
  }
   
@@ -728,16 +728,76 @@ function bs_register_blog() {
   //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
   
   //als extra paramter kan je het $post object gebruiken
+
+  $value_inleiding = get_post_meta($post->ID, '_inleiding_blog', true);
+  $value_tsstitel1 = get_post_meta($post->ID, '_tsstitel1_blog', true);
+  $value_tsstitel2 = get_post_meta($post->ID, '_tsstitel2_blog', true);
+  $value_tsstitel3 = get_post_meta($post->ID, '_tsstitel3_blog', true);
+  $value_tsstitel4 = get_post_meta($post->ID, '_tsstitel4_blog', true);
+  $value_tsstitel5 = get_post_meta($post->ID, '_tsstitel5_blog', true);
+  $value_tsstitel6 = get_post_meta($post->ID, '_tsstitel6_blog', true);
+  $value_tsstitel7 = get_post_meta($post->ID, '_tsstitel7_blog', true);
+  $value_para1 = get_post_meta($post->ID, '_para1_blog', true);
+  $value_para2 = get_post_meta($post->ID, '_para2_blog', true);
+  $value_para3 = get_post_meta($post->ID, '_para3_blog', true);
+  $value_para4 = get_post_meta($post->ID, '_para4_blog', true);
+  $value_para5 = get_post_meta($post->ID, '_para5_blog', true);
+  $value_para6 = get_post_meta($post->ID, '_para6_blog', true);
+  $value_para7 = get_post_meta($post->ID, '_para7_blog', true);
+  $value_slot = get_post_meta($post->ID, '_slot_blog', true);
   $value_auteur = get_post_meta($post->ID, '_auteur_blog', true);
-  $value_datum = get_post_meta($post->ID, '_datum_blog', true);
   
-  echo "<h1>Extra info over blog</h1>";
-  echo "Auteur blog: ";
-  echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
+  echo "<h1>De blog opbouwen</h1>";
+  echo "Inleiding: ";
+  echo "<textarea id='inleiding_blog' name='inleiding_blog' rows='6' cols='100' maxlength='600'>" . $value_inleiding . "</textarea>";
   echo "<br/>";
-  echo "Datum van aanmaak: ";
-  echo "<input type='text' id='datum_blog' name='datum_blog' value='". $value_datum ."'>";
- 
+  echo "Tussentitel 1: ";
+  echo "<input type='text' id='tsstitel1_blog' name='tsstitel1_blog' value='". $value_tsstitel1 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 1: ";
+  echo "<textarea id='para1_blog' name='para1_blog' rows='6' cols='100' maxlength='600'>" . $value_para1 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 2: ";
+  echo "<input type='text' id='tsstitel2_blog' name='tsstitel2_blog' value='". $value_tsstitel2 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 2: ";
+  echo "<textarea id='para2_blog' name='para2_blog' rows='6' cols='100' maxlength='600'>" . $value_para2 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 3 : ";
+  echo "<input type='text' id='tsstitel3_blog' name='tsstitel3_blog' value='". $value_tsstitel3 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 3: ";
+  echo "<textarea id='para3_blog' name='para3_blog' rows='6' cols='100' maxlength='600'>" . $value_para3 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 4: ";
+  echo "<input type='text' id='tsstitel4_blog' name='tsstitel4_blog' value='". $value_tsstitel4 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 4: ";
+  echo "<textarea id='para4_blog' name='para4_blog' rows='6' cols='100' maxlength='600'>" . $value_para4 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 5: ";
+  echo "<input type='text' id='tsstitel5_blog' name='tsstitel5_blog' value='". $value_tsstitel5 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 5: ";
+  echo "<textarea id='para5_blog' name='para5_blog' rows='6' cols='100' maxlength='600'>" . $value_para5 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 6: ";
+  echo "<input type='text' id='tsstitel6_blog' name='tsstitel6_blog' value='". $value_tsstitel6 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 6: ";
+  echo "<textarea id='para6_blog' name='para6_blog' rows='6' cols='100' maxlength='600'>" . $value_para6 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 7: ";
+  echo "<input type='text' id='tsstitel7_blog' name='tsstitel7_blog' value='". $value_tsstitel7 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 7: ";
+  echo "<textarea id='para7_blog' name='para7_blog' rows='6' cols='100' maxlength='600'>" . $value_para7 . "</textarea>";
+  echo "<br/>";
+  echo "Slot zin: ";
+  echo "<textarea id='slot_blog' name='slot_blog' rows='4' cols='100' maxlength='200'>" . $value_slot . "</textarea>";
+  echo "<br/>";
+  echo "Auteur blogbericht: ";
+  echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
  }
  function bs_save_postdata3($post_id){
   //bepaal het (custom) type van de post
@@ -746,25 +806,145 @@ function bs_register_blog() {
   if ($naam_post_type){
   //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
   if ($naam_post_type == "blog"){
-  
-  
-  //opslaan van een INPUT:textbox auteur
-  if (array_key_exists('auteur_blog', $_POST)) {
-  update_post_meta(
-  $post_id,
-  '_auteur_blog',
-  $_POST['auteur_blog']
-  );
-  }
 
-  if (array_key_exists('datum_blog', $_POST)) {
+  if (array_key_exists('inleiding_blog', $_POST)) {
     update_post_meta(
     $post_id,
-    '_datum_blog',
-    $_POST['datum_blog']
+    '_inleiding_blog',
+    $_POST['inleiding_blog']
     );
     }
- 
+
+    if (array_key_exists('tsstitel1_blog', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_tsstitel1_blog',
+      $_POST['tsstitel1_blog']
+      );
+      }
+
+      if (array_key_exists('para1_blog', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_para1_blog',
+        $_POST['para1_blog']
+        );
+        }
+
+
+        if (array_key_exists('tsstitel2_blog', $_POST)) {
+          update_post_meta(
+          $post_id,
+          '_tsstitel2_blog',
+          $_POST['tsstitel2_blog']
+          );
+          }
+    
+          if (array_key_exists('para2_blog', $_POST)) {
+            update_post_meta(
+            $post_id,
+            '_para2_blog',
+            $_POST['para2_blog']
+            );
+            }
+
+            if (array_key_exists('tsstitel3_blog', $_POST)) {
+              update_post_meta(
+              $post_id,
+              '_tsstitel3_blog',
+              $_POST['tsstitel3_blog']
+              );
+              }
+        
+              if (array_key_exists('para3_blog', $_POST)) {
+                update_post_meta(
+                $post_id,
+                '_para3_blog',
+                $_POST['para3_blog']
+                );
+                }
+
+
+                if (array_key_exists('tsstitel4_blog', $_POST)) {
+                  update_post_meta(
+                  $post_id,
+                  '_tsstitel4_blog',
+                  $_POST['tsstitel4_blog']
+                  );
+                  }
+            
+                  if (array_key_exists('para4_blog', $_POST)) {
+                    update_post_meta(
+                    $post_id,
+                    '_para4_blog',
+                    $_POST['para4_blog']
+                    );
+                    }
+
+                    if (array_key_exists('tsstitel5_blog', $_POST)) {
+                      update_post_meta(
+                      $post_id,
+                      '_tsstitel5_blog',
+                      $_POST['tsstitel5_blog']
+                      );
+                      }
+                
+                      if (array_key_exists('para5_blog', $_POST)) {
+                        update_post_meta(
+                        $post_id,
+                        '_para5_blog',
+                        $_POST['para5_blog']
+                        );
+                        }
+
+                        if (array_key_exists('tsstitel6_blog', $_POST)) {
+                          update_post_meta(
+                          $post_id,
+                          '_tsstitel6_blog',
+                          $_POST['tsstitel6_blog']
+                          );
+                          }
+                    
+                          if (array_key_exists('para6_blog', $_POST)) {
+                            update_post_meta(
+                            $post_id,
+                            '_para6_blog',
+                            $_POST['para6_blog']
+                            );
+                            }
+
+                            if (array_key_exists('tsstitel7_blog', $_POST)) {
+                              update_post_meta(
+                              $post_id,
+                              '_tsstitel7_blog',
+                              $_POST['tsstitel7_blog']
+                              );
+                              }
+                        
+                              if (array_key_exists('para7_blog', $_POST)) {
+                                update_post_meta(
+                                $post_id,
+                                '_para7_blog',
+                                $_POST['para7_blog']
+                                );
+                                }
+
+
+                                if (array_key_exists('slot_blog', $_POST)) {
+                                  update_post_meta(
+                                  $post_id,
+                                  '_slot_blog',
+                                  $_POST['slot_blog']
+                                  );
+                                  }
+
+                                  if (array_key_exists('auteur_blog', $_POST)) {
+                                    update_post_meta(
+                                    $post_id,
+                                    '_auteur_blog',
+                                    $_POST['auteur_blog']
+                                    );
+                                    }
 
   }
   } 
@@ -776,7 +956,6 @@ function bs_register_blog() {
 
 
   //algemeen
-            add_action('wp_enqueue_scripts', 'bs_add_theme_scripts');
             add_theme_support('post-thumbnails');
 
   // inladen css / bootstrap css en js
