@@ -29,12 +29,12 @@ function bs_register_my_menus()
 }
 
 
-//custom post type 1: Contact-------------------------------------------------------------------
+
 
 function bs_register_contact()
 {
 
-  $labels = array(
+  $labels_contact = array(
     'name' => 'Contact',
     'singular_name' => 'Contact',
     'menu_name' => 'Contact',
@@ -63,11 +63,11 @@ function bs_register_contact()
     'items_list_navigation' => 'Contact lijst navigation',
     'filter_items_list' => 'Filter contact lijst',
   );
-  $args = array(
+  $args_contact = array(
 
   'label' => 'Contact',
   'description' => 'Contact  (adres, nummer, email)',
-  'labels' => $labels,
+  'labels' => $labels_contact,
   'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
   'hierarchical' => false,
   'public' => true,
@@ -85,7 +85,7 @@ function bs_register_contact()
   'show_in_rest' => true,
 
   );
-  register_post_type('contact', $args);
+  register_post_type('contact', $args_contact);
 }
 
 function bs_add_custom_box()
@@ -366,6 +366,7 @@ function bs_footer_save_postdata($post_id)
 
 
 
+
 function bs_register_home() {
  
   $labels_home = array(
@@ -608,6 +609,7 @@ function bs_custom_box_home_html($post){
   echo "<input type='text' id='home_text_knop_blok4' name='home_text_knop_blok4' value='". $value_home_text_knop_blok4 ."'>";
 }
 
+
 function bs_home_save_postdata($post_id){
   //bepaal het (custom) type van de post
   $naam_post_type = get_post_type($post_id);
@@ -809,62 +811,65 @@ function bs_home_save_postdata($post_id){
 }
 
 
+//custom post type 2 brochure--------------------------------------------------------------------------
+
+function bs_register_brochure(){ 
  
 
-//custom post type 2 brochure--------------------------------------------------------------------------
-function bs_register_brochure(){ 
+  $labels_brochure = array(
+  'name' => 'Brochure',
+  'singular_name' => 'Brochure',
+  'menu_name' => 'Brochure',
+  'name_admin_bar' => 'Brochure',
+  'archives' => 'Brochure archief',
+  'attributes' => 'Brochure Attributes',
+  'parent_item_colon' => 'Parent Item:',
+  'all_items' => 'All Items',
+  'add_new_item' => 'Voeg nieuw brochure toe',
+  'add_new' => 'Nieuw brochure',
+  'new_item' => 'Nieuw brochure',
+  'edit_item' => 'Wijzig brochure',
+  'update_item' => 'Update brochure',
+  'view_item' => 'Toon brochure',
+  'view_items' => 'Toon brochure',
+  'search_items' => 'Doorzoek brochure',
+  'not_found' => 'Not found',
+  'not_found_in_trash' => 'Not found in Trash',
+  'featured_image' => 'Featured Image',
+  'set_featured_image' => 'Set featured image',
+  'remove_featured_image' => 'Remove featured image',
+  'use_featured_image' => 'Use as featured image',
+  'insert_into_item' => 'Insert into item',
+  'uploaded_to_this_item' => 'Uploaded to this item',
+  'items_list' => 'Brochure lijst',
+  'items_list_navigation' => 'Brochure lijst navigation',
+  'filter_items_list' => 'Filter brochure lijst',
+  );
+  $args_brochure = array(
+  'label' => 'Brochure',
+  'description' => 'Brochure (titel, paragraaf)',
+  'labels' => $labels_brochure,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-analytics',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+  );
+  register_post_type( 'brochure', $args_brochure );
+  
+ }
 
-  $labels= array(
-    'name' => 'Brochure',
-    'singular_name' => 'Brochure',
-    'menu_name' => 'Brochure',
-    'name_admin_bar' => 'Brochure',
-    'archives' => 'Brochure archief',
-    'attributes' => 'Brochure Attributes',
-    'parent_item_colon' => 'Parent Item:',
-    'all_items' => 'All Items',
-    'add_new_item' => 'Voeg nieuw brochure toe',
-    'add_new' => 'Nieuw brochure',
-    'new_item' => 'Nieuw brochure',
-    'edit_item' => 'Wijzig brochure',
-    'update_item' => 'Update brochure',
-    'view_item' => 'Toon brochure',
-    'view_items' => 'Toon brochure',
-    'search_items' => 'Doorzoek brochure',
-    'not_found' => 'Not found',
-    'not_found_in_trash' => 'Not found in Trash',
-    'featured_image' => 'Featured image',
-    'set_featured_image' => 'Set featured image',
-    'remove_featured_image' => 'Remove featured image',
-    'use_featured_image' => 'Use as featured image',
-    'insert_into_item' => 'Insert into item',
-    'uploaded_to_this_item' => 'Uploaded to this item',
-    'items_list' => 'Brochure lijst',
-    'items_list_navigation' => 'Brochure lijst navigation',
-    'filter_items_list' => 'Filter brochure lijst',
-    );
-    $args = array(
-    'label' => 'Brochure',
-    'description' => 'Brochure (titel, paragraaf)',
-    'labels' => $labels,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
-    'hierarchical' => false,
-    'public' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'menu_position' => 5,
-    'menu_icon' => 'dashicons-analytics',
-    'show_in_admin_bar' => true,
-    'show_in_nav_menus' => true,
-    'can_export' => true,
-    'has_archive' => true,
-    'exclude_from_search' => false,
-    'publicly_queryable' => true,
-    'capability_type' => 'page',
-    'show_in_rest' => true,
-    );
 
-    register_post_type( 'brochure', $args );
   
 }
 
@@ -985,19 +990,317 @@ function bs_save_postdata_brochure($post_id){
   } 
  }
 
+
+
+
+//custom post type  blog--------------------------------------------------------------------------
+function bs_register_blog() {
+ 
+  $labels_blog = array(
+  'name' => 'Blog',
+  'singular_name' => 'Blog',
+  'menu_name' => 'Blog',
+  'name_admin_bar' => 'Blog',
+  'archives' => 'Blog archief',
+  'attributes' => 'Blog Attributes',
+  'parent_item_colon' => 'Parent Item:',
+  'all_items' => 'All Items',
+  'add_new_item' => 'Voeg nieuw blog toe',
+  'add_new' => 'Nieuw blog',
+  'new_item' => 'Nieuw blog',
+  'edit_item' => 'Wijzig blog',
+  'update_item' => 'Update blog',
+  'view_item' => 'Toon blog',
+  'view_items' => 'Toon blog',
+  'search_items' => 'Doorzoek blog',
+  'not_found' => 'Not found',
+  'not_found_in_trash' => 'Not found in Trash',
+  'featured_image' => 'Featured Image',
+  'set_featured_image' => 'Set featured image',
+  'remove_featured_image' => 'Remove featured image',
+  'use_featured_image' => 'Use as featured image',
+  'insert_into_item' => 'Insert into item',
+  'uploaded_to_this_item' => 'Uploaded to this item',
+  'items_list' => 'Blog lijst',
+  'items_list_navigation' => 'Blog lijst navigation',
+  'filter_items_list' => 'Filter blog lijst',
+  );
+  $args_blog = array(
+  'label' => 'Blog',
+  'description' => 'Blog (titel, paragraaf)',
+  'labels' => $labels_blog,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-format-status',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+  );
+  register_post_type( 'blog', $args_blog );
+  
+ }
+  
+ function bs_add_custom_box3(){ 
+  add_meta_box(
+  'bs_blog_box_id', // Unique ID
+  'Info blog', // Box title
+  'bs_custom_box_blog_html', // Content callback, must be of type callable
+  'blog' // Post type
+  ); 
+ }
+ function bs_custom_box_blog_html($post){
+  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
+  
+  //als extra paramter kan je het $post object gebruiken
+
+  $value_inleiding = get_post_meta($post->ID, '_inleiding_blog', true);
+  $value_tsstitel1 = get_post_meta($post->ID, '_tsstitel1_blog', true);
+  $value_tsstitel2 = get_post_meta($post->ID, '_tsstitel2_blog', true);
+  $value_tsstitel3 = get_post_meta($post->ID, '_tsstitel3_blog', true);
+  $value_tsstitel4 = get_post_meta($post->ID, '_tsstitel4_blog', true);
+  $value_tsstitel5 = get_post_meta($post->ID, '_tsstitel5_blog', true);
+  $value_tsstitel6 = get_post_meta($post->ID, '_tsstitel6_blog', true);
+  $value_tsstitel7 = get_post_meta($post->ID, '_tsstitel7_blog', true);
+  $value_para1 = get_post_meta($post->ID, '_para1_blog', true);
+  $value_para2 = get_post_meta($post->ID, '_para2_blog', true);
+  $value_para3 = get_post_meta($post->ID, '_para3_blog', true);
+  $value_para4 = get_post_meta($post->ID, '_para4_blog', true);
+  $value_para5 = get_post_meta($post->ID, '_para5_blog', true);
+  $value_para6 = get_post_meta($post->ID, '_para6_blog', true);
+  $value_para7 = get_post_meta($post->ID, '_para7_blog', true);
+  $value_slot = get_post_meta($post->ID, '_slot_blog', true);
+  $value_auteur = get_post_meta($post->ID, '_auteur_blog', true);
+  
+  echo "<h1>De blog opbouwen</h1>";
+  echo "Inleiding: ";
+  echo "<textarea id='inleiding_blog' name='inleiding_blog' rows='6' cols='100' maxlength='600'>" . $value_inleiding . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 1: ";
+  echo "<input type='text' id='tsstitel1_blog' name='tsstitel1_blog' value='". $value_tsstitel1 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 1: ";
+  echo "<textarea id='para1_blog' name='para1_blog' rows='6' cols='100' maxlength='600'>" . $value_para1 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 2: ";
+  echo "<input type='text' id='tsstitel2_blog' name='tsstitel2_blog' value='". $value_tsstitel2 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 2: ";
+  echo "<textarea id='para2_blog' name='para2_blog' rows='6' cols='100' maxlength='600'>" . $value_para2 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 3 : ";
+  echo "<input type='text' id='tsstitel3_blog' name='tsstitel3_blog' value='". $value_tsstitel3 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 3: ";
+  echo "<textarea id='para3_blog' name='para3_blog' rows='6' cols='100' maxlength='600'>" . $value_para3 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 4: ";
+  echo "<input type='text' id='tsstitel4_blog' name='tsstitel4_blog' value='". $value_tsstitel4 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 4: ";
+  echo "<textarea id='para4_blog' name='para4_blog' rows='6' cols='100' maxlength='600'>" . $value_para4 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 5: ";
+  echo "<input type='text' id='tsstitel5_blog' name='tsstitel5_blog' value='". $value_tsstitel5 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 5: ";
+  echo "<textarea id='para5_blog' name='para5_blog' rows='6' cols='100' maxlength='600'>" . $value_para5 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 6: ";
+  echo "<input type='text' id='tsstitel6_blog' name='tsstitel6_blog' value='". $value_tsstitel6 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 6: ";
+  echo "<textarea id='para6_blog' name='para6_blog' rows='6' cols='100' maxlength='600'>" . $value_para6 . "</textarea>";
+  echo "<br/>";
+  echo "Tussentitel 7: ";
+  echo "<input type='text' id='tsstitel7_blog' name='tsstitel7_blog' value='". $value_tsstitel7 ."'>";
+  echo "<br/>";
+  echo "Tekstblok 7: ";
+  echo "<textarea id='para7_blog' name='para7_blog' rows='6' cols='100' maxlength='600'>" . $value_para7 . "</textarea>";
+  echo "<br/>";
+  echo "Slot zin: ";
+  echo "<textarea id='slot_blog' name='slot_blog' rows='4' cols='100' maxlength='200'>" . $value_slot . "</textarea>";
+  echo "<br/>";
+  echo "Auteur blogbericht: ";
+  echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
+ }
+ function bs_save_postdata3($post_id){
+  //bepaal het (custom) type van de post
+  
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type){
+  //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+  if ($naam_post_type == "blog"){
+
+  if (array_key_exists('inleiding_blog', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_inleiding_blog',
+    $_POST['inleiding_blog']
+    );
+    }
+
+    if (array_key_exists('tsstitel1_blog', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_tsstitel1_blog',
+      $_POST['tsstitel1_blog']
+      );
+      }
+
+      if (array_key_exists('para1_blog', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_para1_blog',
+        $_POST['para1_blog']
+        );
+        }
+
+
+        if (array_key_exists('tsstitel2_blog', $_POST)) {
+          update_post_meta(
+          $post_id,
+          '_tsstitel2_blog',
+          $_POST['tsstitel2_blog']
+          );
+          }
+    
+          if (array_key_exists('para2_blog', $_POST)) {
+            update_post_meta(
+            $post_id,
+            '_para2_blog',
+            $_POST['para2_blog']
+            );
+            }
+
+            if (array_key_exists('tsstitel3_blog', $_POST)) {
+              update_post_meta(
+              $post_id,
+              '_tsstitel3_blog',
+              $_POST['tsstitel3_blog']
+              );
+              }
+        
+              if (array_key_exists('para3_blog', $_POST)) {
+                update_post_meta(
+                $post_id,
+                '_para3_blog',
+                $_POST['para3_blog']
+                );
+                }
+
+
+                if (array_key_exists('tsstitel4_blog', $_POST)) {
+                  update_post_meta(
+                  $post_id,
+                  '_tsstitel4_blog',
+                  $_POST['tsstitel4_blog']
+                  );
+                  }
+            
+                  if (array_key_exists('para4_blog', $_POST)) {
+                    update_post_meta(
+                    $post_id,
+                    '_para4_blog',
+                    $_POST['para4_blog']
+                    );
+                    }
+
+                    if (array_key_exists('tsstitel5_blog', $_POST)) {
+                      update_post_meta(
+                      $post_id,
+                      '_tsstitel5_blog',
+                      $_POST['tsstitel5_blog']
+                      );
+                      }
+                
+                      if (array_key_exists('para5_blog', $_POST)) {
+                        update_post_meta(
+                        $post_id,
+                        '_para5_blog',
+                        $_POST['para5_blog']
+                        );
+                        }
+
+                        if (array_key_exists('tsstitel6_blog', $_POST)) {
+                          update_post_meta(
+                          $post_id,
+                          '_tsstitel6_blog',
+                          $_POST['tsstitel6_blog']
+                          );
+                          }
+                    
+                          if (array_key_exists('para6_blog', $_POST)) {
+                            update_post_meta(
+                            $post_id,
+                            '_para6_blog',
+                            $_POST['para6_blog']
+                            );
+                            }
+
+                            if (array_key_exists('tsstitel7_blog', $_POST)) {
+                              update_post_meta(
+                              $post_id,
+                              '_tsstitel7_blog',
+                              $_POST['tsstitel7_blog']
+                              );
+                              }
+                        
+                              if (array_key_exists('para7_blog', $_POST)) {
+                                update_post_meta(
+                                $post_id,
+                                '_para7_blog',
+                                $_POST['para7_blog']
+                                );
+                                }
+
+
+                                if (array_key_exists('slot_blog', $_POST)) {
+                                  update_post_meta(
+                                  $post_id,
+                                  '_slot_blog',
+                                  $_POST['slot_blog']
+                                  );
+                                  }
+
+                                  if (array_key_exists('auteur_blog', $_POST)) {
+                                    update_post_meta(
+                                    $post_id,
+                                    '_auteur_blog',
+                                    $_POST['auteur_blog']
+                                    );
+                                    }
+
+  }
+  } 
+ }
+
 // inladen css / bootstrap css en js
 add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
+
+
 
 // suport post-thumbnail
 add_theme_support('post-thumbnails');
 
+
 // inladen menu's
 add_action('init', 'bs_register_my_menus');
+
 
 //custom post footer
 add_action('init', 'bs_register_footer');
 add_action('add_meta_boxes', 'bs_footer_add_custom_box');
 add_action('save_post', 'bs_footer_save_postdata');
+
 
   //custum post home
   add_action( 'init', 'bs_register_home');
@@ -1019,10 +1322,22 @@ add_action('save_post', 'bs_footer_save_postdata');
 
 
 
+  //custom post footer
+            add_action('init', 'bs_register_footer');
+            add_action('add_meta_boxes', 'bs_footer_add_custom_box');
+            add_action('save_post', 'bs_footer_save_postdata');
+
+
+  //custom post blog
+
+            add_action('save_post', 'bs_save_postdata3');
+            add_action('add_meta_boxes', 'bs_add_custom_box3');
+            add_action( 'init', 'bs_register_blog'); 
 
 
 
-// woocommerce
-add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+  // woocommerce
+            add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
 
 ?>
