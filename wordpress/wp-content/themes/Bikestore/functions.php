@@ -401,7 +401,7 @@ add_action('init', 'bs_register_my_menus');
   'search_items' => 'Doorzoek home',
   'not_found' => 'Not found',
   'not_found_in_trash' => 'Not found in Trash',
-  'featured_image' => 'Featured Image',
+  'featured_image' => 'Foto blok 1',
   'set_featured_image' => 'Set featured image',
   'remove_featured_image' => 'Remove featured image',
   'use_featured_image' => 'Use as featured image',
@@ -432,21 +432,30 @@ add_action('init', 'bs_register_my_menus');
   'capability_type' => 'page',
   'show_in_rest' => true,
   );
+    
 
+  register_post_type( 'home', $args_home );
+
+}
+
+add_filter( 'kdmfi_featured_images', function( $featured_images ) {
+  // Add featured-image-2 to pages and posts
   $args_1 = array(
     'id' => 'featured-image-2',
     'desc' => 'Your description here.',
-    'label_name' => 'Featured Image 2',
+    'label_name' => 'Foto blok 2',
     'label_set' => 'Set featured image 2',
     'label_remove' => 'Remove featured image 2',
     'label_use' => 'Set featured image 2',
-    'post_type' => array( 'page', 'post' ),
+    'post_type' => array( 'home', 'post' ),
   );
 
-  register_post_type( 'home', $args_home, $args_1 );
+  // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
+  $featured_images[] = $args_1;
 
-  
-}
+  // Important! Return all featured images
+  return $featured_images;
+});
 
 function bs_add_custom_box_home(){ 
   add_meta_box(
@@ -835,7 +844,7 @@ add_action('save_post', 'bs_footer_save_postdata');
   add_action( 'init', 'bs_register_home');
   add_action('add_meta_boxes', 'bs_add_custom_box_home');
   add_action('save_post', 'bs_home_save_postdata');
-  
+
 
 
   //custom post contact

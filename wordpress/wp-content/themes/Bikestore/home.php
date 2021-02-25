@@ -11,7 +11,7 @@
   
   $query_home = new WP_Query($home);
 
-  if ($query_home->have_posts()) :
+  if ($query_home->have_posts()):
   while ($query_home->have_posts()) : $query_home->the_post();
 ?>
 
@@ -30,9 +30,10 @@
               <h1 class="c-bannerhome__h1 c-bannerhome__h1--onder">
               <?php echo $value_home_subtitle2_banner = get_post_meta($post->ID, '_home_subtitle2_banner', true); ?>
               </h1>
-              <a href="#"><button class="o-button c-bannerhome__button">
-              <?php echo $value_home_knop_banner = get_post_meta($post->ID, '_home_knop_banner', true); ?>
-                </button></a>
+                    <a href="#"><button class="o-button c-bannerhome__button">
+                    <?php echo $value_home_knop_banner = get_post_meta($post->ID, '_home_knop_banner', true); ?>
+                    </button>
+                    </a>
             </div>
           </div>
         </div>
@@ -109,7 +110,7 @@
   <section class="c-repair">
     <div class="c-repair__inhoud row justify-content-center">
       <div class="c-repair__1 col-xl-6 col-lg-12 col-md-12 col-sm-12">
-        <img class="c-repair__img" src="<?php echo get_stylesheet_directory_uri() . '/img/mechanic-repairing-bicycle.jpg'; ?>" alt="" />
+        <img class="c-repair__img" src="<?php echo kdmfi_get_featured_image_src( $image_id='featured-image-2', $size, $post_id ); ?>" alt="" />
       </div>
       <div class="c-repair__2 col-xl-5 col-lg-12 col-md-12 col-sm-12">
         <h1 class="c-repair__h1">
@@ -141,7 +142,7 @@
 
 <?php 
   endwhile;
-  endif;
+endif;
   wp_reset_query();
 ?>
 
