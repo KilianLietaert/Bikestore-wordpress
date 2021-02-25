@@ -1049,7 +1049,7 @@ function bs_register_blog() {
   
  }
   
- function bs_add_custom_box3(){ 
+ function bs_add_custom_box_blog(){ 
   add_meta_box(
   'bs_blog_box_id', // Unique ID
   'Info blog', // Box title
@@ -1132,7 +1132,7 @@ function bs_register_blog() {
   echo "Auteur blogbericht: ";
   echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
  }
- function bs_save_postdata3($post_id){
+ function bs_save_postdata_blog($post_id){
   //bepaal het (custom) type van de post
   
   $naam_post_type = get_post_type($post_id);
@@ -1330,8 +1330,8 @@ add_action('save_post', 'bs_footer_save_postdata');
 
   //custom post blog
 
-            add_action('save_post', 'bs_save_postdata3');
-            add_action('add_meta_boxes', 'bs_add_custom_box3');
+            add_action('save_post', 'bs_save_postdata_blog');
+            add_action('add_meta_boxes', 'bs_add_custom_box_blog');
             add_action( 'init', 'bs_register_blog'); 
 
 
