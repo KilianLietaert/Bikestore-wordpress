@@ -366,6 +366,7 @@ function bs_footer_save_postdata($post_id)
 
 
 
+//custom post type home------------------------------------------------------------------------------
 
 function bs_register_home() {
  
@@ -785,7 +786,6 @@ function bs_home_save_postdata($post_id){
 
 function bs_register_brochure(){ 
  
-
   $labels_brochure = array(
   'name' => 'Brochure',
   'singular_name' => 'Brochure',
@@ -837,8 +837,7 @@ function bs_register_brochure(){
   );
   register_post_type( 'brochure', $args_brochure );
   
- }
-
+}
 
 function bs_add_custom_box_brochure(){ 
   add_meta_box(
@@ -957,7 +956,7 @@ function bs_save_postdata_brochure($post_id){
   } 
 }
 
-//custum post type over bikestore
+//custum post type over bikestore----------------------------------------------------------------------
 
 function bs_register_overbikestore() {
  
@@ -1137,12 +1136,12 @@ function bs_custom_box_overbikestore_html($post){
     echo "<textarea id='overbikestore_text1_blok2' name='overbikestore_text1_blok2' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text1_blok2 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
-    echo "Subtitel 1 blok 2:";
+    echo "Subtitel 2 blok 2:";
     echo "<br/>";
-    echo "<input type='text' id=overbikestore_subtitle2_blok2' name='overbikestore_subtitle2_blok2' value='".   $value_overbikestore_subtitle2_blok2 ."'>";
+    echo "<input type='text' id='overbikestore_subtitle2_blok2' name='overbikestore_subtitle2_blok2' value='".   $value_overbikestore_subtitle2_blok2 ."'>";
     echo "<br/>";
     echo "<br/>";
-    echo "Tekst 1 blok 2:";
+    echo "Tekst 2 blok 2:";
     echo "<br/>";
     echo "<textarea id='overbikestore_text2_blok2' name='overbikestore_text2_blok2' rows='6' cols='50' maxlength='600'>" . $value_overbikestore_text2_blok2 . "</textarea>";
     echo "<br/>";
@@ -1162,7 +1161,7 @@ function bs_custom_box_overbikestore_html($post){
     echo "<br/>";
     echo "Tekst blok 3:";
     echo "<br/>";
-    echo "<textarea id='ooverbikestore_text_blok3' name='overbikestore_text_blok3' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok3 . "</textarea>";
+    echo "<textarea id='overbikestore_text_blok3' name='overbikestore_text_blok3' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok3 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
 
@@ -1365,11 +1364,6 @@ function bs_overbikestore_save_postdata($post_id){
 
 
 
-
-
-
-
-
 //custom post type  blog--------------------------------------------------------------------------
 function bs_register_blog() {
  
@@ -1424,7 +1418,7 @@ function bs_register_blog() {
   );
   register_post_type( 'blog', $args_blog );
   
- }
+}
   
  function bs_add_custom_box_blog(){ 
   add_meta_box(
@@ -1434,6 +1428,7 @@ function bs_register_blog() {
   'blog' // Post type
   ); 
  }
+
  function bs_custom_box_blog_html($post){
   //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
   
@@ -1509,6 +1504,7 @@ function bs_register_blog() {
   echo "Auteur blogbericht: ";
   echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
  }
+
  function bs_save_postdata_blog($post_id){
   //bepaal het (custom) type van de post
   
@@ -1660,6 +1656,266 @@ function bs_register_blog() {
   } 
  }
 
+
+// custum post type sevice pagina----------------------------------------------------------------
+
+function bs_register_service() {
+ 
+  $labels_service = array(
+  'name' => 'Service',
+  'singular_name' => 'Service',
+  'menu_name' => 'Service',
+  'name_admin_bar' => 'Service',
+  'archives' => 'Service archief',
+  'attributes' => 'Service Attributes',
+  'parent_item_colon' => 'Parent Item:',
+  'all_items' => 'All Items',
+  'add_new_item' => 'Voeg nieuw service toe',
+  'add_new' => 'Nieuw service',
+  'new_item' => 'Nieuw service',
+  'edit_item' => 'Wijzig service',
+  'update_item' => 'Update service',
+  'view_item' => 'Toon service',
+  'view_items' => 'Toon service',
+  'search_items' => 'Doorzoek service',
+  'not_found' => 'Not found',
+  'not_found_in_trash' => 'Not found in Trash',
+  'featured_image' => 'Foto blok 1',
+  'set_featured_image' => 'Set featured image',
+  'remove_featured_image' => 'Remove featured image',
+  'use_featured_image' => 'Use as featured image',
+  'insert_into_item' => 'Insert into item',
+  'uploaded_to_this_item' => 'Uploaded to this item',
+  'items_list' => 'Service lijst',
+  'items_list_navigation' => 'Service lijst navigation',
+  'filter_items_list' => 'Filter service  lijst',
+  );
+  $args_service = array(
+  'label' => 'Service ',
+  'description' => 'Service (titel, paragraaf)',
+  'labels' => $labels_service,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-admin-generic',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+  );
+
+  register_post_type( 'service', $args_service );
+
+}
+
+add_filter( 'kdmfi_featured_images', function( $featured_images ) {
+  // Add featured-image-2 to pages and posts
+  $args_service_1 = array(
+    'id' => 'featured-image-2',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 2',
+    'label_set' => 'Set featured image 2',
+    'label_remove' => 'Remove featured image 2',
+    'label_use' => 'Set featured image 2',
+    'post_type' => array( 'service', 'post' ),
+  );
+
+  $args_service_2 = array(
+    'id' => 'featured-image-3',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 3',
+    'label_set' => 'Set featured image 3',
+    'label_remove' => 'Remove featured image 3',
+    'label_use' => 'Set featured image 3',
+    'post_type' => array( 'service', 'post' ),
+  );
+
+  $args_service_3 = array(
+    'id' => 'featured-image-4',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 4',
+    'label_set' => 'Set featured image 4',
+    'label_remove' => 'Remove featured image 4',
+    'label_use' => 'Set featured image 4',
+    'post_type' => array( 'service', 'post' ),
+  );
+
+  // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
+  $featured_images[] = $args_service_1;
+  $featured_images[] = $args_service_2;
+  $featured_images[] = $args_service_3;
+
+
+  // Important! Return all featured images
+  return $featured_images;
+});
+
+function bs_add_custom_box_service(){ 
+  add_meta_box(
+  'bs_service_box_id', // Unique ID
+  'Info service', // Box title
+  'bs_custom_box_service_html', // Content callback, must be of type callable
+  'service' // Post type
+  ); 
+}
+
+function bs_custom_box_service_html($post){
+
+  //blok 1
+  $value_service_title_blok1 = get_post_meta($post->ID, '_service_title_blok1', true);  
+  $value_service_img_blok1 = get_post_meta($post->ID, '_service_img_blok1', true);
+  $value_service_subtitle_blok1 = get_post_meta($post->ID, '_service_subtext_blok1', true);
+  $value_service_text__blok1 = get_post_meta($post->ID, '_servicee_text__blok1', true);
+
+  //blok 2 :services--------------------
+  //service 1
+  $value_service_title_service1 = get_post_meta($post->ID, '_service_title_service1', true);
+  $value_service_img_service1 = get_post_meta($post->ID, '_service_img_service1', true);
+  $value_service_text_service1 = get_post_meta($post->ID, '_service_text_service1', true);
+
+  //service 2
+  $value_service_title_service2 = get_post_meta($post->ID, '_service_title_service2', true);
+  $value_service_img_service2 = get_post_meta($post->ID, '_service_img_service2', true);
+  $value_service_text_service2 = get_post_meta($post->ID, '_service_text_service2', true);
+
+  //service 3
+  $value_service_title_service3 = get_post_meta($post->ID, '_service_title_service3', true);
+  $value_service_img_service3 = get_post_meta($post->ID, '_service_img_service3', true);
+  $value_service_text_service3 = get_post_meta($post->ID, '_service_text_service3', true);
+//--------------------------------------
+
+  //blok 3
+  $value_service_title_blok3 = get_post_meta($post->ID, '_service_title_blok3', true);
+  $value_service_subtitle1_blok3 = get_post_meta($post->ID, '_service_subtitle1_blok3', true);
+  $value_service_text1_blok3 = get_post_meta($post->ID, '_service_text1_blok3', true);
+  $value_service_img_blok3 = get_post_meta($post->ID, '_service_img_blok3', true);
+  $value_service_subtitle2_blok3 = get_post_meta($post->ID, '_service_subtitle2_blok3', true);
+  $value_service_text2_blok3 = get_post_meta($post->ID, '_service_text2_blok3', true);
+
+   //blok 4
+   $value_service_img_blok4= get_post_meta($post->ID, '_service_img_blok4', true);
+   $value_service_title_blok4 = get_post_meta($post->ID, '_service_title_blok4', true);
+   $value_service_text_blok4 = get_post_meta($post->ID, '_service_text_blok4', true);
+   $value_service_subtitle_blok4 = get_post_meta($post->ID, '_service_subtitle_blok4', true);
+   $value_service_text_knop_blok4 = get_post_meta($post->ID, '_service_text_knop_blok4', true);
+
+  
+  echo "<h1>Service</h1>";
+
+  //Blok 1
+    echo "<h3>blok 1</h3>";
+    echo "Titel service pagina:";
+    echo "<br/>";
+    echo "<input type='text' id='service_title_blok1' name='service_title_blok1' value='".  $value_service_title_blok1 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel blok 1:";
+    echo "<br/>";
+    echo "<input type='text' id='service_subtitle_blok1' name='service_subtitle_blok1' value='".  $value_service_subtitle_blok1 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst blok 1:";
+    echo "<br/>";
+    echo "<textarea id='service_text__blok1' name='service_text__blok1' rows='6' cols='50' maxlength='700'>" . $value_service_text__blok1 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+
+  //Blok 2
+    echo "<h3>blok 2</h3>";
+    echo "Subtitel links blok 2:";
+    echo "<br/>";
+    echo "<input type='text' id='service_title_service1' name='service_title_service1' value='".  $value_service_title_service1 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst links blok 2:";
+    echo "<br/>";
+    echo "<textarea id='service_text_service1' name='service_text_service1' rows='6' cols='50' maxlength='700'>" . $value_service_text_service1 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel midden blok 2:";
+    echo "<br/>";
+    echo "<input type='text' id='service_title_service2' name='service_title_service2' value='".   $value_service_title_service2 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst midden blok 2:";
+    echo "<br/>";
+    echo "<textarea id='service_text_service2' name='service_text_service2' rows='6' cols='50' maxlength='600'>" . $value_service_text_service2 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel rechts blok 2:";
+    echo "<br/>";
+    echo "<input type='text' id='service_title_service3' name='service_title_service3' value='".   $value_service_title_service3 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst rechts blok 2:";
+    echo "<br/>";
+    echo "<textarea id='service_text_service3' name='service_text_service3' rows='6' cols='50' maxlength='600'>" . $value_service_text_service3 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    
+
+  //Blok 3
+    echo "<h3>blok 3</h3>";
+    echo "Titel blok 3:";
+    echo "<br/>";
+    echo "<input type='text' id='service_title_blok3' name='service_title_blok3' value='".    $value_service_title_blok3 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel links blok 3:";
+    echo "<br/>";
+    echo "<input type='text' id='service_subtitle1_blok3' name='service_subtitle1_blok3' value='".   $value_service_subtitle1_blok3 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst links blok 3:";
+    echo "<br/>";
+    echo "<textarea id='service_text1_blok3' name='service_text1_blok3' rows='6' cols='50' maxlength='700'>" . $value_service_text1_blok3 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel rechts blok 3:";
+    echo "<br/>";
+    echo "<input type='text' id='service_subtitle2_blok3' name='service_subtitle2_blok3' value='".    $value_service_subtitle2_blok3 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst rechts blok 3:";
+    echo "<br/>";
+    echo "<textarea id='service_text2_blok3' name='service_text2_blok3' rows='6' cols='50' maxlength='700'>" . $value_service_text2_blok3 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+
+  //Blok 4
+    echo "<h3>blok 4</h3>";
+    echo "Titel blok 4:";
+    echo "<br/>";
+    echo "<input type='text' id='service_title_blok4' name='service_title_blok4' value='".   $value_service_title_blok4 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst blok 4:";
+    echo "<br/>";
+    echo "<textarea id='service_text_blok4' name='service_text_blok4' rows='6' cols='50' maxlength='700'>" . $value_service_text_blok4 . "</textarea>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Subtitel blok 4:";
+    echo "<br/>";
+    echo "<input type='text' id='service_subtitle_blok4' name='service_subtitle_blok4' value='".  $value_service_subtitle_blok4 ."'>";
+    echo "<br/>";
+    echo "<br/>";
+    echo "Tekst knop blok 4:";
+    echo "<br/>";
+    echo "<input type='text' id='service_text_knop_blok4' name='service_text_knop_blok4' value='".  $value_service_text_knop_blok4 ."'>";
+
+    echo "<br/>";
+    echo "<br/>";
+    
+}
+
+
 // inladen css / bootstrap css en js
   add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
@@ -1711,6 +1967,11 @@ function bs_register_blog() {
      add_action('save_post', 'bs_save_postdata_blog');
      add_action('add_meta_boxes', 'bs_add_custom_box_blog');
      add_action( 'init', 'bs_register_blog'); 
+
+  //custum post over bikestore
+    add_action( 'init', 'bs_register_service');
+    add_action('add_meta_boxes', 'bs_add_custom_box_service');
+    add_action('save_post', 'bs_service_save_postdata');
 
 
 
