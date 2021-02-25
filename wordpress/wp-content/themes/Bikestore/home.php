@@ -139,6 +139,7 @@
     </div>
   </section>
 </div>
+</body>
 
 <?php 
   endwhile;
