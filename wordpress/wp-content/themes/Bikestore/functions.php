@@ -112,30 +112,51 @@ function bs_custom_box_contact_html($post)
 
   echo "<h1>Gegevens Bikestore</h1>";
   echo "<br/>";
+  echo "<br/>";
   echo "Straatnaam: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='adres_bikestore' name='adres_bikestore' value='" . $value_adres . "'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Huisnummer: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='number' id='huisnr_bikestore' name='huisnr_bikestore' value='" . $value_huisnr . "'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Postcode: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='number' id='postcode_bikestore' name='postcode_bikestore' value='" . $value_postcode . "'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Stad: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='stad_bikestore' name='stad_bikestore' value='" . $value_stad . "'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Land: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<select name='land_bikestore' id='land_bikestore'>";
   echo "<option value='1' " . ($value_land == 1 ? "selected" : "") . ">België</option>";
   echo "<option value='2' " . ($value_land == 2 ? "selected" : "") . ">Nederland</option>";
   echo "<option value='3' " . ($value_land == 3 ? "selected" : "") . ">Duitsland</option>";
   echo "</select>";
   echo "<br/>";
+  echo "<br/>";
   echo "Telefoonnummer: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='number' pattern='((^[+\s0-9]{2,6}[\s\./0-
   9]*$))' id='telefoon_bikestore' name='telefoon_bikestore' value='" . $value_telefoon . "'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Email: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='email' id='email_bikestore' name='email_bikestore' value='" . $value_email . "'>";
 }
 function bs_save_postdata($post_id)
@@ -145,7 +166,7 @@ function bs_save_postdata($post_id)
   if ($naam_post_type) {
     //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
     if ($naam_post_type == "contact") {
-      //het custom post type is van het type project
+      //het custom post type is van het type contact
 
 
 
