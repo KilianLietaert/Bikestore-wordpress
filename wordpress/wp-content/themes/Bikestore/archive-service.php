@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
 
         <div class="c-service__blok">
             <div class="c-service__services row justify-content-center ">
