@@ -13445,7 +13445,7 @@
  }
  
  .c-banner__fiets {
-   background-image: url("../fotos/world-canyon-electric-city-bikes-02.jpg");
+   background-image: url("/bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/world-canyon-electric-city-bikes-02.jpg");
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
@@ -13683,7 +13683,7 @@
    display: -webkit-box;
    display: -ms-flexbox;
    display: flex;
-   padding-top: 14px;
+   padding-top: 140px;
    margin-bottom: 50px;
  }
  

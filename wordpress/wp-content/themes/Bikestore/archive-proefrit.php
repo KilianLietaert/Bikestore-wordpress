@@ -1,15 +1,30 @@
 <?php get_header(  ) ?>
 
+<?php
+  $proefrit = array(
+  'post_type' => array('proefrit'),
+  'nopaging' => false,
+  'posts_per_page' => '1',
+  'order' => 'ASC',
+  'orderby' => 'date'
+  );
+  
+  $query_proefrit = new WP_Query($proefrit);
 
-<main class="container-fluid c-container">
+  if ($query_proefrit->have_posts()):
+  while ($query_proefrit->have_posts()) : $query_proefrit->the_post();
+?>
 
-<section class="row c-intro">
-  <div class="c-intro__foto col-xl-5 col-lg-12 order-xl-1 order-lg-2 order-md-2 order-sm-2 order-2">
+<main class="c-container">
+    <section class="c-intro">
+      <div class="container">
+        <div class="row">
+          <div class="c-intro__foto col-xxl-5 col-xl-12 col-lg-12">
     <img class="c-intro__foto--g" src="<?php the_post_thumbnail_url(); ?>" alt="bikster">
   </div>
 
-  <div class="c-blokpadding col-xl-7 col-lg-12 order-xl-2 order-lg-1 order-md-1 order-sm-1 order-1">
-    <div class="c-more__blok1">
+  <div class="c-blokpadding  col-xxl-7  col-lg-12">
+            <div class="c-more__blok1 ">
       <h2 class="c-intro__h"><?php the_title() ?></h2>
       <p class="c-intro__text"><?php the_content() ?></p>
     </div>
@@ -19,10 +34,10 @@
 
       <div class="c-uur">
         <div>
-          <h5 class="js-firstnumber"></h5>
+          <h5 class="js-firstnumber">2</h5>
         </div>
         <div>
-          <h5 class="js-secondnumber"></h5>
+          <h5 class="js-secondnumber">4</h5>
         </div>
         <div>
           <h5>U</h5>
@@ -47,12 +62,12 @@
 
         <div class="col-12 c-icons">
 
-          <!-- <ul class="c-icon">
-            <li><img src="img-icons/building-solid-color.png" alt="bedrijf"></li>
-            <li><img src="img-icons/home-solid-color.png" alt="thuis"></li>
-            <li><img src="img-icons/bicycle-solid.png" alt="fiets"></li>
-            <li><img src="img-icons/hand-holding-usd-solid.png" alt="geen geld"></li>
-          </ul> -->
+          <ul class="c-icon">
+            <li><img src="<?php echo kdmfi_get_featured_image_src( $image_id='featured-image-2', $size, $post_id ); ?>" alt="bedrijf"></li>
+            <li><img src="<?php echo kdmfi_get_featured_image_src( $image_id='featured-image-3', $size, $post_id ); ?>"></li>
+            <li><img src="<?php echo kdmfi_get_featured_image_src( $image_id='featured-image-4', $size, $post_id ); ?>"></li>
+            <li><img src="<?php echo kdmfi_get_featured_image_src( $image_id='featured-image-5', $size, $post_id ); ?>" alt="geen geld"></li>
+          </ul>
 
         </div>
 
@@ -151,11 +166,16 @@
           </div>
         </form>
       </div>
+      </div>
     </section> -->
 </main>             
 
 
-
+<?php 
+  endwhile;
+endif;
+  wp_reset_query();
+?>
 
 
 

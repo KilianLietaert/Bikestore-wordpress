@@ -12,7 +12,7 @@ function bs_laadCSSenScript()
   wp_enqueue_style('Bikestore', $pathTheme . '/css/screen.css', ['bootstrap']);
 
   wp_enqueue_script('bootstrapjs', $pathTheme . '/script/bootstrap.min.js');
-  //wp_enqueue_script('menujs', $pathTheme . '/script/.js');
+  wp_enqueue_script('menujs', $pathTheme . '/script/fietsaanvraag-uur.js');
 }
 
 
@@ -1557,8 +1557,71 @@ function bs_register_proefrit() {
   );
   register_post_type( 'proefrit', $args_proefrit );
   
- }
+}
 
+add_filter( 'kdmfi_featured_images', function( $featured_images ) {
+  // Add featured-image-2 to pages and posts
+  $args_proefrit_1 = array(
+    'id' => 'featured-image-2',
+    'desc' => 'Your description here.',
+    'label_name' => 'Icoon 1',
+    'label_set' => 'Set featured image 2',
+    'label_remove' => 'Remove featured image 2',
+    'label_use' => 'Set featured image 2',
+    'post_type' => array( 'proefrit', 'post' ),
+  );
+
+  $args_proefrit_2 = array(
+    'id' => 'featured-image-3',
+    'desc' => 'Your description here.',
+    'label_name' => 'Icoon 2',
+    'label_set' => 'Set featured image 3',
+    'label_remove' => 'Remove featured image 3',
+    'label_use' => 'Set featured image 3',
+    'post_type' => array( 'proefrit', 'post' ),
+  );
+
+  $args_proefrit_3 = array(
+    'id' => 'featured-image-4',
+    'desc' => 'Your description here.',
+    'label_name' => 'Icoon 3',
+    'label_set' => 'Set featured image 4',
+    'label_remove' => 'Remove featured image 4',
+    'label_use' => 'Set featured image 4',
+    'post_type' => array( 'proefrit', 'post' ),
+  );
+
+  $args_proefrit_4 = array(
+    'id' => 'featured-image-5',
+    'desc' => 'Your description here.',
+    'label_name' => 'Icoon 4',
+    'label_set' => 'Set featured image 5',
+    'label_remove' => 'Remove featured image 5',
+    'label_use' => 'Set featured image 5',
+    'post_type' => array( 'proefrit', 'post' ),
+  );
+
+  $args_proefrit_5 = array(
+    'id' => 'featured-image-6',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 4',
+    'label_set' => 'Set featured image 6',
+    'label_remove' => 'Remove featured image 6',
+    'label_use' => 'Set featured image 6',
+    'post_type' => array( 'proefrit', 'post' ),
+  );
+
+  // Add the featured images to the array, so that you are not overwriting images that maybe are created in other filter calls
+  $featured_images[] = $args_proefrit_1;
+  $featured_images[] = $args_proefrit_2;
+  $featured_images[] = $args_proefrit_3;
+  $featured_images[] = $args_proefrit_4;
+  $featured_images[] = $args_proefrit_5;
+
+
+  // Important! Return all featured images
+  return $featured_images;
+});
  
   
  function bs_add_custom_box_proefrit(){ 
@@ -1569,6 +1632,7 @@ function bs_register_proefrit() {
   'proefrit' // Post type
   ); 
  }
+
  function bs_custom_box_proefrit_html($post){
   //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
   
