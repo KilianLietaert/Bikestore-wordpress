@@ -301,6 +301,7 @@ function bs_footer_add_custom_box()
     'footer'              // Post type
   );
 }
+
 function bs_custom_box_footer_html($post)
 {
   //optioneel kan deze callback functie de $post variabele gebruiken als parameter  
@@ -329,6 +330,7 @@ function bs_custom_box_footer_html($post)
   echo "Text bij titel 4: ";
   echo "<textarea id='footer_text' name='footer_text' rows='4' cols='50' maxlength='400'>" . $value_text . "</textarea>";
 }
+
 function bs_footer_save_postdata($post_id)
 {
   //bepaal het (custom) type van de post
@@ -805,7 +807,8 @@ function bs_home_save_postdata($post_id){
 
 //custom post type 2 brochure--------------------------------------------------------------------------
 
-function bs_register_brochure(){ 
+function bs_register_brochure()
+{ 
  
   $labels_brochure = array(
   'name' => 'Brochure',
@@ -857,7 +860,7 @@ function bs_register_brochure(){
   'show_in_rest' => true,
   );
   register_post_type( 'brochure', $args_brochure );
-  
+}
 
 
 function bs_add_custom_box_brochure(){ 
@@ -1598,7 +1601,7 @@ function bs_register_proefrit() {
   echo "Tekstblok onder de iconen: ";
   echo "<br/>";
   echo "<br/>";
-  echo "<textarea id='icoon1_proefrit' name='icoon1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon1 . "</textarea>";
+  echo "<textarea id='icoon2_proefrit' name='icoon2_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon2 . "</textarea>";
   
  }
 
@@ -2160,12 +2163,7 @@ function bs_service_save_postdata($post_id){
             add_action('add_meta_boxes', 'bs_add_custom_box_proefrit');
             add_action( 'init', 'bs_register_proefrit'); 
 
-
-
-  // woocommerce
-            add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
-
-
+            
 // woocommerce
   add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
 
