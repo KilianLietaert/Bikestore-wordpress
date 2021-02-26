@@ -47,12 +47,12 @@
 
         <div class="col-12 c-icons">
 
-          <ul class="c-icon">
+          <!-- <ul class="c-icon">
             <li><img src="img-icons/building-solid-color.png" alt="bedrijf"></li>
             <li><img src="img-icons/home-solid-color.png" alt="thuis"></li>
             <li><img src="img-icons/bicycle-solid.png" alt="fiets"></li>
             <li><img src="img-icons/hand-holding-usd-solid.png" alt="geen geld"></li>
-          </ul>
+          </ul> -->
 
         </div>
 
