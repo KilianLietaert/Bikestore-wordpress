@@ -85,15 +85,11 @@
                         <?php echo $value_service_text2_blok3 = get_post_meta($post->ID, '_service_text2_blok3', true); ?></p>
                         </br>
                         <p class="c-service__verhelping-garantie-text">
-
                         </br>
                         <p class="c-service__verhelping-garantie-text">
-
-                            <strong class="c-service__verhelping-garantie-strong"></strong>.
                         </p>
                         </br>
                         <p class="c-service__verhelping-garantie-text">
-
                         </p>
                 </div>
             </div>
