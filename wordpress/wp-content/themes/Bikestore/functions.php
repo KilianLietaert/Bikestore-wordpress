@@ -871,7 +871,7 @@ function bs_register_brochure(){
 
 
   
-}
+
 
 function bs_add_custom_box_brochure(){ 
   add_meta_box(
@@ -894,25 +894,38 @@ function bs_custom_box_brochure_html($post){
   
   echo "<h1>Extra info over brochure</h1>";
   echo "Grote titel op de pagina: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='titel_brochure' name='titel_brochure' value='". $value_titel ."'>";
   echo "<br/>";
-  // echo "Infoblok bovenaan: ";
-  // echo "<textarea rows='5' cols='30' id='uitleg_brochure' name='uitleg_brochure' value='". $value_uitleg ."'>";
-  // echo "<br/>";
+  echo "<br/>";
   echo "Titel 1 bovenaan formulier: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='titelform1_brochure' name='titelform1_brochure' value='". $value_titelform1 ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Titel 2 bovenaan formulier: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='titelform2_brochure' name='titelform2_brochure' value='". $value_titelform2 ."'>";
-
+  echo "<br/>";
   echo "<br/>";
   echo "Extra info overder formulier 1: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='extrainfo1_brochure' name='extrainfo1_brochure' value='". $value_extrainfo1 ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Extra info overder formulier 2: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='extrainfo2_brochure' name='extrainfo2_brochure' value='". $value_extrainfo2 ."'>";
   echo "<br/>";
+  echo "<br/>";
   echo "Extra info overder formulier 3: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='extrainfo3_brochure' name='extrainfo3_brochure' value='". $value_extrainfo3 ."'>";
 }
 
@@ -1068,6 +1081,8 @@ function bs_register_blog() {
   echo "<h1>Auteur tevoegen</h1>";
   
   echo "Auteur blogbericht: ";
+  echo "<br/>";
+  echo "<br/>";
   echo "<input type='text' id='auteur_blog' name='auteur_blog' value='". $value_auteur ."'>";
  }
  function bs_save_postdata_blog($post_id){
@@ -1090,6 +1105,155 @@ function bs_register_blog() {
   }
   } 
  }
+
+
+  //custom post type  proefrit--------------------------------------------------------------------------
+function bs_register_proefrit() {
+ 
+  $labels_proefrit = array(
+  'name' => 'Proefrit',
+  'singular_name' => 'Proefrit',
+  'menu_name' => 'Proefrit',
+  'name_admin_bar' => 'Proefrit',
+  'archives' => 'Proefrit archief',
+  'attributes' => 'Proefrit Attributes',
+  'parent_item_colon' => 'Parent Item:',
+  'all_items' => 'All Items',
+  'add_new_item' => 'Voeg nieuw proefrit toe',
+  'add_new' => 'Nieuw proefrit',
+  'new_item' => 'Nieuw proefrit',
+  'edit_item' => 'Wijzig proefrit',
+  'update_item' => 'Update proefrit',
+  'view_item' => 'Toon proefrit',
+  'view_items' => 'Toon proefrit',
+  'search_items' => 'Doorzoek proefrit',
+  'not_found' => 'Not found',
+  'not_found_in_trash' => 'Not found in Trash',
+  'featured_image' => 'Featured Image',
+  'set_featured_image' => 'Set featured image',
+  'remove_featured_image' => 'Remove featured image',
+  'use_featured_image' => 'Use as featured image',
+  'insert_into_item' => 'Insert into item',
+  'uploaded_to_this_item' => 'Uploaded to this item',
+  'items_list' => 'Proefrit lijst',
+  'items_list_navigation' => 'Proefrit lijst navigation',
+  'filter_items_list' => 'Filter proefrit lijst',
+  );
+  $args_proefrit = array(
+  'label' => 'Proefrit',
+  'description' => 'Proefrit (titel, paragraaf)',
+  'labels' => $labels_proefrit,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'revisions', 'custom-fields' ),
+  'hierarchical' => false,
+  'public' => true,
+  'show_ui' => true,
+  'show_in_menu' => true,
+  'menu_position' => 5,
+  'menu_icon' => 'dashicons-plugins-checked',
+  'show_in_admin_bar' => true,
+  'show_in_nav_menus' => true,
+  'can_export' => true,
+  'has_archive' => true,
+  'exclude_from_search' => false,
+  'publicly_queryable' => true,
+  'capability_type' => 'page',
+  'show_in_rest' => true,
+  );
+  register_post_type( 'proefrit', $args_proefrit );
+  
+ }
+
+ 
+  
+ function bs_add_custom_box_proefrit(){ 
+  add_meta_box(
+  'bs_proefrit_box_id', // Unique ID
+  'Info proefrit', // Box title
+  'bs_custom_box_proefrit_html', // Content callback, must be of type callable
+  'proefrit' // Post type
+  ); 
+ }
+ function bs_custom_box_proefrit_html($post){
+  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
+  
+  //als extra paramter kan je het $post object gebruiken
+
+  $value_tijd = get_post_meta($post->ID, '_tijd_proefrit', true);
+  $value_foto = get_post_meta($post->ID, '_foto_proefrit', true);
+  $value_icoon1 = get_post_meta($post->ID, '_icoon1_proefrit', true);
+  $value_icoon2 = get_post_meta($post->ID, '_icoon2_proefrit', true);
+
+  echo "<h1>Inhoud proefrit</h1>";
+  echo "Tekstblok bij klok: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<textarea id='tijd_proefrit' name='tijd_proefrit' rows='4' cols='50' maxlength='600'>" . $value_tijd . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekstblok over de foto: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<textarea id='foto_proefrit' name='foto_proefrit' rows='4' cols='50' maxlength='600'>" . $value_foto . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekstblok boven de iconen: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<textarea id='icoon1_proefrit' name='icoon1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon1 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekstblok onder de iconen: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<textarea id='icoon1_proefrit' name='icoon1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon1 . "</textarea>";
+  
+ }
+ function bs_save_postdata_proefrit($post_id){
+  //bepaal het (custom) type van de post
+  
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type){
+  //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+  if ($naam_post_type == "proefrit"){
+
+  if (array_key_exists('tijd_proefrit', $_POST)) {
+    update_post_meta(
+    $post_id,
+    '_tijd_proefrit',
+    $_POST['tijd_proefrit']
+    );
+    }
+
+    if (array_key_exists('foto_proefrit', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_foto_proefrit',
+      $_POST['foto_proefrit']
+      );
+      }
+
+    if (array_key_exists('icoon1_proefrit', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_icoon1_proefrit',
+      $_POST['icoon1_proefrit']
+      );
+      }
+      if (array_key_exists('icoon2_proefrit', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_icoon2_proefrit',
+        $_POST['icoon2_proefrit']
+        );
+        }          
+
+  }
+  } 
+ }
+
+
+
+
 
 // inladen css / bootstrap css en js
 add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
@@ -1141,6 +1305,12 @@ add_action('save_post', 'bs_footer_save_postdata');
             add_action('save_post', 'bs_save_postdata_blog');
             add_action('add_meta_boxes', 'bs_add_custom_box_blog');
             add_action( 'init', 'bs_register_blog'); 
+
+  //custom post proefrit
+
+            add_action('save_post', 'bs_save_postdata_proefrit');
+            add_action('add_meta_boxes', 'bs_add_custom_box_proefrit');
+            add_action( 'init', 'bs_register_proefrit'); 
 
 
 
