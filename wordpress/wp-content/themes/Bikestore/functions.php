@@ -1720,7 +1720,7 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   $args_service_1 = array(
     'id' => 'featured-image-2',
     'desc' => 'Your description here.',
-    'label_name' => 'Foto blok 2',
+    'label_name' => 'Foto service 1 blok 2',
     'label_set' => 'Set featured image 2',
     'label_remove' => 'Remove featured image 2',
     'label_use' => 'Set featured image 2',
@@ -1730,7 +1730,7 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   $args_service_2 = array(
     'id' => 'featured-image-3',
     'desc' => 'Your description here.',
-    'label_name' => 'Foto blok 3',
+    'label_name' => 'Foto service 2 blok 2',
     'label_set' => 'Set featured image 3',
     'label_remove' => 'Remove featured image 3',
     'label_use' => 'Set featured image 3',
@@ -1740,10 +1740,30 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   $args_service_3 = array(
     'id' => 'featured-image-4',
     'desc' => 'Your description here.',
-    'label_name' => 'Foto blok 4',
+    'label_name' => 'Foto service 3 blok 2',
     'label_set' => 'Set featured image 4',
     'label_remove' => 'Remove featured image 4',
     'label_use' => 'Set featured image 4',
+    'post_type' => array( 'service', 'post' ),
+  );
+
+  $args_service_4 = array(
+    'id' => 'featured-image-5',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 3',
+    'label_set' => 'Set featured image 5',
+    'label_remove' => 'Remove featured image 5',
+    'label_use' => 'Set featured image 5',
+    'post_type' => array( 'service', 'post' ),
+  );
+
+  $args_service_5 = array(
+    'id' => 'featured-image-6',
+    'desc' => 'Your description here.',
+    'label_name' => 'Foto blok 4',
+    'label_set' => 'Set featured image 6',
+    'label_remove' => 'Remove featured image 6',
+    'label_use' => 'Set featured image 6',
     'post_type' => array( 'service', 'post' ),
   );
 
@@ -1751,6 +1771,8 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   $featured_images[] = $args_service_1;
   $featured_images[] = $args_service_2;
   $featured_images[] = $args_service_3;
+  $featured_images[] = $args_service_4;
+  $featured_images[] = $args_service_5;
 
 
   // Important! Return all featured images
@@ -1771,8 +1793,8 @@ function bs_custom_box_service_html($post){
   //blok 1
   $value_service_title_blok1 = get_post_meta($post->ID, '_service_title_blok1', true);  
   $value_service_img_blok1 = get_post_meta($post->ID, '_service_img_blok1', true);
-  $value_service_subtitle_blok1 = get_post_meta($post->ID, '_service_subtext_blok1', true);
-  $value_service_text__blok1 = get_post_meta($post->ID, '_servicee_text__blok1', true);
+  $value_service_subtitle_blok1 = get_post_meta($post->ID, '_service_subtitle_blok1', true);
+  $value_service_text__blok1 = get_post_meta($post->ID, '_service_text__blok1', true);
 
   //blok 2 :services--------------------
   //service 1
@@ -1789,7 +1811,7 @@ function bs_custom_box_service_html($post){
   $value_service_title_service3 = get_post_meta($post->ID, '_service_title_service3', true);
   $value_service_img_service3 = get_post_meta($post->ID, '_service_img_service3', true);
   $value_service_text_service3 = get_post_meta($post->ID, '_service_text_service3', true);
-//--------------------------------------
+  //--------------------------------------
 
   //blok 3
   $value_service_title_blok3 = get_post_meta($post->ID, '_service_title_blok3', true);
@@ -1823,7 +1845,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst blok 1:";
     echo "<br/>";
-    echo "<textarea id='service_text__blok1' name='service_text__blok1' rows='6' cols='50' maxlength='700'>" . $value_service_text__blok1 . "</textarea>";
+    echo "<textarea id='service_text__blok1' name='service_text__blok1' rows='6' cols='50' maxlength='1000'>" . $value_service_text__blok1 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
 
@@ -1913,6 +1935,172 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "<br/>";
     
+}
+
+function bs_service_save_postdata($post_id){
+  //bepaal het (custom) type van de post
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type) {
+    //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+    if ($naam_post_type == "service") {
+      //het custom post type is van het type service
+
+      // opslaan data over bikestore pagina
+      //opslaan van een INPUT: titel blok 1
+      if (array_key_exists('service_title_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_title_blok1',
+          $_POST['service_title_blok1']
+        );
+      }
+      //opslaan van een INPUT:subtitel blok 1
+      if (array_key_exists('service_subtitle_blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_subtitle_blok1',
+          $_POST['service_subtitle_blok1']
+        );
+      }
+      //opslaan van een INPUT: tekst blok 1
+      if (array_key_exists('service_text__blok1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text__blok1',
+          $_POST['service_text__blok1']
+        );
+      }
+
+      // opslaan data blok 2
+      //opslaan van een INPUT: titel service 1 blok 2
+      if (array_key_exists('service_title_service1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_title_service1',
+          $_POST['service_title_service1']
+        );
+      }
+      //opslaan van een INPUT:tekst service 1 blok 2
+      if (array_key_exists('service_text_service1', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text_service1',
+          $_POST['service_text_service1']
+        );
+      }
+
+
+      //opslaan van een INPUT: titel service 2 blok 2
+      if (array_key_exists('service_title_service2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_title_service2',
+          $_POST['service_title_service2']
+        );
+      }
+      //opslaan van een INPUT: tekst service 2 blok 2
+      if (array_key_exists('service_text_service2', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text_service2',
+          $_POST['service_text_service2']
+        );
+      }
+
+      //opslaan van een INPUT: titel service 3 blok 2
+      if (array_key_exists('service_title_service3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_title_service3',
+          $_POST['service_title_service3']
+        );
+      }
+      //opslaan van een INPUT: tekst service 3 blok 2
+      if (array_key_exists('service_text_service3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text_service3',
+          $_POST['service_text_service3']
+        );
+      }
+
+      //opslaan van een INPUT: titel blok 3
+      if (array_key_exists('service_title_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_title_blok3',
+          $_POST['service_title_blok3']
+        );
+      }
+      //opslaan van een INPUT: Subtitle 1 blok 3
+      if (array_key_exists('service_subtitle1_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_subtitle1_blok3',
+          $_POST['service_subtitle1_blok3']
+        );
+      }
+      //opslaan van een INPUT: Tekst 1 blok 3
+      if (array_key_exists('service_text1_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text1_blok3',
+          $_POST['service_text1_blok3']
+        );
+      }
+      //opslaan van een INPUT: Subtitel 2 blok 3
+      if (array_key_exists('service_subtitle2_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_subtitle2_blok3',
+          $_POST['service_subtitle2_blok3']
+        );
+      }
+      //opslaan van een INPUT: tekst 2 blok 3
+      if (array_key_exists('service_text2_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text2_blok3',
+          $_POST['service_text2_blok3']
+        );
+      }
+
+
+      // opslaan data blok 4
+      //opslaan van een INPUT: title blok 4
+      if (array_key_exists('service_title_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_title_blok4',
+          $_POST['service_title_blok4']
+        );
+      }
+      //opslaan van een INPUT: text blok 4
+      if (array_key_exists('service_text_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text_blok4',
+          $_POST['service_text_blok4']
+        );
+      }
+      //opslaan van een INPUT: subtitle blok 4
+      if (array_key_exists('service_subtitle_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_subtitle_blok4',
+          $_POST['service_subtitle_blok4']
+        );
+      }
+      //opslaan van een INPUT: text knop blok 4
+      if (array_key_exists('service_text_knop_blok4', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_service_text_knop_blok4',
+          $_POST['service_text_knop_blok4']
+        );
+      }
+    }
+  }
 }
 
 
