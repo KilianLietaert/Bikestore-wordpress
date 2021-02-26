@@ -15,7 +15,6 @@
   while ($query_home->have_posts()) : $query_home->the_post();
 ?>
 
-<body>
   <!-- banner met tekst en button -->
   <section>
     <div class="c-bannerhome">
@@ -139,7 +138,7 @@
     </div>
   </section>
 </div>
-</body>
+
 
 <?php 
   endwhile;
