@@ -178,20 +178,30 @@ $query = new WP_Query($arg);
                 ?>
 
             </h1>
-            <p>
 
-                <?php
+               <!-- Begin Mailchimp Signup Form -->
+                <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+                <div id="mc_embed_signup">
+                <form action="https://howest.us7.list-manage.com/subscribe/post?u=475c8d1f6547efcf9fcdc44e6&amp;id=b7efd8c974" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll" class="form-nieuwsbrief">
+                        <input type="email" value="" name="EMAIL" class="form-control box form-nieuwsbrief__input" id="mce-EMAIL" placeholder="email address" required>
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_475c8d1f6547efcf9fcdc44e6_b7efd8c974" tabindex="-1" value=""></div>
+                        <div class="clear"> 
+                            <a href="#">
+                            <button class="o-button c-brochure__button" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"">
+                                Inschrijven
+                            </button>
+                            </a>
+                    </div>
+                    </div>
+                </form>
+                </div>
 
-                if ($query->have_posts()) :
-                    while ($query->have_posts()) : $query->the_post();
-                        echo $value_text = get_post_meta($post->ID, '_footer_text', true);
-                    endwhile;
-                endif;
-                wp_reset_query();
+               
 
-                ?>
+                <!--End mc_embed_signup-->
 
-            </p>
         </div>
     </div>
     <div class="c-footer__row2 row">
