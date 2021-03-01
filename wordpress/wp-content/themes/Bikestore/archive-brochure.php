@@ -4,11 +4,11 @@
 
         <div class="c-folder">
             <div class="c-folder__info row ">
-                <h1 class="c-folder__info-title col-lg-10 col-md8 col-sm-8 offset-1">
+                <h1 class="c-folder__info-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <?php $value_titel = get_post_meta($post->ID, '_titel_brochure', true); ?>
                 </h1>
 
-                <p class="c-folder__info-text col-lg-8 col-md-8 col-sm-8 offset-1">
+                <p class="c-folder__info-text col-lg-12 col-md-12 col-sm-12 ">
                 <?php the_content( ) ?>
                     <!-- Wilt u meer weten over onze elektrische fietsen? Bent u benieuwd wat Bikestore u allemaal te bieden
                     heeft? Vraag een gratis brochure aan. U ontvangt
@@ -18,7 +18,7 @@
                 </p>
             </div>
             <div class="c-folder__aanvraag row justify-content-center">
-                <div class="c-folder__aanvraag-foto col-xl-3 col-lg-10 col-md-10 col-sm-10">
+                <div class="c-folder__aanvraag-foto col-xl-4 col-lg-12 col-md-12 col-sm-12">
                     <img class="c-folder__aanvraag-foto-brochure" src="<?php echo get_the_post_thumbnail_url()?>" alt="foto brochure">
                 </div>
                 <div class="c-folder__aanvraag-formulier col-xl-6 col-lg-10 col-md-10 col-sm-10">
