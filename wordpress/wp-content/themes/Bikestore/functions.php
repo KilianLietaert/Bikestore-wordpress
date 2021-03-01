@@ -810,7 +810,7 @@ function bs_home_save_postdata($post_id){
 //custom post type 2 brochure--------------------------------------------------------------------------
 
 function bs_register_brochure()
-{ 
+{
  
   $labels_brochure = array(
   'name' => 'Brochure',
@@ -876,7 +876,7 @@ function bs_add_custom_box_brochure(){
 
 function bs_custom_box_brochure_html($post){
 
-  $value_titel = get_post_meta($post->ID, '_titel_brochure', true);
+  //$value_titel = get_post_meta($post->ID, '_titel_brochure', true);
   $value_uitleg = get_post_meta($post->ID, '_uitleg_brochure', true);
   $value_titelform1 = get_post_meta($post->ID, '_titelform1_brochure', true);
   $value_titelform2 = get_post_meta($post->ID, '_titelform2_brochure', true);
@@ -885,38 +885,28 @@ function bs_custom_box_brochure_html($post){
   $value_extrainfo3 = get_post_meta($post->ID, '_extrainfo3_brochure', true);
   
   echo "<h1>Extra info over brochure</h1>";
-  echo "Grote titel op de pagina: ";
-  echo "<br/>";
-  echo "<br/>";
-  echo "<input type='text' id='titel_brochure' name='titel_brochure' value='". $value_titel ."'>";
-  echo "<br/>";
   echo "<br/>";
   echo "Titel 1 bovenaan formulier: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<input type='text' id='titelform1_brochure' name='titelform1_brochure' value='". $value_titelform1 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Titel 2 bovenaan formulier: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<input type='text' id='titelform2_brochure' name='titelform2_brochure' value='". $value_titelform2 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Extra info overder formulier 1: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<input type='text' id='extrainfo1_brochure' name='extrainfo1_brochure' value='". $value_extrainfo1 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Extra info overder formulier 2: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<input type='text' id='extrainfo2_brochure' name='extrainfo2_brochure' value='". $value_extrainfo2 ."'>";
   echo "<br/>";
   echo "<br/>";
   echo "Extra info overder formulier 3: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<input type='text' id='extrainfo3_brochure' name='extrainfo3_brochure' value='". $value_extrainfo3 ."'>";
 }
@@ -931,7 +921,7 @@ function bs_save_postdata_brochure($post_id){
   
   
   //opslaan van een INPUT:textbox titel
-  if (array_key_exists('titel_brochure', $_POST)) {
+  /*if (array_key_exists('titel_brochure', $_POST)) {
   update_post_meta(
   $post_id,
   '_titel_brochure',
@@ -946,7 +936,7 @@ function bs_save_postdata_brochure($post_id){
     '_uitleg_brochure',
     $_POST['uitleg_brochure']
     );
-    }
+    }*/
 
   //opslaan van een INPUT:textbox
   if (array_key_exists('titelform1_brochure', $_POST)) {
