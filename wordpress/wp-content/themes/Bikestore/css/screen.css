@@ -17581,4 +17581,16 @@ th {
   box-shadow: 3px 3px 3px 3px #ccc;
 }
 
+.form-nieuwsbrief {
+  display: block;
+  position: relative;
+  margin-left: -15px;
+  margin-bottom: 25px;
+}
+
+.form-nieuwsbrief__input {
+  margin-bottom: 25px;
+  width: 350px;
+}
+
 /*# sourceMappingURL=screen.css.map */
