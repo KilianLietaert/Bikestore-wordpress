@@ -1,6 +1,25 @@
 <?php get_header() ?>
 
-<?php
+
+<main>
+  <div class="c-contact container">
+    <div class="c-contactform">
+<form action="">
+<?php echo do_shortcode('[ninja_form id=3]');?>
+</form>
+
+      <?php // echo do_shortcode('[contact-form-7 id="95" title="Contactformulier"]'); ?>
+    </div>
+    <div class="row">
+      <div class="c-googlemap col-xl-7 col-lg-7 col-md-12">
+        <div class="c-googlemap__map"><?php echo do_shortcode('[mappress mapid="1" width="96%" height="68%" border-radius="5%"]'); ?></div>
+      </div>
+      <div class="c-contactinfo col-xl-5 col-lg-5 col-md-12">
+        <h2 class="c-titel__2">Bikestore</h2>
+        <ul class="c-listcontact">
+
+          <?php
+
 
           $contact = array(
             'post_type' => array('contact'),

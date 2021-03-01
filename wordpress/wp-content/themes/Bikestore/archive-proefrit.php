@@ -82,88 +82,11 @@
 
   </div>
 </section>
- <!-- <section>
+ <section>
       <div class="c-form">
         <h1 class="c-form__h1 text-center c-margin">Boek uw afspraak nu!</h1>
         <form action="">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Voornaam" />
-            <label for="floatingInput">Voornaam</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="" placeholder="Naam" />
-            <label for="floatingInput">Naam</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="" placeholder="Straatnaam" />
-            <label for="floatingInput">Straatnaam</label>
-          </div>
-          <div class="row g-2">
-            <div class="col-md">
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInputGrid" placeholder="Nr" />
-                <label for="floatingInputGrid">Nr</label>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInputGrid" placeholder="Postcode" />
-                <label for="floatingSelectGrid">Postcode</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Plaatsnaam" />
-            <label for="floatingInput">Plaatsnaam</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="" placeholder="Email" />
-            <label for="floatingInput">Email</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="tel" class="form-control" id="" placeholder="Tel" pattern="((^[+\s0-9]{2,6}[\s\./0-
-            9]*$))" />
-            <label for="floatingInput">Telefoonnummer</label>
-          </div>
-          <div class="row g-2">
-            <div class="col-md">
-              <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                  <option selected>Kies uw model van fiets</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <label for="floatingSelectGrid"></label>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="form-floating mb-3">
-                <input type="date" class="form-control" id="floatingInputGrid" placeholder="Datum"
-                  value="10/02/2021" />
-                <label for="floatingInputGrid"></label>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-check c-form-check">
-              <input class="form-check-input" type="checkbox" value="" id="nieuwsbrief" />
-              <label class="form-check-label labelcheck" for="flexCheckDefault">
-                Ik ontvang graag de nieuwsbrief
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="privacy" />
-              <label class="form-check-label labelcheck" for="flexCheckDefault">
-                Ik ga akkoord met het privacy statement
-              </label>
-            </div>
-          </div>
-          <div class="col-12 c-button__form">
-            <button class="btn btn-primary o-button" type="submit">
-              Proefrit aanvragen
-            </button>
-          </div>
+        <?php echo do_shortcode('[ninja_form id=4]');?>
         </form>
       </div>
       </div>

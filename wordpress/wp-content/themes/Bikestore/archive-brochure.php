@@ -10,11 +10,7 @@
 
                 <p class="c-folder__info-text col-lg-12 col-md-12 col-sm-12 ">
                 <?php the_content( ) ?>
-                    <!-- Wilt u meer weten over onze elektrische fietsen? Bent u benieuwd wat Bikestore u allemaal te bieden
-                    heeft? Vraag een gratis brochure aan. U ontvangt
-                    <strong class="c-folder__info-text-strong">direct onze digitale brochure.</strong>
-                    </br>
-                    De brochure staat boordevol informatie over onze elektrische fietsen. -->
+            
                 </p>
             </div>
             <div class="c-folder__aanvraag row justify-content-center">
@@ -29,30 +25,13 @@
                     <h3 class="c-folder__aanvraag-formulier-subtitle">
                     <?php $value_titelform2 = get_post_meta($post->ID, '_titelform2_brochure', true); ?>
                     </h3>
-                    <!-- 
+                    
                     <form class="c-folder__aanvraag-form" action="">
-
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control box" placeholder="Naam" />
-                            <label class="c-floatingcontact" for="floatingInput">Naam</label>
-                          </div>
-
-                          <div class="form-floating mb-3">
-                            <input type="email" class="form-control box" placeholder="Email" />
-                            <label class="c-floatingcontact" for="floatingInput">Email</label>
-                          </div>
-                        <div>
-
-                            <input class="c-folder__aanvraag-formulier-checkbox" type="checkbox" id="brochure" name="brochure" value="brochure">
-                            <label class="c-folder__aanvraag-formulier-checkbox-text" for="vehicle1" >Ik ontvang graag de nieuwsbrief</label>
-                        </div>
+                    <?php echo do_shortcode('[ninja_form id=2]'); ?>
+                        
                     </form>
 
-                    <a class="c-folder__aanvraag-form-link" href="#">
-                        <button class="o-button c-folder__aanvraag-form-button">
-                            Brochure aanvragen
-                        </button>
-                    </a> -->
+                   
 
 
                     <ul class="c-folder__aanvraag-info">
