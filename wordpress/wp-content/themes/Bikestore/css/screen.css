@@ -14909,7 +14909,7 @@ ul .c-usp__tekst {
 }
 
 .c-banner__fiets {
-  background-image: url("../Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/world-canyon-electric-city-bikes-02.png");
+  background-image: url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/world-canyon-electric-city-bikes-02.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
