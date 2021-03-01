@@ -63,6 +63,7 @@ function bs_register_contact()
     'items_list_navigation' => 'Contact lijst navigation',
     'filter_items_list' => 'Filter contact lijst',
   );
+
   $args_contact = array(
 
   'label' => 'Contact',
@@ -386,6 +387,7 @@ function bs_footer_save_postdata($post_id)
 }
 
 // eind footer
+
 
 
 
@@ -2168,6 +2170,7 @@ function bs_service_save_postdata($post_id){
 
 
 
+
 // suport post-thumbnail
   add_theme_support('post-thumbnails');
 
@@ -2176,11 +2179,8 @@ function bs_service_save_postdata($post_id){
   add_action('init', 'bs_register_my_menus');
 
 
-//custom post footer
-  add_action('init', 'bs_register_footer');
-  add_action('add_meta_boxes', 'bs_footer_add_custom_box');
-  add_action('save_post', 'bs_footer_save_postdata');
-
+// inladen css / bootstrap css en js
+add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
 
   //custum post home
     add_action( 'init', 'bs_register_home');
@@ -2233,3 +2233,4 @@ function bs_service_save_postdata($post_id){
 
 
 ?>
+
