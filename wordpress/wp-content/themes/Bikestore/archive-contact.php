@@ -3,7 +3,9 @@
 <main>
   <div class="c-contact container">
     <div class="c-contactform">
-
+<form action="">
+<?php echo do_shortcode('[ninja_form id=3]');?>
+</form>
 
       <?php // echo do_shortcode('[contact-form-7 id="95" title="Contactformulier"]'); ?>
     </div>
