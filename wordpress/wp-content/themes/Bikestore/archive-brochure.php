@@ -5,7 +5,7 @@
         <div class="c-folder">
             <div class="c-folder__info row ">
                 <h1 class="c-folder__info-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <?php $value_titel = get_post_meta($post->ID, '_titel_brochure', true); ?>
+                <?php the_title( ) ?>
                 </h1>
 
                 <p class="c-folder__info-text col-lg-12 col-md-12 col-sm-12 ">

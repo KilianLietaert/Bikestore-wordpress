@@ -14344,16 +14344,10 @@ body {
 
 .c-bannerhome {
   overflow-x: hidden;
-  background-image: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.6)),
-      to(rgba(0, 0, 0, 0.6))
-    ),
-    url("/img/man-biker-sitting-electric-bike.jpg");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/img/man-biker-sitting-electric-bike.jpg");
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/man-biker-sitting-electric-bike.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/man-biker-sitting-electric-bike.jpg");
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -14423,16 +14417,9 @@ body {
 }
 
 .c-image__fixed {
-  background-image: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.6)),
-      to(rgba(0, 0, 0, 0.6))
-    ),
-    url("/../img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/../img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
   height: 500px;
   background-attachment: fixed;
   background-position: center;
@@ -17703,4 +17690,20 @@ th {
   box-shadow: 3px 3px 3px 3px #ccc;
 }
 
+
 /*# sourceMappingURL=screen.css.map */
+
+.form-nieuwsbrief {
+  display: block;
+  position: relative;
+  margin-left: -15px;
+  margin-bottom: 25px;
+}
+
+.form-nieuwsbrief__input {
+  margin-bottom: 25px;
+  width: 350px;
+}
+
+/*# sourceMappingURL=screen.css.map */
+
