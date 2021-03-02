@@ -17710,5 +17710,17 @@ th {
   padding: 8px !important;
 }
 
+#cookie-notice, #cookie-notice * {
+  font-size: 15px;
+}
+
+.cn-set-cookie{
+  border-radius: 15px !important;
+}
+
+.cn-more-info{
+  border-radius: 40px !important;
+}
+
 /*# sourceMappingURL=screen.css.map */
 

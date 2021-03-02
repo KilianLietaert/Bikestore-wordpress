@@ -80,6 +80,7 @@ $query = new WP_Query($arg);
                             echo '<a class="c-footer__informatie-link" href="' . $item->url . '">' . $item->title . '</a>';
                         }
                     }
+                    
                 } else {
                     echo 'Top navigatie niet ingesteld';
                 }
@@ -189,7 +190,7 @@ $query = new WP_Query($arg);
                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c87ba7069454f272d0b85c6b8_446fcb0555" tabindex="-1" value=""></div>
                     <div class="clear">
                         <a href="#">
-                        <button class="o-button c-brochure__button" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"">
+                        <button class="btn-primary o-button c-brochure__button" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"">
                         Inschrijven
                         </button>
                         </a></div>

@@ -29,10 +29,22 @@
               <h1 class="c-bannerhome__h1 c-bannerhome__h1--onder">
               <?php echo $value_home_subtitle2_banner = get_post_meta($post->ID, '_home_subtitle2_banner', true); ?>
               </h1>
-                    <a href="#"><button class="o-button c-bannerhome__button">
-                    <?php echo $value_home_knop_banner = get_post_meta($post->ID, '_home_knop_banner', true); ?>
-                    </button>
-                    </a>
+
+                <?php 
+                  $locations = get_nav_menu_locations();
+                  $idVanNavigatie = $locations['extra-menu'];
+                  $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+                  foreach($menu_items as $item){
+                      if ($item->title == "Brochure"){
+
+                      echo '<a href="'. $item->url .'"><button class="o-button c-bannerhome__button">' . get_post_meta($post->ID, '_home_knop_banner', true) . '</button></a>';
+                    }
+                  }
+               ?>
+
+                    
+
             </div>
           </div>
         </div>
@@ -73,10 +85,20 @@
         <p class="c-uitleg__p">
         <?php echo $value_home_text_blok1 = get_post_meta($post->ID, '_home_text_blok1', true); ?>
         </p>
-        <a href="#"><button class="o-button c-uitleg__button">
-          <?php echo $value_home_text_knop_blok1 = get_post_meta($post->ID, '_home_text_knop_blok1', true); ?>
-          </button>
-        </a>
+
+              <?php
+                  $locations = get_nav_menu_locations();
+                  $idVanNavigatie = $locations['extra-menu'];
+                  $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+                  foreach($menu_items as $item){
+                      if ($item->title == "Brochure"){
+
+                      echo '<a href="'. $item->url .'"><button class="o-button c-uitleg__button">' . get_post_meta($post->ID, '_home_text_knop_blok1', true) . '</button></a>';
+                    }
+                  }
+              ?>
+
       </div>
       <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
         <img class="c-uitleg__img" src="<?php echo get_the_post_thumbnail_url() ?>" alt="family-background-evening-sport-bike" />
@@ -96,10 +118,19 @@
       <p class="c-uitproberen__p">
       <?php echo $value_home_text_blok2 = get_post_meta($post->ID, '_home_text_blok2', true); ?>
       </p>
-      <a href="#"><button class="o-button c-uitproberen__button">
-        <?php echo $value_home_text_knop_blok2 = get_post_meta($post->ID, '_home_text_knop_blok2', true); ?>
-        </button>
-      </a>
+
+      <?php
+                  $locations = get_nav_menu_locations();
+                  $idVanNavigatie = $locations['extra-menu'];
+                  $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+                  foreach($menu_items as $item){
+                      if ($item->title == "Brochure"){
+
+                      echo '<a href="'. $item->url .'"><button class="o-button c-uitproberen__button">' . get_post_meta($post->ID, '_home_text_knop_blok2', true) . '</button></a>';
+                    }
+                  }
+              ?>
     </div>
   </div>
   </div>
@@ -131,10 +162,20 @@
       <p class="c-brochure__p">
         <?php echo $value_home_text_blok4 = get_post_meta($post->ID, '_home_text_blok4', true); ?>
       </p>
-      <a href="#"><button class="o-button c-brochure__button">
-        <?php echo $value_home_text_knop_blok4 = get_post_meta($post->ID, '_home_text_knop_blok4', true); ?>
-        </button>
-      </a>
+
+      <?php
+                  $locations = get_nav_menu_locations();
+                  $idVanNavigatie = $locations['extra-menu'];
+                  $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+                  foreach($menu_items as $item){
+                      if ($item->title == "Brochure"){
+
+                      echo '<a href="'. $item->url .'"><button class="o-button c-brochure__button">' . get_post_meta($post->ID, '_home_text_knop_blok4', true) . '</button></a>';
+                    }
+                  }
+              ?>
+
     </div>
   </section>
 </div>

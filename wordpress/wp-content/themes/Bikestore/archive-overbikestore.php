@@ -100,11 +100,24 @@
         <h1 class="c-about__proefrit-title row justify-content-center">
         <?php echo $value_overbikestore_title_blok5 = get_post_meta($post->ID, '_overbikestore_title_blok5', true); ?>
         </h1>
-        <a class="row justify-content-center c-about__proefrit-link" href="#">
-            <button class="o-button c-about__proefrit-button">
-            <?php echo $value_overbikestore_text_knop_blok5 = get_post_meta($post->ID, '_overbikestore_text_knop_blok5', true); ?>
-            </button>
-        </a>
+
+        <?php
+                  $locations = get_nav_menu_locations();
+                  $idVanNavigatie = $locations['extra-menu'];
+                  $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+                  foreach($menu_items as $item){
+                      if ($item->title == "Proefrit"){
+
+                      echo '<a class="row justify-content-center c-about__proefrit-link" href="'. $item->url .'"><button class="o-button c-about__proefrit-button">' . get_post_meta($post->ID, '_overbikestore_text_knop_blok5', true) . '</button></a>';
+                      
+                    }
+                  }
+              ?>
+
+
+              
+
     </div>
 </div>
 </main>
