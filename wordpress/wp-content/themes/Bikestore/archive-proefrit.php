@@ -32,8 +32,8 @@
 
   <div class="c-blokpadding  col-xxl-7  col-lg-12">
             <div class="c-more__blok1 ">
-      <h2 class="c-intro__h"><?php the_title() ?></h2>
-      <p class="c-intro__text"><?php the_content() ?></p>
+      <h2 class="c-intro__h"><?php echo $value_title_blok1_proefrit = get_post_meta($post->ID, '_title_blok1_proefrit', true); ?></h2>
+      <p class="c-intro__text"><?php echo $value_text_blok1_proefrit = get_post_meta($post->ID, '_text_blok1_proefrit', true); ?></p>
     </div>
 
     <div class="c-more__blok2">
@@ -93,7 +93,7 @@
       <div class="c-form">
         <h1 class="c-form__h1 text-center c-margin">Boek uw afspraak nu!</h1>
         <form action="">
-        <?php echo do_shortcode('[ninja_form id=4]');?>
+        <?php echo do_shortcode('[ninja_form id=3]');?>
         </form>
       </div>
       </div>

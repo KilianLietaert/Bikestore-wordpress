@@ -23,16 +23,8 @@
             endif;
             wp_reset_query();
             
-          ?>
+          ?>       
 
-        </div>
-       
-        <!-- <div class="c-blogoverzicht__bericht row offset-1">
-          <a href="#"
-            ><button class="o-button c-blogoverzicht__button2">
-              Lees meer <i class="fas fa-chevron-right"></i></button
-          ></a>
-        </div> -->
       </div>
     </section>
 

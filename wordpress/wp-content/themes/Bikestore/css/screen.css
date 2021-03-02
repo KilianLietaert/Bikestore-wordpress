@@ -15251,7 +15251,7 @@ ul .c-usp__tekst {
   display: -ms-flexbox;
   display: flex;
   padding-top: 14px;
-  margin-bottom: 50px;
+  margin-top: 150px;
 }
 
 @media (max-width: 1199.98px) {
@@ -17725,6 +17725,18 @@ th {
 
 .cn-button {
   padding: 8px !important;
+}
+
+#cookie-notice, #cookie-notice * {
+  font-size: 15px;
+}
+
+.cn-set-cookie{
+  border-radius: 15px !important;
+}
+
+.cn-more-info{
+  border-radius: 40px !important;
 }
 
 /*# sourceMappingURL=screen.css.map */

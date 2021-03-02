@@ -107,10 +107,19 @@
                     <div class="c-service__verzekering-pakket">
                         <h1 class="c-service__verzekering-pakket-title">
                         <?php echo $value_service_subtitle_blok4 = get_post_meta($post->ID, '_service_subtitle_blok4', true); ?></h1>
-                        <a class=" c-service__verzekering-pakket-link" href="#">
-                            <button class="o-button c-service__verzekering-pakket-button">
-                            <?php echo $value_service_text_knop_blok4 = get_post_meta($post->ID, '_service_text_knop_blok4', true); ?></button>
-                        </a>
+
+                        <?php
+                            $locations = get_nav_menu_locations();
+                            $idVanNavigatie = $locations['extra-menu'];
+                            $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+            
+                            foreach($menu_items as $item){
+                                if ($item->title == "Brochure"){
+
+                                echo '<a class=" c-service__verzekering-pakket-link" href="'. $item->url .'"><button class="o-button c-service__verzekering-pakket-button">' . get_post_meta($post->ID, '_service_text_knop_blok4', true) . '</button></a>';
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -29,6 +29,11 @@ function bs_register_my_menus()
 }
 
 
+function get_url_by_slug($slug) {
+  $page_url_id = get_page_by_path( $slug );
+  $page_url_link = get_permalink($page_url_id);
+  return $page_url_link;
+ }
 
 
 function bs_register_contact()
@@ -103,6 +108,9 @@ function bs_custom_box_contact_html($post)
   //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
 
   //als extra paramter kan je het $post object gebruiken
+  $value_title = get_post_meta($post->ID, '_title_contact', true);
+  $value_paragraaf = get_post_meta($post->ID, '_paragraaf_contact', true);
+  $value_title_gegevens = get_post_meta($post->ID, '_title_gegevens', true);
   $value_adres = get_post_meta($post->ID, '_adres_bikestore', true);
   $value_huisnr = get_post_meta($post->ID, '_huisnr_bikestore', true);
   $value_postcode = get_post_meta($post->ID, '_postcode_bikestore', true);
@@ -110,36 +118,49 @@ function bs_custom_box_contact_html($post)
   $value_land = get_post_meta($post->ID, '_land_bikestore', true);
   $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true);
   $value_email = get_post_meta($post->ID, '_email_bikestore', true);
+  $value_text_button = get_post_meta($post->ID, '_text_button', true);
+  $value_title_boven_button = get_post_meta($post->ID, '_title_boven_button', true);
+
+  
 
   echo "<h1>Gegevens Bikestore</h1>";
   echo "<br/>";
+  echo "Titel boven formulier: ";
+  echo "<br/>";
+  echo "<input type='text' id='title_contact' name='title_contact' value='" . $value_title . "'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekstblok boven formulier: ";
+  echo "<br/>";
+  echo "<textarea id='paragraaf_contact' name='paragraaf_contact' rows='6' cols='50' maxlength='600'>" . $value_paragraaf . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Titel Blok Gegevens: ";
+  echo "<br/>";
+  echo "<input type='text' id='title_gegevens' name='title_gegevens' value='" . $value_title_gegevens . "'>";
+  echo "<br/>";
   echo "<br/>";
   echo "Straatnaam: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<input type='text' id='adres_bikestore' name='adres_bikestore' value='" . $value_adres . "'>";
   echo "<br/>";
   echo "<br/>";
   echo "Huisnummer: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<input type='number' id='huisnr_bikestore' name='huisnr_bikestore' value='" . $value_huisnr . "'>";
   echo "<br/>";
   echo "<br/>";
   echo "Postcode: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<input type='number' id='postcode_bikestore' name='postcode_bikestore' value='" . $value_postcode . "'>";
   echo "<br/>";
   echo "<br/>";
   echo "Stad: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<input type='text' id='stad_bikestore' name='stad_bikestore' value='" . $value_stad . "'>";
   echo "<br/>";
   echo "<br/>";
   echo "Land: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<select name='land_bikestore' id='land_bikestore'>";
   echo "<option value='1' " . ($value_land == 1 ? "selected" : "") . ">België</option>";
@@ -150,15 +171,23 @@ function bs_custom_box_contact_html($post)
   echo "<br/>";
   echo "Telefoonnummer: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<input type='number' pattern='((^[+\s0-9]{2,6}[\s\./0-
   9]*$))' id='telefoon_bikestore' name='telefoon_bikestore' value='" . $value_telefoon . "'>";
   echo "<br/>";
   echo "<br/>";
   echo "Email: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<input type='email' id='email_bikestore' name='email_bikestore' value='" . $value_email . "'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Titel boven button : ";
+  echo "<br/>";
+  echo "<input type='text' id='title_boven_button' name='title_boven_button' value='" . $value_title_boven_button . "'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst button blok : ";
+  echo "<br/>";
+  echo "<input type='text' id='text_button' name='text_button' value='" . $value_text_button . "'>";
 }
 function bs_save_postdata($post_id)
 {
@@ -170,6 +199,30 @@ function bs_save_postdata($post_id)
       //het custom post type is van het type contact
 
 
+       //opslaan van een INPUT:textbox
+       if (array_key_exists('title_contact', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_title_contact',
+          $_POST['title_contact']
+        );
+      }
+
+      if (array_key_exists('paragraaf_contact', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_paragraaf_contact',
+          $_POST['paragraaf_contact']
+        );
+      }
+
+      if (array_key_exists('title_gegevens', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_title_gegevens',
+          $_POST['title_gegevens']
+        );
+      }
 
       //opslaan van een INPUT:textbox
       if (array_key_exists('adres_bikestore', $_POST)) {
@@ -227,6 +280,24 @@ function bs_save_postdata($post_id)
           $post_id,
           '_land_bikestore',
           $_POST['land_bikestore']
+        );
+      }
+
+      //opslaan van een INPUT:textbox
+      if (array_key_exists('text_button', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_text_button',
+          $_POST['text_button']
+        );
+      }
+
+      //opslaan van een INPUT:textbox
+      if (array_key_exists('title_boven_button', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_title_boven_button',
+          $_POST['title_boven_button']
         );
       }
     }
@@ -1630,32 +1701,42 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   
   //als extra paramter kan je het $post object gebruiken
 
+  $value_title_blok1_proefrit = get_post_meta($post->ID, '_title_blok1_proefrit', true);
+  $value_text_blok1_proefrit = get_post_meta($post->ID, '_text_blok1_proefrit', true);
   $value_tijd = get_post_meta($post->ID, '_tijd_proefrit', true);
   $value_foto = get_post_meta($post->ID, '_foto_proefrit', true);
   $value_icoon1 = get_post_meta($post->ID, '_icoon1_proefrit', true);
   $value_icoon2 = get_post_meta($post->ID, '_icoon2_proefrit', true);
 
   echo "<h1>Inhoud proefrit</h1>";
-  echo "Tekstblok bij klok: ";
   echo "<br/>";
+  echo "Titel blok 1:";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<input type='text' id='title_blok1_proefrit' name='title_blok1_proefrit' value='".  $value_title_blok1_proefrit ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst blok 1: ";
+  echo "<br/>";
+  echo "<textarea id='text_blok1_proefrit' name='text_blok1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_text_blok1_proefrit . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekstblok bij klok: ";
   echo "<br/>";
   echo "<textarea id='tijd_proefrit' name='tijd_proefrit' rows='4' cols='50' maxlength='600'>" . $value_tijd . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok over de foto: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<textarea id='foto_proefrit' name='foto_proefrit' rows='4' cols='50' maxlength='600'>" . $value_foto . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok boven de iconen: ";
   echo "<br/>";
-  echo "<br/>";
   echo "<textarea id='icoon1_proefrit' name='icoon1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon1 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok onder de iconen: ";
-  echo "<br/>";
   echo "<br/>";
   echo "<textarea id='icoon2_proefrit' name='icoon2_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon2 . "</textarea>";
   
@@ -1670,13 +1751,28 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
   if ($naam_post_type == "proefrit"){
 
-  if (array_key_exists('tijd_proefrit', $_POST)) {
+  if (array_key_exists('title_blok1_proefrit', $_POST)) {
     update_post_meta(
     $post_id,
-    '_tijd_proefrit',
-    $_POST['tijd_proefrit']
+    '_title_blok1_proefrit',
+    $_POST['title_blok1_proefrit']
     );
     }
+
+    if (array_key_exists('text_blok1_proefrit', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_text_blok1_proefrit',
+      $_POST['text_blok1_proefrit']
+      );
+
+      } if (array_key_exists('tijd_proefrit', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_tijd_proefrit',
+        $_POST['tijd_proefrit']
+        );
+        }
 
     if (array_key_exists('foto_proefrit', $_POST)) {
       update_post_meta(
