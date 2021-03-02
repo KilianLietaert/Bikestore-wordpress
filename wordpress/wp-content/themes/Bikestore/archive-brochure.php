@@ -10,11 +10,7 @@
 
                 <p class="c-folder__info-text col-lg-12 col-md-12 col-sm-12 ">
                 <?php the_content( ) ?>
-                    <!-- Wilt u meer weten over onze elektrische fietsen? Bent u benieuwd wat Bikestore u allemaal te bieden
-                    heeft? Vraag een gratis brochure aan. U ontvangt
-                    <strong class="c-folder__info-text-strong">direct onze digitale brochure.</strong>
-                    </br>
-                    De brochure staat boordevol informatie over onze elektrische fietsen. -->
+            
                 </p>
             </div>
             <div class="c-folder__aanvraag row justify-content-center">
@@ -31,7 +27,9 @@
                     </h3>
                     
                     <form class="c-folder__aanvraag-form" action="">
-                        <?php echo do_shortcode('[ninja_form id=2]'); ?>
+
+                    <?php echo do_shortcode('[ninja_form id=2]'); ?>
+                        
                     </form>
 
 
