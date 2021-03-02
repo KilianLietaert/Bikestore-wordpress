@@ -1,5 +1,12 @@
 <?php get_header(  ) ?>
 
+
+<section>
+ <div class="c-banner__fiets">
+ </div>
+ </section>
+
+
 <?php
   $proefrit = array(
   'post_type' => array('proefrit'),

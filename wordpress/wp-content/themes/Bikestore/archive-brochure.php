@@ -27,11 +27,10 @@
                     </h3>
                     
                     <form class="c-folder__aanvraag-form" action="">
+
                     <?php echo do_shortcode('[ninja_form id=2]'); ?>
                         
                     </form>
-
-                   
 
 
                     <ul class="c-folder__aanvraag-info">

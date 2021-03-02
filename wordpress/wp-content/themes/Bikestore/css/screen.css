@@ -13637,7 +13637,7 @@ body {
     border-radius: 32px;
     background-color: #d2b02a;
     border: 2px solid #705e16;
-    padding: 8px !important;
+    padding: 8px;
     padding-left: 25px !important;
     padding-right: 25px !important;
     font: 22px "oxygen", sans-serif !important;
@@ -13678,7 +13678,7 @@ body {
     border-radius: 32px;
     background-color: #d2b02a;
     border: 2px solid #705e16;
-    padding: 8px !important;
+    padding: 8px ;
     padding-left: 20px !important;
     padding-right: 20px !important;
     font: 20px "oxygen", sans-serif !important;
@@ -13723,7 +13723,7 @@ body {
     border-radius: 32px;
     background-color: #d2b02a;
     border: 2px solid #705e16;
-    padding: 8px !important;
+    padding: 8px;
     padding-left: 20px !important;
     padding-right: 20px !important;
     font: 17px "oxygen", sans-serif !important;
@@ -14594,7 +14594,7 @@ ul .c-usp__tekst {
   border-radius: 32px;
   background-color: #d2b02a;
   border: 2px solid #705e16;
-  padding: 10px !important;
+  padding: 10px ;
   padding-left: 40px;
   padding-right: 40px;
   font: 26px "oxygen", sans-serif;
@@ -14996,7 +14996,7 @@ ul .c-usp__tekst {
 }
 
 .c-banner__fiets {
-  background-image: url("../fotos/world-canyon-electric-city-bikes-02.jpg");
+  background-image: url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/world-canyon-electric-city-bikes-02.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -17702,7 +17702,12 @@ th {
 
 .form-nieuwsbrief__input {
   margin-bottom: 25px;
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
+}
+
+.cn-button {
+  padding: 8px !important;
 }
 
 /*# sourceMappingURL=screen.css.map */
