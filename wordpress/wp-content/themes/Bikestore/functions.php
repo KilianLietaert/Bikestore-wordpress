@@ -2308,6 +2308,53 @@ function bs_service_save_postdata($post_id){
   
  }
 
+  function bs_add_custom_box_bedank(){ 
+  add_meta_box(
+  'bs_bedank_box_id', // Unique ID
+  'Info bedank', // Box title
+  'bs_custom_box_bedank_html', // Content callback, must be of type callable
+  'bedank' // Post type
+  ); 
+ }
+
+ 
+ function bs_custom_box_bedank_html($post){
+  //optioneel kan deze callback functie de $post variabele gebruiken als parameter 
+  
+  //als extra paramter kan je het $post object gebruiken
+
+
+  $value_button = get_post_meta($post->ID, '_button_bedank', true);
+
+  echo "<h1>Button bedankpagina</h1>";
+  echo "Tekst in de button: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<input type='text' id='button_bedank' name='button_bedank' value='". $value_button ."'>";
+  
+ }
+ function bs_save_postdata_bedank($post_id){
+  //bepaal het (custom) type van de post
+  
+  $naam_post_type = get_post_type($post_id);
+  if ($naam_post_type){
+  //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
+  if ($naam_post_type == "bedank"){
+
+  
+      if (array_key_exists('button_bedank', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_button_bedank',
+        $_POST['button_bedank']
+        );
+        }          
+
+}
+ } 
+}
+
+
 
 
 
@@ -2374,6 +2421,8 @@ add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
             add_action( 'init', 'bs_register_proefrit'); 
 
   //custom post bedank
+            add_action('save_post', 'bs_save_postdata_bedank');
+            add_action('add_meta_boxes', 'bs_add_custom_box_bedank');
             add_action( 'init', 'bs_register_bedank'); 
 
             
