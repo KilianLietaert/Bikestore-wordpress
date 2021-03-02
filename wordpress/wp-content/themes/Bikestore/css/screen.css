@@ -15302,13 +15302,18 @@ ul .c-usp__tekst {
   max-width: 894px;
   background-color: #707070;
   margin: auto;
-  margin-bottom: 113px;
 }
 
 .c-margin {
   margin: auto;
   margin-bottom: 72px;
 }
+
+.c-form__section {
+  padding-top: 113px;
+  background-color: white;
+}
+
 
 .c-form {
   max-width: 812px;
