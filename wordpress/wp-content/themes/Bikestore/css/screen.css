@@ -15316,7 +15316,6 @@ ul .c-usp__tekst {
   max-width: 894px;
   background-color: #707070;
   margin: auto;
-  margin-bottom: 113px;
 }
 
 .c-margin {
@@ -15325,8 +15324,12 @@ ul .c-usp__tekst {
 }
 
 .c-form__section {
+  padding-top: 113px;
   background-color: white;
 }
+  background-color: white;
+}
+
 
 .c-form {
   max-width: 812px;

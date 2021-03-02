@@ -17,6 +17,19 @@ if ($querybedank->have_posts()) :
 ?>
     <h2 class="text-center"> <?php echo the_title() ?> </h2>
 
+    <?php
+           $locations = get_nav_menu_locations();
+           $idVanNavigatie = $locations['extra-menu'];
+          $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+            foreach($menu_items as $item){
+                if ($item->title == "Brochure"){
+
+                   echo '<a   class="c-folder__aanvraag-form-link" href="'. $item->url .'"><button class="o-button c-folder__aanvraag-form-button">' . get_post_meta($post->ID, '_home_text_knop_blok4', true) . '</button></a>';
+                }
+                
+              }
+              ?>
     <?php echo the_content() ?>
   </section>
 
