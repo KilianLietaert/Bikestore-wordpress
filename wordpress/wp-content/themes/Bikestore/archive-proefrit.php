@@ -82,7 +82,7 @@
 
   </div>
 </section>
- <section>
+ <section class="c-form__section">
       <div class="c-form">
         <h1 class="c-form__h1 text-center c-margin">Boek uw afspraak nu!</h1>
         <form action="">
@@ -90,7 +90,7 @@
         </form>
       </div>
       </div>
-    </section> -->
+    </section> 
 </main>             
 
 
