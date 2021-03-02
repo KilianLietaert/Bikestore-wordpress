@@ -14345,8 +14345,16 @@ body {
 .c-bannerhome {
   overflow-x: hidden;
 
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/man-biker-sitting-electric-bike.jpg");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/man-biker-sitting-electric-bike.jpg");
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.6)),
+      to(rgba(0, 0, 0, 0.6))
+    ),
+    url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/man-biker-sitting-electric-bike.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/man-biker-sitting-electric-bike.jpg");
 
   background-position: center;
   background-repeat: no-repeat;
@@ -14417,9 +14425,16 @@ body {
 }
 
 .c-image__fixed {
-
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.6)),
+      to(rgba(0, 0, 0, 0.6))
+    ),
+    url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/Bikestore-wordpress/wordpress/wp-content/themes/Bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
   height: 500px;
   background-attachment: fixed;
   background-position: center;
@@ -15218,7 +15233,6 @@ ul .c-usp__tekst {
 /*text, line, icoontjes*/
 .c-more {
   background-color: #ffffff;
-  min-height: 1529px;
 }
 
 .c-more__blok1 {
@@ -15311,6 +15325,8 @@ ul .c-usp__tekst {
 
 .c-form__section {
   padding-top: 113px;
+  background-color: white;
+}
   background-color: white;
 }
 
@@ -17695,7 +17711,6 @@ th {
   box-shadow: 3px 3px 3px 3px #ccc;
 }
 
-
 /*# sourceMappingURL=screen.css.map */
 
 .form-nieuwsbrief {
@@ -17728,4 +17743,3 @@ th {
 }
 
 /*# sourceMappingURL=screen.css.map */
-
