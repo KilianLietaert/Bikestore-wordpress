@@ -1,6 +1,5 @@
 <?php get_header(  ) ?>
 
-
 <section>
  <div class="c-banner__fiets">
  </div>
@@ -89,17 +88,21 @@
 
   </div>
 </section>
+
  <section class="c-form__section">
+   <div class="container">
+
       <div class="c-form">
         <h1 class="c-form__h1 text-center c-margin">Boek uw afspraak nu!</h1>
         <form action="">
         <?php echo do_shortcode('[ninja_form id=3]');?>
         </form>
       </div>
-      </div>
+      </div>  
+    </div>
     </section> 
-</main>             
 
+</main>             
 
 <?php 
   endwhile;

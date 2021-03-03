@@ -68,12 +68,7 @@
  ?>
  <li><?php echo $value_telefoon = get_post_meta($post->ID, '_telefoon_bikestore', true); ?></li>
  <li><?php echo $value_email = get_post_meta($post->ID, '_email_bikestore', true); ?></li>
- <?php
- endwhile;
- endif;
- wp_reset_query();
- 
- ?>
+
  </ul>
  <div class="c-contactinfo__plaats">
  <p class="c-listcontact__text"><?php echo $value_telefoon = get_post_meta($post->ID, '_title_boven_button', true); ?></p>
@@ -91,7 +86,12 @@
                     }
                   }
               ?>
-
+ <?php
+ endwhile;
+ endif;
+ wp_reset_query();
+ 
+ ?>
  </div>
  </div>
  </div>
