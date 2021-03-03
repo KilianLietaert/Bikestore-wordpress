@@ -79,7 +79,7 @@
                   $menu_items = wp_get_nav_menu_items($idVanNavigatie);
  
                   foreach($menu_items as $item){
-                      if ($item->title == "Proefrit"){
+                      if ($item->title == "Brochure"){
 
                       echo '<a  href="'. $item->url .'"><button class="btn btn-primary o-button">' . get_post_meta($post->ID, '_text_button', true) . '</button></a>';
                       

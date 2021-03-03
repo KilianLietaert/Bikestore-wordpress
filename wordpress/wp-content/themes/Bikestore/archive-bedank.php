@@ -20,7 +20,7 @@ if ($querybedank->have_posts()) :
     <div class="text-center">
     <?php
            $locations = get_nav_menu_locations();
-           $idVanNavigatie = $locations['extra-menu'];
+           $idVanNavigatie = $locations['main-menu'];
           $menu_items = wp_get_nav_menu_items($idVanNavigatie);
  
             foreach($menu_items as $item){
