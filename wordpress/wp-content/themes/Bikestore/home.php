@@ -149,6 +149,18 @@
         <p class="c-repair__p">
           <?php echo $value_home_text_blok3 = get_post_meta($post->ID, '_home_text_blok3', true); ?>
         </p>
+        <?php
+                  $locations = get_nav_menu_locations();
+                  $idVanNavigatie = $locations['main-menu'];
+                  $menu_items = wp_get_nav_menu_items($idVanNavigatie);
+ 
+                  foreach($menu_items as $item){
+                      if ($item->title == "Over bikestore"){
+
+                      echo '<a href="'. $item->url .'"><button class="btn-primary o-button c-overons__button">' . get_post_meta($post->ID, '_home_text_knop_blok3', true) . '</button></a>';
+                    }
+                  }
+          ?>
       </div>
     </div>
   </section>

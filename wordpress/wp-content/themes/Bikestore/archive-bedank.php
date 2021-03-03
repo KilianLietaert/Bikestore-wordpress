@@ -24,7 +24,7 @@ if ($querybedank->have_posts()) :
           $menu_items = wp_get_nav_menu_items($idVanNavigatie);
  
             foreach($menu_items as $item){
-                if ($item->title == "Brochure"){
+                if ($item->title == "Contact"){
 
                    echo '<a   class="c-folder__aanvraag-form-link" href="'. $item->url .'"><button class="btn-primary o-button c-folder__aanvraag-form-button">' . get_post_meta($post->ID, '_button_bedank', true) . '</button></a>';
                 }
