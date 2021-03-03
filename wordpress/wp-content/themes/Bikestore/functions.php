@@ -1707,6 +1707,7 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   $value_foto = get_post_meta($post->ID, '_foto_proefrit', true);
   $value_icoon1 = get_post_meta($post->ID, '_icoon1_proefrit', true);
   $value_icoon2 = get_post_meta($post->ID, '_icoon2_proefrit', true);
+  $value_titelform = get_post_meta($post->ID, '_titelform_proefrit', true);
 
   echo "<h1>Inhoud proefrit</h1>";
   echo "<br/>";
@@ -1718,27 +1719,38 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
   echo "<br/>";
   echo "Tekst blok 1: ";
   echo "<br/>";
+  echo "<br/>";
   echo "<textarea id='text_blok1_proefrit' name='text_blok1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_text_blok1_proefrit . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok bij klok: ";
+  echo "<br/>";
   echo "<br/>";
   echo "<textarea id='tijd_proefrit' name='tijd_proefrit' rows='4' cols='50' maxlength='600'>" . $value_tijd . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok over de foto: ";
   echo "<br/>";
+  echo "<br/>";
   echo "<textarea id='foto_proefrit' name='foto_proefrit' rows='4' cols='50' maxlength='600'>" . $value_foto . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok boven de iconen: ";
+  echo "<br/>";
   echo "<br/>";
   echo "<textarea id='icoon1_proefrit' name='icoon1_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon1 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekstblok onder de iconen: ";
   echo "<br/>";
+  echo "<br/>";
   echo "<textarea id='icoon2_proefrit' name='icoon2_proefrit' rows='4' cols='50' maxlength='600'>" . $value_icoon2 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Titel boven formulier:";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<input type='text' id='titelform_proefrit' name='titelform_proefrit' value='".  $value_titelform ."'>";
   
  }
 
@@ -1795,7 +1807,15 @@ add_filter( 'kdmfi_featured_images', function( $featured_images ) {
         '_icoon2_proefrit',
         $_POST['icoon2_proefrit']
         );
-        }          
+        }        
+        if (array_key_exists('titelform_proefrit', $_POST)) {
+          update_post_meta(
+          $post_id,
+          '_titelform_proefrit',
+          $_POST['titelform_proefrit']
+          );
+          }
+    
 
   }
   } 
