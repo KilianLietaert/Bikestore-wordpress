@@ -180,6 +180,7 @@ $query = new WP_Query($arg);
 
             </h1>
 
+
                 <!-- Begin Mailchimp Signup Form -->
                 <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
                 <div id="mc_embed_signup">
@@ -194,6 +195,7 @@ $query = new WP_Query($arg);
                         Inschrijven
                         </button>
                         </a></div>
+
                     </div>
                 </form>
             </div>
@@ -202,17 +204,17 @@ $query = new WP_Query($arg);
 
         </div>
     </div>
-    <div class="c-footer__row2 row">
-        <div class="c-footer__icon col-xl-3 col-lg-4 col-md-4 col-sm-10 ">
-            <a href="https://www.facebook.com/howestbe"> <img class="c-footer__icon-facebook" src="<?php echo get_stylesheet_directory_uri() . '/img/facebook_design.svg'; ?>" alt="Facebook" /></a>
-            <a href="https://www.instagram.com/howestbe/"> <img class="c-footer__icon-instagram" src="<?php echo get_stylesheet_directory_uri() . '/img/instagram_design.svg'; ?>" alt="Instagram" /></a>
-        </div>
-        <div class="c-footer__copyright col-lg-6 col-md-6 col-sm-10">
-            <p class="c-footer__copyright-text">
-                Wordpress theme &copy; 2021 | All Rights Reserved
-            </p>
-        </div>
-    </div>
+    <div class=" c-footer__row2 row">
+                                    <div class="c-footer__icon col-xl-3 col-lg-4 col-md-4 col-sm-10 ">
+                                        <a href="https://www.facebook.com/howestbe"> <img class="c-footer__icon-facebook" src="<?php echo get_stylesheet_directory_uri() . '/img/facebook_design.svg'; ?>" alt="Facebook" /></a>
+                                        <a href="https://www.instagram.com/howestbe/"> <img class="c-footer__icon-instagram" src="<?php echo get_stylesheet_directory_uri() . '/img/instagram_design.svg'; ?>" alt="Instagram" /></a>
+                                    </div>
+                                    <div class="c-footer__copyright col-lg-6 col-md-6 col-sm-10">
+                                        <p class="c-footer__copyright-text">
+                                            Wordpress theme &copy; 2021 | All Rights Reserved
+                                        </p>
+                                    </div>
+                        </div>
 </footer>
 </body>
 <?php wp_footer(); ?>
