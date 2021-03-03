@@ -38,7 +38,7 @@
                   foreach($menu_items as $item){
                       if ($item->title == "Brochure"){
 
-                      echo '<a href="'. $item->url .'"><button class="o-button c-bannerhome__button">' . get_post_meta($post->ID, '_home_knop_banner', true) . '</button></a>';
+                      echo '<a href="'. $item->url .'"><button class="btn-primary o-button c-bannerhome__button">' . get_post_meta($post->ID, '_home_knop_banner', true) . '</button></a>';
                     }
                   }
                ?>
@@ -94,7 +94,7 @@
                   foreach($menu_items as $item){
                       if ($item->title == "Brochure"){
 
-                      echo '<a href="'. $item->url .'"><button class="o-button c-uitleg__button">' . get_post_meta($post->ID, '_home_text_knop_blok1', true) . '</button></a>';
+                      echo '<a href="'. $item->url .'"><button class="btn-primary o-button c-uitleg__button">' . get_post_meta($post->ID, '_home_text_knop_blok1', true) . '</button></a>';
                     }
                   }
               ?>
@@ -127,7 +127,7 @@
                   foreach($menu_items as $item){
                       if ($item->title == "Proefrit"){
 
-                      echo '<a href="'. $item->url .'"><button class="o-button c-uitproberen__button">' . get_post_meta($post->ID, '_home_text_knop_blok2', true) . '</button></a>';
+                      echo '<a href="'. $item->url .'"><button class="btn-primary o-button c-uitproberen__button">' . get_post_meta($post->ID, '_home_text_knop_blok2', true) . '</button></a>';
                     }
                   }
               ?>
@@ -171,7 +171,7 @@
                   foreach($menu_items as $item){
                       if ($item->title == "Brochure"){
 
-                      echo '<a href="'. $item->url .'"><button class="o-button c-brochure__button">' . get_post_meta($post->ID, '_home_text_knop_blok4', true) . '</button></a>';
+                      echo '<a href="'. $item->url .'"><button class="btn-primary o-button c-brochure__button">' . get_post_meta($post->ID, '_home_text_knop_blok4', true) . '</button></a>';
                     }
                   }
               ?>

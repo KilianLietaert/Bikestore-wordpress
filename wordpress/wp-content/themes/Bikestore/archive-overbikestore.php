@@ -109,7 +109,7 @@
                   foreach($menu_items as $item){
                       if ($item->title == "Proefrit"){
 
-                      echo '<a class="row justify-content-center c-about__proefrit-link" href="'. $item->url .'"><button class="o-button c-about__proefrit-button">' . get_post_meta($post->ID, '_overbikestore_text_knop_blok5', true) . '</button></a>';
+                      echo '<a class="row justify-content-center c-about__proefrit-link" href="'. $item->url .'"><button class="btn-primary o-button c-about__proefrit-button">' . get_post_meta($post->ID, '_overbikestore_text_knop_blok5', true) . '</button></a>';
                       
                     }
                   }
