@@ -1,6 +1,21 @@
 <?php get_header(  ) ?>
 
 
+<?php
+  $brochure = array(
+  'post_type' => array('brochure'),
+  'nopaging' => false,
+  'posts_per_page' => '1',
+  'order' => 'ASC',
+  'orderby' => 'date'
+  );
+  
+  $query_brochure = new WP_Query($brochure);
+
+  if ($query_brochure->have_posts()):
+  while ($query_brochure->have_posts()) : $query_brochure->the_post();
+?>
+
 <div class='container'>
         <div class="c-folder">
             <div class="c-folder__info row ">
@@ -19,11 +34,11 @@
                 </div>
                 <div class="c-folder__aanvraag-formulier col-xl-6 col-lg-10 col-md-10 col-sm-10">
                     <h2 class="c-folder__aanvraag-formulier-title">
-                    <?php $value_titelform1 = get_post_meta($post->ID, '_titelform1_brochure', true); ?>
+                    <?php echo $value_titelform1 = get_post_meta($post->ID, '_titelform1_brochure', true); ?>
                     </h2>
 
                     <h3 class="c-folder__aanvraag-formulier-subtitle">
-                    <?php $value_titelform2 = get_post_meta($post->ID, '_titelform2_brochure', true); ?>
+                    <?php echo $value_titelform2 = get_post_meta($post->ID, '_titelform2_brochure', true); ?>
                     </h3>
                     
                     <form class="c-folder__aanvraag-form" action="">
@@ -34,10 +49,10 @@
 
 
                     <ul class="c-folder__aanvraag-info">
-                        <li class="c-folder__aanvraag-info-item"><?php $value_extrainfo1 = get_post_meta($post->ID, '_extrainfo1_brochure', true); ?> </li>
-                        <li class="c-folder__aanvraag-info-item"><?php $value_extrainfo2 = get_post_meta($post->ID, '_extrainfo2_brochure', true); ?> 
+                        <li class="c-folder__aanvraag-info-item"><?php echo $value_extrainfo1 = get_post_meta($post->ID, '_extrainfo1_brochure', true); ?> </li>
+                        <li class="c-folder__aanvraag-info-item"><?php echo $value_extrainfo2 = get_post_meta($post->ID, '_extrainfo2_brochure', true); ?> 
                         </li>
-                        <li class="c-folder__aanvraag-info-item"><?php $value_extrainfo3 = get_post_meta($post->ID, '_extrainfo3_brochure', true); ?> 
+                        <li class="c-folder__aanvraag-info-item"><?php echo $value_extrainfo3 = get_post_meta($post->ID, '_extrainfo3_brochure', true); ?> 
                         </li>
                     </ul>
                 </div>
@@ -45,6 +60,11 @@
         </div>
     </div>
 
+    <?php 
+  endwhile;
+endif;
+  wp_reset_query();
+?>
 
 
 
