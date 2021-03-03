@@ -179,17 +179,17 @@ $query = new WP_Query($arg);
 
             </h1>
 
-               <!-- Begin Mailchimp Signup Form -->
-                <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
-                <div id="mc_embed_signup">
+            <!-- Begin Mailchimp Signup Form -->
+            <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+            <div id="mc_embed_signup">
                 <form action="https://howest.us7.list-manage.com/subscribe/post?u=475c8d1f6547efcf9fcdc44e6&amp;id=b7efd8c974" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <div id="mc_embed_signup_scroll" class="form-nieuwsbrief">
                         <input type="email" value="" name="EMAIL" class="form-control box form-nieuwsbrief__input" id="mce-EMAIL" placeholder="e-mailadres" required>
                         <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                         <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_475c8d1f6547efcf9fcdc44e6_b7efd8c974" tabindex="-1" value=""></div>
-                        <div class="clear"> 
+                        <div class="clear">
                             <a href="#">
-                            <button class="o-button c-brochure__button" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"">
+                                <button class="o-button btn-primary c-brochure__button" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"">
                                 Inschrijven
                             </button>
                             </a>
@@ -204,17 +204,17 @@ $query = new WP_Query($arg);
 
         </div>
     </div>
-    <div class="c-footer__row2 row">
-        <div class="c-footer__icon col-xl-3 col-lg-4 col-md-4 col-sm-10 ">
-            <a href="https://www.facebook.com/howestbe"> <img class="c-footer__icon-facebook" src="<?php echo get_stylesheet_directory_uri() . '/img/facebook_design.svg'; ?>" alt="Facebook" /></a>
-            <a href="https://www.instagram.com/howestbe/"> <img class="c-footer__icon-instagram" src="<?php echo get_stylesheet_directory_uri() . '/img/instagram_design.svg'; ?>" alt="Instagram" /></a>
-        </div>
-        <div class="c-footer__copyright col-lg-6 col-md-6 col-sm-10">
-            <p class="c-footer__copyright-text">
-                Wordpress theme &copy; 2021 | All Rights Reserved
-            </p>
-        </div>
-    </div>
+    <div class=" c-footer__row2 row">
+                                    <div class="c-footer__icon col-xl-3 col-lg-4 col-md-4 col-sm-10 ">
+                                        <a href="https://www.facebook.com/howestbe"> <img class="c-footer__icon-facebook" src="<?php echo get_stylesheet_directory_uri() . '/img/facebook_design.svg'; ?>" alt="Facebook" /></a>
+                                        <a href="https://www.instagram.com/howestbe/"> <img class="c-footer__icon-instagram" src="<?php echo get_stylesheet_directory_uri() . '/img/instagram_design.svg'; ?>" alt="Instagram" /></a>
+                                    </div>
+                                    <div class="c-footer__copyright col-lg-6 col-md-6 col-sm-10">
+                                        <p class="c-footer__copyright-text">
+                                            Wordpress theme &copy; 2021 | All Rights Reserved
+                                        </p>
+                                    </div>
+                        </div>
 </footer>
 </body>
 <?php wp_footer(); ?>
