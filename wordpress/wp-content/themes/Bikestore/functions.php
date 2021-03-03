@@ -132,7 +132,7 @@ function bs_custom_box_contact_html($post)
   echo "<br/>";
   echo "Tekstblok boven formulier: ";
   echo "<br/>";
-  echo "<textarea id='paragraaf_contact' name='paragraaf_contact' rows='6' cols='50' maxlength='600'>" . $value_paragraaf . "</textarea>";
+  echo "<textarea id='paragraaf_contact' name='paragraaf_contact' rows='6' cols='50' maxlength='500'>" . $value_paragraaf . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Titel Bedrijf: ";
@@ -577,7 +577,9 @@ function bs_custom_box_home_html($post){
   //blok 3
   $value_home_title_blok3 = get_post_meta($post->ID, '_home_title_blok3', true);
   $value_home_text_blok3 = get_post_meta($post->ID, '_home_text_blok3', true);
+  $value_home_text_knop_blok3 = get_post_meta($post->ID, '_home_text_knop_blok3', true);
   $value_home_img_blok3 = get_post_meta($post->ID, '_home_img_blok3', true);
+
 
    //blok 4
    $value_home_title_blok4 = get_post_meta($post->ID, '_home_title_blok4', true);
@@ -642,7 +644,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 1: ";
   echo "<br/>";
-  echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok1 . "</textarea>";
+  echo "<textarea id='home_text_blok1' name='home_text_blok1' rows='6' cols='50' maxlength='800'>" . $value_home_text_blok1 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst knop blok 1:";
@@ -658,7 +660,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 2:";
   echo "<br/>";
-  echo "<textarea id='home_text_blok2' name='home_text_blok2' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok2 . "</textarea>";
+  echo "<textarea id='home_text_blok2' name='home_text_blok2' rows='6' cols='50' maxlength='500'>" . $value_home_text_blok2 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst knop blok 2:";
@@ -674,7 +676,13 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 3: ";
   echo "<br/>";
-  echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='6' cols='50' maxlength='600'>" . $value_home_text_blok3 . "</textarea>";
+  echo "<textarea id='home_text_blok3' name='home_text_blok3' rows='6' cols='50' maxlength='900'>" . $value_home_text_blok3 . "</textarea>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Tekst knop blok 3: ";
+  echo "<br/>";
+  echo "<input type='text' id='home_text_knop_blok3' name='home_text_knop_blok3' value='". $value_home_text_knop_blok3 ."'>";
+ 
 
   //Blok 4
   echo "<h3>Blok 4</h3>";
@@ -685,7 +693,7 @@ function bs_custom_box_home_html($post){
   echo "<br/>";
   echo "Tekst blok 4:";
   echo "<br/>";
-  echo "<textarea id='home_text_blok4' name='home_text_blok4' rows='4' cols='50' maxlength='200'>" . $value_home_text_blok4 . "</textarea>";
+  echo "<textarea id='home_text_blok4' name='home_text_blok4' rows='4' cols='50' maxlength='500'>" . $value_home_text_blok4 . "</textarea>";
   echo "<br/>";
   echo "<br/>";
   echo "Tekst knop blok 4:";
@@ -845,6 +853,15 @@ function bs_home_save_postdata($post_id){
           $post_id,
           '_home_text_blok3',
           $_POST['home_text_blok3']
+        );
+      }
+
+      //opslaan van een INPUT: text knop blok 3
+      if (array_key_exists('home_text_knop_blok3', $_POST)) {
+        update_post_meta(
+          $post_id,
+          '_home_text_knop_blok3',
+          $_POST['home_text_knop_blok3']
         );
       }
 
@@ -1210,7 +1227,7 @@ function bs_custom_box_overbikestore_html($post){
     echo "<br/>";
     echo "Tekst blok 1:";
     echo "<br/>";
-    echo "<textarea id='overbikestore_text_blok1' name='overbikestore_text_blok1' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok1 . "</textarea>";
+    echo "<textarea id='overbikestore_text_blok1' name='overbikestore_text_blok1' rows='6' cols='50' maxlength='800'>" . $value_overbikestore_text_blok1 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Tekst auteur blok 1:";
@@ -1233,7 +1250,7 @@ function bs_custom_box_overbikestore_html($post){
     echo "<br/>";
     echo "Tekst 1 blok 2:";
     echo "<br/>";
-    echo "<textarea id='overbikestore_text1_blok2' name='overbikestore_text1_blok2' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text1_blok2 . "</textarea>";
+    echo "<textarea id='overbikestore_text1_blok2' name='overbikestore_text1_blok2' rows='6' cols='50' maxlength='350'>" . $value_overbikestore_text1_blok2 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Subtitel 2 blok 2:";
@@ -1243,12 +1260,12 @@ function bs_custom_box_overbikestore_html($post){
     echo "<br/>";
     echo "Tekst 2 blok 2:";
     echo "<br/>";
-    echo "<textarea id='overbikestore_text2_blok2' name='overbikestore_text2_blok2' rows='6' cols='50' maxlength='600'>" . $value_overbikestore_text2_blok2 . "</textarea>";
+    echo "<textarea id='overbikestore_text2_blok2' name='overbikestore_text2_blok2' rows='6' cols='50' maxlength='550'>" . $value_overbikestore_text2_blok2 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Onderschrift blok 2:";
     echo "<br/>";
-    echo "<textarea id='overbikestore_onderschrift_onderaan_blok2' name='overbikestore_onderschrift_onderaan_blok2' rows='4' cols='50' maxlength='200'>" . $value_overbikestore_onderschrift_onderaan_blok2 . "</textarea>";
+    echo "<textarea id='overbikestore_onderschrift_onderaan_blok2' name='overbikestore_onderschrift_onderaan_blok2' rows='4' cols='50' maxlength='150'>" . $value_overbikestore_onderschrift_onderaan_blok2 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
 
@@ -1261,7 +1278,7 @@ function bs_custom_box_overbikestore_html($post){
     echo "<br/>";
     echo "Tekst blok 3:";
     echo "<br/>";
-    echo "<textarea id='overbikestore_text_blok3' name='overbikestore_text_blok3' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok3 . "</textarea>";
+    echo "<textarea id='overbikestore_text_blok3' name='overbikestore_text_blok3' rows='6' cols='50' maxlength='1500'>" . $value_overbikestore_text_blok3 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
 
@@ -1274,7 +1291,7 @@ function bs_custom_box_overbikestore_html($post){
     echo "<br/>";
     echo "Tekst blok 4:";
     echo "<br/>";
-    echo "<textarea id='overbikestore_text_blok4' name='overbikestore_text_blok4' rows='6' cols='50' maxlength='700'>" . $value_overbikestore_text_blok4 . "</textarea>";
+    echo "<textarea id='overbikestore_text_blok4' name='overbikestore_text_blok4' rows='6' cols='50' maxlength='1500'>" . $value_overbikestore_text_blok4 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     
@@ -2056,7 +2073,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst links blok 2:";
     echo "<br/>";
-    echo "<textarea id='service_text_service1' name='service_text_service1' rows='6' cols='50' maxlength='700'>" . $value_service_text_service1 . "</textarea>";
+    echo "<textarea id='service_text_service1' name='service_text_service1' rows='6' cols='50' maxlength='500'>" . $value_service_text_service1 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Subtitel midden blok 2:";
@@ -2066,7 +2083,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst midden blok 2:";
     echo "<br/>";
-    echo "<textarea id='service_text_service2' name='service_text_service2' rows='6' cols='50' maxlength='600'>" . $value_service_text_service2 . "</textarea>";
+    echo "<textarea id='service_text_service2' name='service_text_service2' rows='6' cols='50' maxlength='500'>" . $value_service_text_service2 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Subtitel rechts blok 2:";
@@ -2076,7 +2093,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst rechts blok 2:";
     echo "<br/>";
-    echo "<textarea id='service_text_service3' name='service_text_service3' rows='6' cols='50' maxlength='600'>" . $value_service_text_service3 . "</textarea>";
+    echo "<textarea id='service_text_service3' name='service_text_service3' rows='6' cols='50' maxlength='500'>" . $value_service_text_service3 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     
@@ -2095,7 +2112,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst links blok 3:";
     echo "<br/>";
-    echo "<textarea id='service_text1_blok3' name='service_text1_blok3' rows='6' cols='50' maxlength='700'>" . $value_service_text1_blok3 . "</textarea>";
+    echo "<textarea id='service_text1_blok3' name='service_text1_blok3' rows='6' cols='50' maxlength='800'>" . $value_service_text1_blok3 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Subtitel rechts blok 3:";
@@ -2105,7 +2122,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst rechts blok 3:";
     echo "<br/>";
-    echo "<textarea id='service_text2_blok3' name='service_text2_blok3' rows='6' cols='50' maxlength='700'>" . $value_service_text2_blok3 . "</textarea>";
+    echo "<textarea id='service_text2_blok3' name='service_text2_blok3' rows='6' cols='50' maxlength='1500'>" . $value_service_text2_blok3 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
 
@@ -2118,7 +2135,7 @@ function bs_custom_box_service_html($post){
     echo "<br/>";
     echo "Tekst blok 4:";
     echo "<br/>";
-    echo "<textarea id='service_text_blok4' name='service_text_blok4' rows='6' cols='50' maxlength='700'>" . $value_service_text_blok4 . "</textarea>";
+    echo "<textarea id='service_text_blok4' name='service_text_blok4' rows='6' cols='50' maxlength='600'>" . $value_service_text_blok4 . "</textarea>";
     echo "<br/>";
     echo "<br/>";
     echo "Subtitel blok 4:";
@@ -2385,6 +2402,7 @@ function bs_service_save_postdata($post_id){
   echo "<input type='text' id='button_bedank' name='button_bedank' value='". $value_button ."'>";
   
  }
+
  function bs_save_postdata_bedank($post_id){
   //bepaal het (custom) type van de post
   
