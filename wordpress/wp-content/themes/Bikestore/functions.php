@@ -1534,11 +1534,28 @@ function bs_register_blog() {
   
   //als extra paramter kan je het $post object gebruiken
 
-
+  $value_titel1 = get_post_meta($post->ID, '_titel1_blog', true);
+  $value_titel2 = get_post_meta($post->ID, '_titel2_blog', true);
   $value_auteur = get_post_meta($post->ID, '_auteur_blog', true);
   
+  echo "<h1>Info overzicht blog</h1>";
+  echo "<br/>";
+  echo "Titel op afbeelding: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<input type='text' id='titel1_blog' name='titel1_blog' value='". $value_titel1 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "Titel voor overzicht: ";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<input type='text' id='titel2_blog' name='titel2_blog' value='". $value_titel2 ."'>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<br/>";
+  echo "<br/>";
   echo "<h1>Auteur tevoegen</h1>";
-  
+  echo "<br/>";
   echo "Auteur blogbericht: ";
   echo "<br/>";
   echo "<br/>";
@@ -1552,6 +1569,21 @@ function bs_register_blog() {
   //het gaat om een Custom post type want er bestaat een post_type (het is niet leeg)
   if ($naam_post_type == "blog"){
 
+    if (array_key_exists('titel1_blog', $_POST)) {
+      update_post_meta(
+      $post_id,
+      '_titel1_blog',
+      $_POST['titel1_blog']
+      );
+      }
+
+      if (array_key_exists('titel2_blog', $_POST)) {
+        update_post_meta(
+        $post_id,
+        '_titel2_blog',
+        $_POST['titel2_blog']
+        );
+        }
   
     if (array_key_exists('auteur_blog', $_POST)) {
       update_post_meta(
