@@ -123,7 +123,7 @@ function bs_custom_box_contact_html($post)
 
   
 
-  echo "<h1>Gegevens Bikestore</h1>";
+  echo "<h1>Gegevens Bedrijf</h1>";
   echo "<br/>";
   echo "Titel boven formulier: ";
   echo "<br/>";
@@ -135,7 +135,7 @@ function bs_custom_box_contact_html($post)
   echo "<textarea id='paragraaf_contact' name='paragraaf_contact' rows='6' cols='50' maxlength='600'>" . $value_paragraaf . "</textarea>";
   echo "<br/>";
   echo "<br/>";
-  echo "Titel Blok Gegevens: ";
+  echo "Titel Bedrijf: ";
   echo "<br/>";
   echo "<input type='text' id='title_gegevens' name='title_gegevens' value='" . $value_title_gegevens . "'>";
   echo "<br/>";
