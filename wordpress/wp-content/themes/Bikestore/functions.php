@@ -2477,10 +2477,285 @@ add_action("wp_enqueue_scripts", "bs_laadCSSenScript");
             add_action('add_meta_boxes', 'bs_add_custom_box_bedank');
             add_action( 'init', 'bs_register_bedank'); 
 
-            
-// woocommerce
-  add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
 
+  // woocommerce
+add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
+/* New Sidebar */
+function my_new_sidebar_widget_init() {
+  register_sidebar( array(
+    'name'          => 'New Sidebar',
+    'id'            => 'my_new_sidebar',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h2>',
+    'after_title'   => '</h2>',
+  ) );
+}
+add_action('widgets_init', 'my_new_sidebar_widget_init');
+
+add_filter('woocommerce_product_data_tabs', 'specs_fietsen_tabs' );
+function specs_fietsen_tabs( $tabs ){
+ 
+	//unset( $tabs['inventory'] );
+ 
+	$tabs['Specificaties'] = array(
+		'label'    => 'Specificaties',
+		'target'   => 'specs_product_data',
+		'priority' => 21,
+	);
+	return $tabs;
+ 
+}
+ 
+/*
+ * Tab content
+ */
+add_action( 'woocommerce_product_data_panels', 'specs_product_panels' );
+function specs_product_panels(){
+ 
+	echo '<div id="specs_product_data" class="panel woocommerce_options_panel">';
+    echo '<h1 style="margin-left:10px; font-weight:500;">Algemeen</h1>';
+    
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'type_fiets',
+            'value'             => get_post_meta( get_the_ID(), 'type_fiets', true ),
+            'label'             => 'Type fiets')
+    );
+
+	woocommerce_wp_text_input( 
+        array(
+		'id'                => 'merk',
+		'value'             => get_post_meta( get_the_ID(), 'merk', true ),
+		'label'             => 'Merk')
+    );
+ 
+    
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'serie',
+            'value'             => get_post_meta( get_the_ID(), 'serie', true ),
+            'label'             => 'Serie')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'frametype',
+            'value'             => get_post_meta( get_the_ID(), 'frametype', true ),
+            'label'             => 'Frametype')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'motorsysteem',
+            'value'             => get_post_meta( get_the_ID(), 'motorsysteem', true ),
+            'label'             => 'Motorsysteem')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'motorpositie',
+            'value'             => get_post_meta( get_the_ID(), 'motorpositie', true ),
+            'label'             => 'Motorpositie')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'aantal_versnellingen',
+            'value'             => get_post_meta( get_the_ID(), 'aantal_versnellingen', true ),
+            'label'             => 'Aantal versnellingen')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'type_naaf',
+            'value'             => get_post_meta( get_the_ID(), 'type_naaf', true ),
+            'label'             => 'Type naaf')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'framemateriaal',
+            'value'             => get_post_meta( get_the_ID(), 'framemateriaal', true ),
+            'label'             => 'Framemateriaal')
+    );
+
+    echo '<h1 style="margin-left:10px; font-weight:500;">Accu</h1>';
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'standaard_accu_capaciteit',
+            'value'             => get_post_meta( get_the_ID(), 'standaard_accu_capaciteit', true ),
+            'label'             => 'Standaard accu capaciteit')
+    );
+
+    woocommerce_wp_select( array(
+		'id'          => 'uitneembare_accu',
+		'value'       => get_post_meta( get_the_ID(), 'uitneembare_accu', true ),
+		'label'       => 'Uitneembare accu',
+		'options'     => array('ja' => 'Ja', 'nee' => 'Nee'),
+	) );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'accu_positie',
+            'value'             => get_post_meta( get_the_ID(), 'accu_positie', true ),
+            'label'             => 'Accu positie')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'type_accu',
+            'value'             => get_post_meta( get_the_ID(), 'type_accu', true ),
+            'label'             => 'Type accu')
+    );
+
+    woocommerce_wp_text_input(
+        array(
+            'id'                => 'laadtijd_accu',
+            'value'             => get_post_meta( get_the_ID(), 'laadtijd_accu', true ),
+            'label'             => 'Laadtijd tot volle accu')
+    );
+
+    woocommerce_wp_select( array(
+		'id'          => 'accu_keuze',
+		'value'       => get_post_meta( get_the_ID(), 'accu_keuze', true ),
+		'label'       => 'Accu keuze mogelijk',
+		'options'     => array('ja' => 'Ja', 'nee' => 'Nee'),
+	) );
+
+    woocommerce_wp_select( array(
+		'id'          => 'accu_laden_in_fiets',
+		'value'       => get_post_meta( get_the_ID(), 'accu_laden_in_fiets', true ),
+		'label'       => 'Accu laden in fiets',
+		'options'     => array('ja' => 'Ja', 'nee' => 'Nee'),
+	) );
+  echo '<h1 style="margin-left:10px; font-weight:500;">Voordelen en nadelen</h1>';
+  woocommerce_wp_text_input(
+    array(
+        'id'                => 'voordelen',
+        'value'             => get_post_meta( get_the_ID(), 'voordelen', true ),
+        'label'             => 'voordelen')
+);
+  woocommerce_wp_text_input(
+  array(
+      'id'                => 'nadelen',
+      'value'             => get_post_meta( get_the_ID(), 'nadelen', true ),
+      'label'             => 'nadelen')
+);
+
+echo '<h1 style="margin-left:10px; font-weight:500;">Accessoires specificaties</h1>';
+  woocommerce_wp_text_input(
+    array(
+        'id'                => 'accessoires-label',
+        'value'             => get_post_meta( get_the_ID(), 'accessoires-label', true ),
+        'label'             => 'accessoires-label')
+);
+  woocommerce_wp_text_input(
+  array(
+      'id'                => 'accessoires-value',
+      'value'             => get_post_meta( get_the_ID(), 'accessoires-value', true ),
+      'label'             => 'accessoires-value')
+);
+	
+echo '<p class="form-field"><label for="accessoires-type">accessoires-type</label><input type="text" class="short" style="" name="accessoires-type" id="accessoires-type" placeholder=""></p>'; 
+echo '<p class="form-field"><label for="accessoires-waarde">accessoires-waarde</label><input type="text" class="short" style="" name="accessoires-waarde" id="accessoires-waarde" placeholder=""></p>'; 
+echo '<p class="form-field"><button type="button" class="accessoires-toevoegen">Toevoegen</button></p>';
+echo '<ul class="accessoires-list"></ul>';
+echo '</div>';
+
+}
+ 
+/*
+ * Save
+ */
+function webroom_add_custom_js_file_to_admin( $hook ) {
+  wp_enqueue_script ( 'custom-post-type.js', get_template_directory_uri() . '/script/custom-post-type.js' );
+}
+add_action('admin_enqueue_scripts', 'webroom_add_custom_js_file_to_admin');
+
+
+function fiets_specs_save_fields( $id ){
+
+ 
+	  update_post_meta( $id, 'type_fiets', $_POST['type_fiets'] );
+    update_post_meta( $id, 'merk', $_POST['serie'] );
+    update_post_meta( $id, 'serie', $_POST['merk'] );
+    update_post_meta( $id, 'frametype', $_POST['frametype'] );
+    update_post_meta( $id, 'motorsysteem', $_POST['motorsysteem'] );
+    update_post_meta( $id, 'motorpositie', $_POST['motorpositie'] );
+    update_post_meta( $id, 'aantal_versnellingen', $_POST['aantal_versnellingen'] );
+    update_post_meta( $id, 'type_naaf', $_POST['type_naaf'] );
+    update_post_meta( $id, 'framemateriaal', $_POST['framemateriaal'] );
+
+    update_post_meta( $id, 'standaard_accu_capaciteit', $_POST['standaard_accu_capaciteit'] );
+    update_post_meta( $id, 'uitneembare_accu', $_POST['uitneembare_accu'] );
+    update_post_meta( $id, 'accu_positie', $_POST['accu_positie'] );
+    update_post_meta( $id, 'type_accu', $_POST['type_accu'] );
+    update_post_meta( $id, 'laadtijd_accu', $_POST['laadtijd_accu'] );
+    update_post_meta( $id, 'accu_keuze', $_POST['accu_keuze'] );
+    update_post_meta( $id, 'accu_laden_in_fiets', $_POST['accu_laden_in_fiets'] );
+
+    update_post_meta( $id, 'voordelen', $_POST['voordelen'] );
+    update_post_meta( $id, 'nadelen', $_POST['nadelen'] );
+
+    update_post_meta( $id, 'accessoires-label', $_POST['accessoires-label'] );
+    update_post_meta( $id, 'accessoires-value', $_POST['accessoires-value'] );
+
+ 
+}
+add_action( 'woocommerce_process_product_meta', 'fiets_specs_save_fields' );
+
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+/**
+ * Remove product data tabs
+ */
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+
+    unset( $tabs['description'] );      	// Remove the description tab
+    unset( $tabs['reviews'] ); 			// Remove the reviews tab
+    unset( $tabs['additional_information'] );  	// Remove the additional information tab
+
+    return $tabs;
+}
+
+//Hide Price Range for WooCommerce Variable Products
+/*add_filter( 'woocommerce_variable_sale_price_html', 
+'lw_variable_product_price', 10, 2 );
+add_filter( 'woocommerce_variable_price_html', 
+'lw_variable_product_price', 10, 2 );*/
+
+
+/*function sv_remove_product_page_skus( $enabled ) {
+  if ( ! is_admin() && is_product() ) {
+      return false;
+  }
+
+  return $enabled;
+}
+add_filter( 'wc_product_sku_enabled', 'sv_remove_product_page_skus' );*/
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
+
+add_shortcode( 'product_description', 'display_product_description' );
+function display_product_description( $atts ){
+    $atts = shortcode_atts( array(
+        'id' => get_the_id(),
+    ), $atts, 'product_description' );
+
+    global $product;
+
+    if ( ! is_a( $product, 'WC_Product') )
+        $product = wc_get_product($atts['id']);
+
+    return $product->get_description();
+}
 
 ?>
 
