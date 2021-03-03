@@ -26,7 +26,7 @@ if ($querybedank->have_posts()) :
             foreach($menu_items as $item){
                 if ($item->title == "Brochure"){
 
-                   echo '<a   class="c-folder__aanvraag-form-link" href="'. $item->url .'"><button class="o-button c-folder__aanvraag-form-button">' . get_post_meta($post->ID, '_button_bedank', true) . '</button></a>';
+                   echo '<a   class="c-folder__aanvraag-form-link" href="'. $item->url .'"><button class="btn-primary o-button c-folder__aanvraag-form-button">' . get_post_meta($post->ID, '_button_bedank', true) . '</button></a>';
                 }
                 
               }

@@ -116,7 +116,7 @@
                             foreach($menu_items as $item){
                                 if ($item->title == "Brochure"){
 
-                                echo '<a class=" c-service__verzekering-pakket-link" href="'. $item->url .'"><button class="o-button c-service__verzekering-pakket-button">' . get_post_meta($post->ID, '_service_text_knop_blok4', true) . '</button></a>';
+                                echo '<a class=" c-service__verzekering-pakket-link" href="'. $item->url .'"><button class="btn-primary o-button c-service__verzekering-pakket-button">' . get_post_meta($post->ID, '_service_text_knop_blok4', true) . '</button></a>';
                                 }
                             }
                         ?>
