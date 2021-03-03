@@ -18,7 +18,7 @@
   <div class="c-googlemap__map"><?php echo do_shortcode('[mappress mapid="1" width="96%" height="68%" border-radius="5%"]'); ?></div>
   </div>
   <div class="c-contactinfo col-xl-5 col-lg-5 col-md-12">
-  <h2 class="c-titel__2">Bikestore</h2>
+  <h2 class="c-titel__2"><?php echo  $value_title_gegevens = get_post_meta($post->ID, '_title_gegevens', true); ?></h2>
   <ul class="c-listcontact">
   
   <?php
