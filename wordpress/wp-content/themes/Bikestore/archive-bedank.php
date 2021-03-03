@@ -16,10 +16,11 @@ if ($querybedank->have_posts()) :
   while ($querybedank->have_posts()) : $querybedank->the_post();
 ?>
     <h2 class="text-center"> <?php echo the_title() ?> </h2>
-
+    <?php echo the_content() ?>
+    <div class="text-center">
     <?php
            $locations = get_nav_menu_locations();
-           $idVanNavigatie = $locations['extra-menu'];
+           $idVanNavigatie = $locations['main-menu'];
           $menu_items = wp_get_nav_menu_items($idVanNavigatie);
  
             foreach($menu_items as $item){
@@ -30,7 +31,8 @@ if ($querybedank->have_posts()) :
                 
               }
               ?>
-    <?php echo the_content() ?>
+                  </div>
+
   </section>
 
   <?php

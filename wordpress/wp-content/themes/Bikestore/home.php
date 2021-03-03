@@ -125,7 +125,7 @@
                   $menu_items = wp_get_nav_menu_items($idVanNavigatie);
  
                   foreach($menu_items as $item){
-                      if ($item->title == "Brochure"){
+                      if ($item->title == "Proefrit"){
 
                       echo '<a href="'. $item->url .'"><button class="o-button c-uitproberen__button">' . get_post_meta($post->ID, '_home_text_knop_blok2', true) . '</button></a>';
                     }
