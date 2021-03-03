@@ -93,7 +93,7 @@
    <div class="container">
 
       <div class="c-form">
-        <h1 class="c-form__h1 text-center c-margin">Boek uw afspraak nu!</h1>
+        <h1 class="c-form__h1 text-center c-margin"><?php echo $value_titelform = get_post_meta($post->ID, '_titelform_proefrit', true); ?></h1>
         <form action="">
         <?php echo do_shortcode('[ninja_form id=3]');?>
         </form>
