@@ -2763,5 +2763,6 @@ function display_product_description( $atts ){
         $product = wc_get_product($atts['id']);
 
     return $product->get_description();
-}?>
+
+}
 
