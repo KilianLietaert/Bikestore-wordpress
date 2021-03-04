@@ -1,0 +1,312 @@
+2021-03-04T08:15:19+00:00 DEBUG Mollie_WC_Helper_Data::deleteTransients: Mollie settings saved, delete transients
+2021-03-04T08:15:48+00:00 DEBUG Mollie_WC_Helper_Data::deleteTransients: Mollie settings saved, delete transients
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius: Start process_payment for order 359
+2021-03-04T08:23:00+00:00 DEBUG setUserMollieCustomerId: Stored Mollie customer ID cst_z8DGAeW9Pr with user 1
+2021-03-04T08:23:00+00:00 DEBUG getUserMollieCustomerId: Created a Mollie Customer (cst_z8DGAeW9Pr) for WordPress user with ID 1 (test).
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius: Create Mollie payment object for order 359
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius : Order 359 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius : Order 359 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:00+00:00 DEBUG Creating payment object: type Order, first try creating a Mollie Order.
+2021-03-04T08:23:00+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 2999.00
+        )
+
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [method] => belfius
+    [payment] => Array
+        (
+            [issuer] => 
+            [customerId] => cst_z8DGAeW9Pr
+        )
+
+    [locale] => nl_BE
+    [metadata] => Array
+        (
+            [order_id] => 359
+            [order_number] => 359
+        )
+
+    [orderNumber] => 359
+)
+
+2021-03-04T08:23:00+00:00 DEBUG Creating payment object: type Order, first try failed: [2021-03-04T08:23:00+0000] Error executing API call (422: Unprocessable Entity): The webhook URL is invalid: The URL "/bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G" does not seem to be a valid URL.. Field: webhookUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:00+00:00 DEBUG Creating payment object: type Order, did not fail because of incorrect customerId, so trying Payment now.
+2021-03-04T08:23:00+00:00 DEBUG Creating payment object: type Payment, creating a Payment.
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius : Order 359 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius : Order 359 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:00+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 2999.00
+        )
+
+    [description] => Order 359
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [method] => belfius
+    [issuer] => 
+    [locale] => nl_BE
+    [dueDate] => 
+    [metadata] => Array
+        (
+            [order_id] => 359
+        )
+
+)
+
+2021-03-04T08:23:00+00:00 DEBUG [2021-03-04T08:23:00+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:00+00:00 DEBUG mollie_wc_gateway_belfius: Failed to create Mollie payment object for order 359: [2021-03-04T08:23:00+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 359
+2021-03-04T08:23:10+00:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_z8DGAeW9Pr) found and valid for user 1 on this API key. (test).
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact: Create Mollie payment object for order 359
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:10+00:00 DEBUG Creating payment object: type Order, first try creating a Mollie Order.
+2021-03-04T08:23:10+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 2999.00
+        )
+
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [method] => bancontact
+    [payment] => Array
+        (
+            [issuer] => 
+            [customerId] => cst_z8DGAeW9Pr
+        )
+
+    [locale] => nl_BE
+    [metadata] => Array
+        (
+            [order_id] => 359
+            [order_number] => 359
+        )
+
+    [orderNumber] => 359
+)
+
+2021-03-04T08:23:10+00:00 DEBUG Creating payment object: type Order, first try failed: [2021-03-04T08:23:10+0000] Error executing API call (422: Unprocessable Entity): The webhook URL is invalid: The URL "/bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G" does not seem to be a valid URL.. Field: webhookUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:10+00:00 DEBUG Creating payment object: type Order, did not fail because of incorrect customerId, so trying Payment now.
+2021-03-04T08:23:10+00:00 DEBUG Creating payment object: type Payment, creating a Payment.
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:10+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 2999.00
+        )
+
+    [description] => Order 359
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [method] => bancontact
+    [issuer] => 
+    [locale] => nl_BE
+    [dueDate] => 
+    [metadata] => Array
+        (
+            [order_id] => 359
+        )
+
+)
+
+2021-03-04T08:23:10+00:00 DEBUG [2021-03-04T08:23:10+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:10+00:00 DEBUG mollie_wc_gateway_bancontact: Failed to create Mollie payment object for order 359: [2021-03-04T08:23:10+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 359
+2021-03-04T08:23:32+00:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_z8DGAeW9Pr) found and valid for user 1 on this API key. (test).
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact: Create Mollie payment object for order 359
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:32+00:00 DEBUG Creating payment object: type Order, first try creating a Mollie Order.
+2021-03-04T08:23:32+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 2999.00
+        )
+
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [method] => bancontact
+    [payment] => Array
+        (
+            [issuer] => 
+            [customerId] => cst_z8DGAeW9Pr
+        )
+
+    [locale] => nl_BE
+    [metadata] => Array
+        (
+            [order_id] => 359
+            [order_number] => 359
+        )
+
+    [orderNumber] => 359
+)
+
+2021-03-04T08:23:32+00:00 DEBUG Creating payment object: type Order, first try failed: [2021-03-04T08:23:32+0000] Error executing API call (422: Unprocessable Entity): The webhook URL is invalid: The URL "/bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G" does not seem to be a valid URL.. Field: webhookUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:32+00:00 DEBUG Creating payment object: type Order, did not fail because of incorrect customerId, so trying Payment now.
+2021-03-04T08:23:32+00:00 DEBUG Creating payment object: type Payment, creating a Payment.
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact : Order 359 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+2021-03-04T08:23:32+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 2999.00
+        )
+
+    [description] => Order 359
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=359&key=wc_order_22V2Di721Rv2G
+    [method] => bancontact
+    [issuer] => 
+    [locale] => nl_BE
+    [dueDate] => 
+    [metadata] => Array
+        (
+            [order_id] => 359
+        )
+
+)
+
+2021-03-04T08:23:32+00:00 DEBUG [2021-03-04T08:23:32+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:23:32+00:00 DEBUG mollie_wc_gateway_bancontact: Failed to create Mollie payment object for order 359: [2021-03-04T08:23:32+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 360
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact: Create Mollie payment object for order 360
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:25:47+00:00 DEBUG Creating payment object: type Order, first try creating a Mollie Order.
+2021-03-04T08:25:47+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 5998.00
+        )
+
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [method] => bancontact
+    [payment] => Array
+        (
+            [issuer] => 
+            [customerId] => 
+        )
+
+    [locale] => nl_BE
+    [metadata] => Array
+        (
+            [order_id] => 360
+            [order_number] => 360
+        )
+
+    [orderNumber] => 360
+)
+
+2021-03-04T08:25:47+00:00 DEBUG Creating payment object: type Order, first try failed: [2021-03-04T08:25:47+0000] Error executing API call (422: Unprocessable Entity): The webhook URL is invalid: The URL "/bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2" does not seem to be a valid URL.. Field: webhookUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:25:47+00:00 DEBUG Creating payment object: type Order, did not fail because of incorrect customerId, so trying Payment now.
+2021-03-04T08:25:47+00:00 DEBUG Creating payment object: type Payment, creating a Payment.
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:25:47+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 5998.00
+        )
+
+    [description] => Order 360
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [method] => bancontact
+    [issuer] => 
+    [locale] => nl_BE
+    [dueDate] => 
+    [metadata] => Array
+        (
+            [order_id] => 360
+        )
+
+)
+
+2021-03-04T08:25:47+00:00 DEBUG [2021-03-04T08:25:47+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:25:47+00:00 DEBUG mollie_wc_gateway_bancontact: Failed to create Mollie payment object for order 360: [2021-03-04T08:25:47+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact: Start process_payment for order 360
+2021-03-04T08:28:17+00:00 DEBUG getUserMollieCustomerId: Mollie Customer ID (cst_z8DGAeW9Pr) found and valid for user 1 on this API key. (test).
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact: Create Mollie payment object for order 360
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:28:17+00:00 DEBUG Creating payment object: type Order, first try creating a Mollie Order.
+2021-03-04T08:28:17+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 5998.00
+        )
+
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [method] => bancontact
+    [payment] => Array
+        (
+            [issuer] => 
+            [customerId] => cst_z8DGAeW9Pr
+        )
+
+    [locale] => nl_BE
+    [metadata] => Array
+        (
+            [order_id] => 360
+            [order_number] => 360
+        )
+
+    [orderNumber] => 360
+)
+
+2021-03-04T08:28:17+00:00 DEBUG Creating payment object: type Order, first try failed: [2021-03-04T08:28:17+0000] Error executing API call (422: Unprocessable Entity): The webhook URL is invalid: The URL "/bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2" does not seem to be a valid URL.. Field: webhookUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:28:17+00:00 DEBUG Creating payment object: type Order, did not fail because of incorrect customerId, so trying Payment now.
+2021-03-04T08:28:17+00:00 DEBUG Creating payment object: type Payment, creating a Payment.
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 returnUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact : Order 360 webhookUrl: /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+2021-03-04T08:28:17+00:00 DEBUG Array
+(
+    [amount] => Array
+        (
+            [currency] => EUR
+            [value] => 5998.00
+        )
+
+    [description] => Order 360
+    [redirectUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [webhookUrl] => /bikestore-wordpress/wordpress/?wc-ajax=checkout&order_id=360&key=wc_order_UAkrBBEYgpcU2
+    [method] => bancontact
+    [issuer] => 
+    [locale] => nl_BE
+    [dueDate] => 
+    [metadata] => Array
+        (
+            [order_id] => 360
+        )
+
+)
+
+2021-03-04T08:28:17+00:00 DEBUG [2021-03-04T08:28:17+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
+2021-03-04T08:28:17+00:00 DEBUG mollie_wc_gateway_bancontact: Failed to create Mollie payment object for order 360: [2021-03-04T08:28:17+0000] Error executing API call (422: Unprocessable Entity): The redirect URL is invalid. Field: redirectUrl. Documentation: https://docs.mollie.com/guides/handling-errors
