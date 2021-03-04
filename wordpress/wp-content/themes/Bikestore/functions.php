@@ -2764,6 +2764,3 @@ function display_product_description( $atts ){
 
     return $product->get_description();
 }
-
-?>
-
