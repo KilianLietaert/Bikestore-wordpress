@@ -32,11 +32,11 @@
 
                 <?php 
                   $locations = get_nav_menu_locations();
-                  $idVanNavigatie = $locations['extra-menu'];
+                  $idVanNavigatie = $locations['main-menu'];
                   $menu_items = wp_get_nav_menu_items($idVanNavigatie);
  
                   foreach($menu_items as $item){
-                      if ($item->title == "Brochure"){
+                      if ($item->title == "elektrische-fiets"){
 
                       echo '<a href="'. $item->url .'"><button class="btn-primary o-button c-bannerhome__button">' . get_post_meta($post->ID, '_home_knop_banner', true) . '</button></a>';
                     }
