@@ -52,11 +52,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>Bij Bikestore staat veiligheid hoog in het vaandel. Eén van de meest voorkomende vragen over e-bikes is hoe je de accu het beste kunt gebruiken. Het antwoord: zoals elke andere accu of krachtige batterij, dus met de nodige voorzichtigheid.</p>
+<p>Bij bikestore staat veiligheid hoog in het vaandel. Eén van de meest voorkomende vragen over e-bikes is hoe je de accu het beste kunt gebruiken. Het antwoord: zoals elke andere accu of krachtige batterij, dus met de nodige voorzichtigheid.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>Het is goed om te weten dat de accu’s van Bikestore voldoen aan de hoogste standaarden en worden getest volgens strenge Europese normen. Ze hebben alle wettelijke certificaten en zijn beschermd tegen overbelasting, kortsluiting, piekspanning en wisselende temperaturen.,</p>
+<p>Het is goed om te weten dat de accu’s van bikestore voldoen aan de hoogste standaarden en worden getest volgens strenge Europese normen. Ze hebben alle wettelijke certificaten en zijn beschermd tegen overbelasting, kortsluiting, piekspanning en wisselende temperaturen.,</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
@@ -88,7 +88,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>Iedere Bikestore e-bike wordt geleverd met een originele gecertificeerde accu en oplader. Is je oplader beschadigd? Neem dan gewoon contact met ons op, dan zorgen wij voor een nieuwe. Gebruik nooit een oplader van een ander merk of type e-bike.</p>
+<p>Iedere bikestore e-bike wordt geleverd met een originele gecertificeerde accu en oplader. Is je oplader beschadigd? Neem dan gewoon contact met ons op, dan zorgen wij voor een nieuwe. Gebruik nooit een oplader van een ander merk of type e-bike.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -141,7 +141,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_para1_blog]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Bij Bikestore staat veiligheid hoog in het vaandel. Eén van de meest voorkomende vragen over e-bikes is hoe je de accu het beste kunt gebruiken. Het antwoord: zoals elke andere accu of krachtige batterij, dus met de nodige voorzichtigheid.]]></wp:meta_value>
+		<wp:meta_value><![CDATA[Bij bikestore staat veiligheid hoog in het vaandel. Eén van de meest voorkomende vragen over e-bikes is hoe je de accu het beste kunt gebruiken. Het antwoord: zoals elke andere accu of krachtige batterij, dus met de nodige voorzichtigheid.]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_tsstitel2_blog]]></wp:meta_key>
@@ -149,7 +149,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_para2_blog]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Het is goed om te weten dat de accu’s van Bikestore voldoen aan de hoogste standaarden en worden getest volgens strenge Europese normen. Ze hebben alle wettelijke certificaten en zijn beschermd tegen overbelasting, kortsluiting, piekspanning en wisselende temperaturen.]]></wp:meta_value>
+		<wp:meta_value><![CDATA[Het is goed om te weten dat de accu’s van bikestore voldoen aan de hoogste standaarden en worden getest volgens strenge Europese normen. Ze hebben alle wettelijke certificaten en zijn beschermd tegen overbelasting, kortsluiting, piekspanning en wisselende temperaturen.]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_tsstitel3_blog]]></wp:meta_key>
@@ -187,7 +187,7 @@ Valschade kan je accu inwendig beschadigen, ook zonder zichtbare beschadigingen.
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_lijst3_blog]]></wp:meta_key>
 		<wp:meta_value><![CDATA[3.	Gebruik alleen deze originele oplader met de bijgeleverde snoeren
-Iedere Bikestore e-bike wordt geleverd met een originele gecertificeerde accu en oplader. Is je oplader beschadigd? Neem dan gewoon contact met ons op, dan zorgen wij voor een nieuwe. Gebruik nooit een oplader van een ander merk of type e-bike.
+Iedere bikestore e-bike wordt geleverd met een originele gecertificeerde accu en oplader. Is je oplader beschadigd? Neem dan gewoon contact met ons op, dan zorgen wij voor een nieuwe. Gebruik nooit een oplader van een ander merk of type e-bike.
 ]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
@@ -702,7 +702,7 @@ Merk je iets bijzonders aan je accu, zoals lekkage, een sterke geur, overmatige 
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Even langs een terrasje of naar de stad? Zorg dat u uw e-bike altijd goed op slot zet, juist ook op drukke toeristische plekken. Een dubbelslot is zeker aan te raden. Alle Bikestore e-bikes beschikken over een AXA ringslot, maar een extra ijzersterk kettingslot kan nooit kwaad. Beter extra veilig vooraf, dan spijt achteraf.</p>
+<p>Even langs een terrasje of naar de stad? Zorg dat u uw e-bike altijd goed op slot zet, juist ook op drukke toeristische plekken. Een dubbelslot is zeker aan te raden. Alle bikestore e-bikes beschikken over een AXA ringslot, maar een extra ijzersterk kettingslot kan nooit kwaad. Beter extra veilig vooraf, dan spijt achteraf.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
