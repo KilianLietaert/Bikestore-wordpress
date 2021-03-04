@@ -384,7 +384,6 @@ function bs_custom_box_footer_html($post)
   $value_titel3 = get_post_meta($post->ID, '_footer_titel3', true);
   $value_titel4 = get_post_meta($post->ID, '_footer_titel4', true);
 
-  $value_text = get_post_meta($post->ID, '_footer_text', true);
 
   echo "<h1>informatie over de footer</h1>";
   echo "Titel 1: ";
@@ -399,8 +398,6 @@ function bs_custom_box_footer_html($post)
   echo "Titel 4: ";
   echo "<input type='text' id='footer_titel4' name='footer_titel4' value='" . $value_titel4 . "'>";
   echo "<br/>";
-  echo "Text bij titel 4: ";
-  echo "<textarea id='footer_text' name='footer_text' rows='4' cols='50' maxlength='400'>" . $value_text . "</textarea>";
 }
 
 function bs_footer_save_postdata($post_id)
@@ -446,13 +443,6 @@ function bs_footer_save_postdata($post_id)
         );
       }
       //opslaan van een text
-      if (array_key_exists('footer_text', $_POST)) {
-        update_post_meta(
-          $post_id,
-          '_footer_text',
-          $_POST['footer_text']
-        );
-      }
     }
   }
 }
