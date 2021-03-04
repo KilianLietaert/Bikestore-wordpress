@@ -9,7 +9,7 @@ function bs_laadCSSenScript()
 {
   $pathTheme = get_template_directory_uri();
   wp_enqueue_style("bootstrap", $pathTheme . '/css/bootstrap.min.css');
-  wp_enqueue_style('Bikestore', $pathTheme . '/css/screen.css', ['bootstrap']);
+  wp_enqueue_style('bikestore', $pathTheme . '/css/screen.css', ['bootstrap']);
 
   wp_enqueue_script('bootstrapjs', $pathTheme . '/script/bootstrap.min.js');
   wp_enqueue_script('menujs', $pathTheme . '/script/fietsaanvraag-uur.js');
