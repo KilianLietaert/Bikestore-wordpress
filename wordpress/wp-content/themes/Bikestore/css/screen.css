@@ -14319,7 +14319,7 @@ body {
 .c-bannerhome {
   overflow-x: hidden;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/bikestore-wordpress/wordpress/wp-content/themes/bikestore/img/man-biker-sitting-electric-bike.jpg");
+    url("../img/man-biker-sitting-electric-bike.jpg");
 
   background-position: center;
   background-repeat: no-repeat;
@@ -14391,7 +14391,7 @@ body {
 
 .c-image__fixed {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/bikestore-wordpress/wordpress/wp-content/themes/bikestore/img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
+    url("../img/close-up-sideways-cyclist-holding-e-bike-with-green-wall-background.jpg");
   height: 500px;
   background-attachment: fixed;
   background-position: center;
@@ -14968,7 +14968,7 @@ ul .c-usp__tekst {
 }
 
 .c-banner__fiets {
-  background-image: url("/bikestore-wordpress/wordpress/wp-content/themes/bikestore/img/world-canyon-electric-city-bikes-02.png");
+  background-image: url("../img/world-canyon-electric-city-bikes-02.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -17285,9 +17285,9 @@ th {
       left bottom,
       from(rgba(0, 0, 0, 0.6)),
       to(rgba(0, 0, 0, 0.6))),
-    url("/img/monaco.jpg");
+    url("../img/monaco.jpg");
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/img/monaco.jpg");
+    url("../img/monaco.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
