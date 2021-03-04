@@ -146,7 +146,7 @@ get_header( 'shop' );
             </label>
           </div>
           </section>
-          <input type="submit" class="o-button" value="Filteren">
+          <input type="submit" class="o-button btn-primary" value="Filteren">
           </form>
         </aside>
         <div class="col-lg-9">
