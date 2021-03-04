@@ -18119,10 +18119,26 @@ color: black;
   border: 1px solid rgba(0,0,0,.1);
   margin: 0 -1px 24px 0;
   text-align: left;
-  width: 80%;
+  width: 100%;
   border-collapse: separate;
   border-radius: 5px;
   margin: auto;
+}
+
+.woocommerce-checkout-review-order-table{
+  width: 80%;
+  margin: auto;
+}
+
+.woocommerce-order{
+  width: 80%;
+  margin: auto;
+  margin-top: 5vw;
+  font-size: 1vw;
+}
+
+.cart_totals{
+  margin-top: 3vw;
 }
 
 /*# sourceMappingURL=screen.css.map */
